@@ -34,6 +34,7 @@ var AutonButtons = React.createClass({
                         <MyHeader3> {this.props.team1}: </MyHeader3><br/>
                         <RadioButton
                             label="None"
+                            disabled = {true}
                             style={styles.checkbox}
                             onCheck={this.handleChange1}
                             checked={this.props.scores.autonButtonsScore1 == 0}
@@ -44,6 +45,7 @@ var AutonButtons = React.createClass({
                             />
                         <RadioButton
                             label="One"
+                            disabled = {true}
                             style={styles.checkbox}
                             onCheck={this.handleChange1}
                             checked={this.props.scores.autonButtonsScore1 == 30}
@@ -54,6 +56,7 @@ var AutonButtons = React.createClass({
                             />
                         <RadioButton
                             label="Both"
+                            disabled = {true}
                             style={styles.checkbox}
                             onCheck={this.handleChange1}
                             checked={this.props.scores.autonButtonsScore1 == 60}
@@ -67,6 +70,7 @@ var AutonButtons = React.createClass({
                         <MyHeader3> {this.props.team2}: </MyHeader3><br/>
                         <RadioButton
                             label="None"
+                            disabled = {true}
                             style={styles.checkbox}
                             onCheck={this.handleChange2}
                             checked={this.props.scores.autonButtonsScore2 == 0}
@@ -77,6 +81,7 @@ var AutonButtons = React.createClass({
                             />
                         <RadioButton
                             label="One"
+                            disabled = {true}
                             style={styles.checkbox}
                             onCheck={this.handleChange2}
                             checked={this.props.scores.autonButtonsScore2 == 30}
@@ -87,6 +92,7 @@ var AutonButtons = React.createClass({
                             />
                         <RadioButton
                             label="Both"
+                            disabled = {true}
                             style={styles.checkbox}
                             onCheck={this.handleChange2}
                             checked={this.props.scores.autonButtonsScore2 == 60}

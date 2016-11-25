@@ -48,6 +48,7 @@ var AutonCapBall = React.createClass({
                         <MyHeader3> {this.props.team1}: </MyHeader3> <br/>
                         <Checkbox
                             label="Dislodged"
+                            disabled = {true}
                             style={styles.checkbox}
                             onCheck={this.handleChange1}
                             checked={this.props.scores.autonCapBallScore1 == 5}
@@ -60,6 +61,7 @@ var AutonCapBall = React.createClass({
                         <MyHeader3> {this.props.team2}: </MyHeader3> <br/>
                         <Checkbox
                             label="Dislodged"
+                            disabled = {true}
                             style={styles.checkbox}
                             onCheck={this.handleChange2}
                             checked={this.props.scores.autonCapBallScore2 == 5}

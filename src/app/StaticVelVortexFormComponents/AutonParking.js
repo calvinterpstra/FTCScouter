@@ -16,48 +16,51 @@ const styles = {
     },
 };
 
-var AutonButtons = React.createClass({
+var AutonParking = React.createClass({
     handleChange1: function (event) {
         var score = (event.target.value)
-        this.props.handleScoreChange(score, "autonButtonsScore1");
+        this.props.handleScoreChange(score, "autonParkingScore1");
     },
     handleChange2: function (event) {
         var score = (event.target.value)
-        this.props.handleScoreChange(score, "autonButtonsScore2");
+        this.props.handleScoreChange(score, "autonParkingScore2");
     },
     render() {
         return (
             <div>
-                <MyHeader2> Beacons </MyHeader2>
+                <MyHeader2>Auton Parking</MyHeader2>
                 <div style={styles.root}>
                     <div style={{ textAlign: 'center', marginRight: 50, marginLeft: ((screen.width*0.5)-120)}}>
                         <MyHeader3> {this.props.team1}: </MyHeader3><br/>
                         <RadioButton
                             label="None"
+                            disabled = {true}
                             style={styles.checkbox}
                             onCheck={this.handleChange1}
-                            checked={this.props.scores.autonButtonsScore1 == 0}
+                            checked={this.props.scores.autonParkingScore1 == 0}
                             value={0}
                             iconStyle={{
                                 fill: Colors.blue500
                             }}
                             />
                         <RadioButton
-                            label="One"
+                            label="Partial"
+                            disabled = {true}
                             style={styles.checkbox}
                             onCheck={this.handleChange1}
-                            checked={this.props.scores.autonButtonsScore1 == 30}
-                            value={30}
+                            checked={this.props.scores.autonParkingScore1 == 5}
+                            value={5}
                             iconStyle={{
                                 fill: Colors.blue500
                             }}
                             />
                         <RadioButton
-                            label="Both"
+                            label="Full"
+                            disabled = {true}
                             style={styles.checkbox}
                             onCheck={this.handleChange1}
-                            checked={this.props.scores.autonButtonsScore1 == 60}
-                            value={60}
+                            checked={this.props.scores.autonParkingScore1 == 10}
+                            value={10}
                             iconStyle={{
                                 fill: Colors.blue500
                             }}
@@ -67,30 +70,33 @@ var AutonButtons = React.createClass({
                         <MyHeader3> {this.props.team2}: </MyHeader3><br/>
                         <RadioButton
                             label="None"
+                            disabled = {true}
                             style={styles.checkbox}
                             onCheck={this.handleChange2}
-                            checked={this.props.scores.autonButtonsScore2 == 0}
+                            checked={this.props.scores.autonParkingScore2 == 0}
                             value={0}
                             iconStyle={{
                                 fill: Colors.blue500
                             }}
                             />
                         <RadioButton
-                            label="One"
+                            label="Partial"
+                            disabled = {true}
                             style={styles.checkbox}
                             onCheck={this.handleChange2}
-                            checked={this.props.scores.autonButtonsScore2 == 30}
-                            value={30}
+                            checked={this.props.scores.autonParkingScore2 == 5}
+                            value={5}
                             iconStyle={{
                                 fill: Colors.blue500
                             }}
                             />
                         <RadioButton
-                            label="Both"
+                            label="Full"
+                            disabled = {true}
                             style={styles.checkbox}
                             onCheck={this.handleChange2}
-                            checked={this.props.scores.autonButtonsScore2 == 60}
-                            value={60}
+                            checked={this.props.scores.autonParkingScore2 == 10}
+                            value={10}
                             iconStyle={{
                                 fill: Colors.blue500
                             }}
@@ -102,4 +108,4 @@ var AutonButtons = React.createClass({
     }
 });
 
-export default AutonButtons;
+export default AutonParking;

@@ -40,7 +40,6 @@ var PracticeVelVortexForm = React.createClass({
 
     handleScoreChange: function (score, scoreType) {
         const s = this.state.scores;
-        console.log(this.state.scores);
         switch (scoreType) {
             case "autonButtonsScore1":
                 s.autonButtonsScore1 = parseInt(score);

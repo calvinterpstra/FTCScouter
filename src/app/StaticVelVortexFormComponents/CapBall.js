@@ -34,6 +34,7 @@ var CapBall = React.createClass({
                         <MyHeader3> {this.props.team1}: </MyHeader3><br/>
                         <RadioButton
                             label="None"
+                            disabled = {true}
                             style={styles.checkbox}
                             onCheck={this.handleChange1}
                             checked={this.props.scores.capBallScore1 == 0}
@@ -44,6 +45,7 @@ var CapBall = React.createClass({
                             />
                         <RadioButton
                             label="Low"
+                            disabled = {true}
                             style={styles.checkbox}
                             onCheck={this.handleChange1}
                             checked={this.props.scores.capBallScore1 == 10}
@@ -54,6 +56,7 @@ var CapBall = React.createClass({
                             />
                         <RadioButton
                             label="High"
+                            disabled = {true}
                             style={styles.checkbox}
                             onCheck={this.handleChange1}
                             checked={this.props.scores.capBallScore1 == 20}
@@ -64,6 +67,7 @@ var CapBall = React.createClass({
                             />
                         <RadioButton
                             label="Capped"
+                            disabled = {true}
                             style={styles.checkbox}
                             onCheck={this.handleChange1}
                             checked={this.props.scores.capBallScore1 == 40}
@@ -77,6 +81,7 @@ var CapBall = React.createClass({
                         <MyHeader3> {this.props.team2}: </MyHeader3><br/>
                         <RadioButton
                             label="None"
+                            disabled = {true}
                             style={styles.checkbox}
                             onCheck={this.handleChange2}
                             checked={this.props.scores.capBallScore2 == 0}
@@ -87,6 +92,7 @@ var CapBall = React.createClass({
                             />
                         <RadioButton
                             label="Low"
+                            disabled = {true}
                             style={styles.checkbox}
                             onCheck={this.handleChange2}
                             checked={this.props.scores.capBallScore2 == 10}
@@ -97,6 +103,7 @@ var CapBall = React.createClass({
                             />
                         <RadioButton
                             label="High"
+                            disabled = {true}
                             style={styles.checkbox}
                             onCheck={this.handleChange2}
                             checked={this.props.scores.capBallScore2 == 20}
@@ -107,6 +114,7 @@ var CapBall = React.createClass({
                             />
                         <RadioButton
                             label="Capped"
+                            disabled = {true}
                             style={styles.checkbox}
                             onCheck={this.handleChange2}
                             checked={this.props.scores.capBallScore2 == 40}

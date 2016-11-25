@@ -42,14 +42,14 @@ var CornerVortex = React.createClass({
                 <RaisedButton
                   label="-"
                   secondary={true}
-                  disabled={this.props.scores.cornerVortexScore1 === 0}
+                            disabled = {true}
                   onTouchTap={this.handlePrev1}
                   style={{ marginRight: 5, height: 40, minWidth: 60}}
                   />
                 <RaisedButton
                   label={'+'}
                   primary={true}
-                  disabled={this.props.scores.cornerVortexScore1 === 20}
+                            disabled = {true}
                   onTouchTap={this.handleNext1}
                   style={{height: 40, minWidth: 60}}
                   />
@@ -64,14 +64,14 @@ var CornerVortex = React.createClass({
                 <RaisedButton
                   label="-"
                   secondary={true}
-                  disabled={this.props.scores.cornerVortexScore2 === 0}
+                            disabled = {true}
                   onTouchTap={this.handlePrev2}
                   style={{ marginRight: 5, height: 40, minWidth: 60}}
                   />
                 <RaisedButton
                   label="+"
                   primary={true}
-                  disabled={this.props.scores.cornerVortexScore2 === 20}
+                            disabled = {true}
                   onTouchTap={this.handleNext2}
                   style={{height: 40, minWidth: 60}}
                   />

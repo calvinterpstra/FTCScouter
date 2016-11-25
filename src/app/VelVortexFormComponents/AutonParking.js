@@ -30,7 +30,7 @@ var AutonParking = React.createClass({
             <div>
                 <MyHeader2>Auton Parking</MyHeader2>
                 <div style={styles.root}>
-                    <div style={{ textAlign: 'center', marginRight: 50, marginLeft: 35}}>
+                    <div style={{ textAlign: 'center', marginRight: 50, marginLeft: ((screen.width*0.5)-120)}}>
                         <MyHeader3> {this.props.team1}: </MyHeader3><br/>
                         <RadioButton
                             label="None"

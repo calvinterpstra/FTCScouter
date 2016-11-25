@@ -111,10 +111,11 @@ var TeleopButtons = React.createClass({
             <div>
                 <MyHeader2> Beacons </MyHeader2>
                 <div style={styles.root}>
-                    <div style={{ textAlign: 'center', marginRight: 0, marginLeft: ((screen.width*0.5)-170)}}>
+                    <div style={{ textAlign: 'center', marginRight: 40, marginLeft: ((screen.width*0.5)-170)}}>
                         <MyHeader3> {this.props.team1}: </MyHeader3> <br/>
                         <Checkbox
                             label="Alliance Near"
+                            disabled = {true}
                             style={styles.checkbox}
                             onCheck={this.handleChangeA11}
                             checked={this.props.scores.teleopButtonAllianceNearScore1 == 10}
@@ -124,6 +125,7 @@ var TeleopButtons = React.createClass({
                             />
                         <Checkbox
                             label="Alliance Far"
+                            disabled = {true}
                             style={styles.checkbox}
                             onCheck={this.handleChangeA21}
                             checked={this.props.scores.teleopButtonAllianceFarScore1 == 10}
@@ -133,6 +135,7 @@ var TeleopButtons = React.createClass({
                             />
                         <Checkbox
                             label="Opponent Near"
+                            disabled = {true}
                             style={styles.checkbox}
                             onCheck={this.handleChangeO11}
                             checked={this.props.scores.teleopButtonOpponentNearScore1 == 10}
@@ -142,6 +145,7 @@ var TeleopButtons = React.createClass({
                             />
                         <Checkbox
                             label="Opponent Far"
+                            disabled = {true}
                             style={styles.checkbox}
                             onCheck={this.handleChangeO21}
                             checked={this.props.scores.teleopButtonOpponentFarScore1 == 10}
@@ -154,6 +158,7 @@ var TeleopButtons = React.createClass({
                         <MyHeader3> {this.props.team2}: </MyHeader3> <br/>
                         <Checkbox
                             label="Alliance Near"
+                            disabled = {true}
                             style={styles.checkbox}
                             onCheck={this.handleChangeA12}
                             checked={this.props.scores.teleopButtonAllianceNearScore2 == 10}
@@ -163,6 +168,7 @@ var TeleopButtons = React.createClass({
                             />
                         <Checkbox
                             label="Alliance Far"
+                            disabled = {true}
                             style={styles.checkbox}
                             onCheck={this.handleChangeA22}
                             checked={this.props.scores.teleopButtonAllianceFarScore2 == 10}
@@ -172,6 +178,7 @@ var TeleopButtons = React.createClass({
                             />
                         <Checkbox
                             label="Opponent Near"
+                            disabled = {true}
                             style={styles.checkbox}
                             onCheck={this.handleChangeO12}
                             checked={this.props.scores.teleopButtonOpponentNearScore2 == 10}
@@ -181,6 +188,7 @@ var TeleopButtons = React.createClass({
                             />
                         <Checkbox
                             label="Opponent Far"
+                            disabled = {true}
                             style={styles.checkbox}
                             onCheck={this.handleChangeO22}
                             checked={this.props.scores.teleopButtonOpponentFarScore2 == 10}

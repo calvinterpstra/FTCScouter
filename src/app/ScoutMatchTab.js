@@ -1,6 +1,6 @@
 import React from 'react';
 import MatchList from './MatchesTabComponents/MatchList'
-import ResQForm from './ResQForm'
+import VelVortexForm from './VelVortexForm'
 import ScoutedSubmit from './ScoutedSubmit'
 import UnscoutedSubmit from './UnscoutedSubmit'
 import MatchDetails from './MatchesTabComponents/MatchDetails';
@@ -53,7 +53,7 @@ var ScoutMatchTab = React.createClass({
                 return (
                     <div style={bodyStyle}>
                         <h2 style={headerStyle}> Scouting Form </h2><br/>
-                        <ResQForm
+                        <VelVortexForm
                             currentPartialMatch={this.props.currentPartialMatch} handleCurrentPartialMatchUpdate={this.props.handleCurrentPartialMatchUpdate}/>
                         <UnscoutedSubmit handleToMatches={this.props.handleToMatches} handleSubmission={this.handleSubmission}
                             handleCancelUnscouted={this.handleCancelUnscouted} getTime={this.props.getTime} displayTime={this.props.displayTime}
@@ -65,7 +65,7 @@ var ScoutMatchTab = React.createClass({
                 return (
                     <div style={bodyStyle}>
                         <h2 style={headerStyle}> Scouting Form </h2><br/>
-                        <ResQForm
+                        <VelVortexForm
                             currentPartialMatch={this.props.currentPartialMatch} handleCurrentPartialMatchUpdate={this.props.handleCurrentPartialMatchUpdate}/>
                         <ScoutedSubmit handleToMatches={this.props.handleToMatches} handleSubmission={this.handleSubmission}
                             getTime={this.props.getTime} displayTime={this.props.displayTime}

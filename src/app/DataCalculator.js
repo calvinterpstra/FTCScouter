@@ -37,94 +37,91 @@ class DataCalculator {
         }
     }
     getMergedScores(partialMatches) {
-        var autonButtonScores1 = []
-        var autonClimbersScores1 = []
-        var autonMountainScores1 = []
-        var teleopClimbersScores1 = []
-        var highBucketScores1 = []
-        var midBucketScores1 = []
-        var lowBucketScores1 = []
-        var floorGoalScores1 = []
-        var lowZiplineClimberScores1 = []
-        var midZiplineClimberScores1 = []
-        var highZiplineClimberScores1 = []
-        var allClearScores1 = []
-        var endgameMountainScores1 = []
-        var autonButtonScores2 = []
-        var autonClimbersScores2 = []
-        var autonMountainScores2 = []
-        var teleopClimbersScores2 = []
-        var highBucketScores2 = []
-        var midBucketScores2 = []
-        var lowBucketScores2 = []
-        var floorGoalScores2 = []
-        var lowZiplineClimberScores2 = []
-        var midZiplineClimberScores2 = []
-        var highZiplineClimberScores2 = []
-        var allClearScores2 = []
-        var endgameMountainScores2 = []
+        var autonButtonsScores1 = []
+        var autonParkingScores1 = []
+        var autonCenterVortexScores1 = []
+        var autonCornerVortexScores1 = []
+        var autonCapBallScores1 = []
+        var centerVortexScores1 = []
+        var cornerVortexScores1 = []
+        var capBallScores1 = []
+        var teleopButtonAllianceNearScores1 = []
+        var teleopButtonAllianceFarScores1 = []
+        var teleopButtonOpponentNearScores1 = []
+        var teleopButtonOpponentFarScores1 = []
+
+        var autonButtonsScores2 = []
+        var autonParkingScores2 = []
+        var autonCenterVortexScores2 = []
+        var autonCornerVortexScores2 = []
+        var autonCapBallScores2 = []
+        var centerVortexScores2 = []
+        var cornerVortexScores2 = []
+        var capBallScores2 = []
+        var teleopButtonAllianceNearScores2 = []
+        var teleopButtonAllianceFarScores2 = []
+        var teleopButtonOpponentNearScores2 = []
+        var teleopButtonOpponentFarScores2 = []
 
         var arePartialMatches = false;
 
         partialMatches.map(function (partialMatch1, i) {
             if (partialMatch1.totalScore != -1 && partialMatch1.scores != undefined) {
                 arePartialMatches = true;
-                autonButtonScores1.push(partialMatch1.scores.autonButtonScore1);
-                autonClimbersScores1.push(partialMatch1.scores.autonClimbersScore1);
-                autonMountainScores1.push(partialMatch1.scores.autonMountainScore1);
-                teleopClimbersScores1.push(partialMatch1.scores.teleopClimbersScore1);
-                highBucketScores1.push(partialMatch1.scores.highBucketScore1);
-                midBucketScores1.push(partialMatch1.scores.midBucketScore1);
-                lowBucketScores1.push(partialMatch1.scores.lowBucketScore1);
-                floorGoalScores1.push(partialMatch1.scores.floorGoalScore1);
-                lowZiplineClimberScores1.push(partialMatch1.scores.lowZiplineClimberScore1);
-                midZiplineClimberScores1.push(partialMatch1.scores.midZiplineClimberScore1);
-                highZiplineClimberScores1.push(partialMatch1.scores.highZiplineClimberScore1);
-                allClearScores1.push(partialMatch1.scores.allClearScore1);
-                endgameMountainScores1.push(partialMatch1.scores.endgameMountainScore1);
-                autonButtonScores2.push(partialMatch1.scores.autonButtonScore2);
-                autonClimbersScores2.push(partialMatch1.scores.autonClimbersScore2);
-                autonMountainScores2.push(partialMatch1.scores.autonMountainScore2);
-                teleopClimbersScores2.push(partialMatch1.scores.teleopClimbersScore2);
-                highBucketScores2.push(partialMatch1.scores.highBucketScore2);
-                midBucketScores2.push(partialMatch1.scores.midBucketScore2);
-                lowBucketScores2.push(partialMatch1.scores.lowBucketScore2);
-                floorGoalScores2.push(partialMatch1.scores.floorGoalScore2);
-                lowZiplineClimberScores2.push(partialMatch1.scores.lowZiplineClimberScore2);
-                midZiplineClimberScores2.push(partialMatch1.scores.midZiplineClimberScore2);
-                highZiplineClimberScores2.push(partialMatch1.scores.highZiplineClimberScore2);
-                allClearScores2.push(partialMatch1.scores.allClearScore2);
-                endgameMountainScores2.push(partialMatch1.scores.endgameMountainScore2);
+                autonButtonsScores1.push(partialMatch1.scores.autonButtonsScore1);
+                autonParkingScores1.push(partialMatch1.scores.autonParkingScore1);
+                autonCenterVortexScores1.push(partialMatch1.scores.autonCenterVortexScore1);
+                autonCornerVortexScores1.push(partialMatch1.scores.autonCornerVortexScore1);
+                autonCapBallScores1.push(partialMatch1.scores.autonCapBallScore1);
+                centerVortexScores1.push(partialMatch1.scores.centerVortexScore1);
+                cornerVortexScores1.push(partialMatch1.scores.cornerVortexScore1);
+                capBallScores1.push(partialMatch1.scores.capBallScore1);
+                teleopButtonAllianceNearScores1.push(partialMatch1.scores.teleopButtonAllianceNearScore1);
+                teleopButtonAllianceFarScores1.push(partialMatch1.scores.teleopButtonAllianceFarScore1);
+                teleopButtonOpponentNearScores1.push(partialMatch1.scores.teleopButtonOpponentNearScore1);
+                teleopButtonOpponentFarScores1.push(partialMatch1.scores.teleopButtonOpponentFarScore1);
+
+                autonButtonsScores2.push(partialMatch1.scores.autonButtonsScore2);
+                autonParkingScores2.push(partialMatch1.scores.autonParkingScore2);
+                autonCenterVortexScores2.push(partialMatch1.scores.autonCenterVortexScore2);
+                autonCornerVortexScores2.push(partialMatch1.scores.autonCornerVortexScore2);
+                autonCapBallScores2.push(partialMatch1.scores.autonCapBallScore2);
+                centerVortexScores2.push(partialMatch1.scores.centerVortexScore2);
+                cornerVortexScores2.push(partialMatch1.scores.cornerVortexScore2);
+                capBallScores2.push(partialMatch1.scores.capBallScore2);
+                teleopButtonAllianceNearScores2.push(partialMatch1.scores.teleopButtonAllianceNearScore2);
+                teleopButtonAllianceFarScores2.push(partialMatch1.scores.teleopButtonAllianceFarScore2);
+                teleopButtonOpponentNearScores2.push(partialMatch1.scores.teleopButtonOpponentNearScore2);
+                teleopButtonOpponentFarScores2.push(partialMatch1.scores.teleopButtonOpponentFarScore2);
             }
         }, this);
 
         var mergedScores = {
-            autonButtonScore1: 0,
-            autonClimbersScore1: 0,
-            autonMountainScore1: 0,
-            teleopClimbersScore1: 0,
-            highBucketScore1: 0,
-            midBucketScore1: 0,
-            lowBucketScore1: 0,
-            floorGoalScore1: 0,
-            lowZiplineClimberScore1: 0,
-            midZiplineClimberScore1: 0,
-            highZiplineClimberScore1: 0,
-            allClearScore1: 0,
-            endgameMountainScore1: 0,
-            autonButtonScore2: 0,
-            autonClimbersScore2: 0,
-            autonMountainScore2: 0,
-            teleopClimbersScore2: 0,
-            highBucketScore2: 0,
-            midBucketScore2: 0,
-            lowBucketScore2: 0,
-            floorGoalScore2: 0,
-            lowZiplineClimberScore2: 0,
-            midZiplineClimberScore2: 0,
-            highZiplineClimberScore2: 0,
-            allClearScore2: 0,
-            endgameMountainScore2: 0
+            autonButtonsScore1: 0,
+            autonParkingScore1: 0,
+            autonCenterVortexScore1: 0,
+            autonCornerVortexScore1: 0,
+            autonCapBallScore1: 0,
+            centerVortexScore1: 0,
+            cornerVortexScore1: 0,
+            capBallScore1: 0,
+            teleopButtonAllianceNearScore1: 0,
+            teleopButtonAllianceFarScore1: 0,
+            teleopButtonOpponentNearScore1: 0,
+            teleopButtonOpponentFarScore1: 0,
+
+            autonButtonsScore2: 0,
+            autonParkingScore2: 0,
+            autonCenterVortexScore2: 0,
+            autonCornerVortexScore2: 0,
+            autonCapBallScore2: 0,
+            centerVortexScore2: 0,
+            cornerVortexScore2: 0,
+            capBallScore2: 0,
+            teleopButtonAllianceNearScore2: 0,
+            teleopButtonAllianceFarScore2: 0,
+            teleopButtonOpponentNearScore2: 0,
+            teleopButtonOpponentFarScore2: 0,
         };
 
         function mode(arr) {
@@ -138,32 +135,31 @@ class DataCalculator {
             return -1
         }
 
-        mergedScores.autonButtonScore1 = mode(autonButtonScores1);
-        mergedScores.autonClimbersScore1 = mode(autonClimbersScores1);
-        mergedScores.autonMountainScore1 = mode(autonMountainScores1);
-        mergedScores.teleopClimbersScore1 = mode(teleopClimbersScores1);
-        mergedScores.highBucketScore1 = mode(highBucketScores1);
-        mergedScores.midBucketScore1 = mode(midBucketScores1);
-        mergedScores.lowBucketScore1 = mode(lowBucketScores1);
-        mergedScores.floorGoalScore1 = mode(floorGoalScores1);
-        mergedScores.lowZiplineClimberScore1 = mode(lowZiplineClimberScores1);
-        mergedScores.midZiplineClimberScore1 = mode(midZiplineClimberScores1);
-        mergedScores.highZiplineClimberScore1 = mode(highZiplineClimberScores1);
-        mergedScores.allClearScore1 = mode(allClearScores1);
-        mergedScores.endgameMountainScore1 = mode(endgameMountainScores1);
-        mergedScores.autonButtonScore2 = mode(autonButtonScores2);
-        mergedScores.autonClimbersScore2 = mode(autonClimbersScores2);
-        mergedScores.autonMountainScore2 = mode(autonMountainScores2);
-        mergedScores.teleopClimbersScore2 = mode(teleopClimbersScores2);
-        mergedScores.highBucketScore2 = mode(highBucketScores2);
-        mergedScores.midBucketScore2 = mode(midBucketScores2);
-        mergedScores.lowBucketScore2 = mode(lowBucketScores2);
-        mergedScores.floorGoalScore2 = mode(floorGoalScores2);
-        mergedScores.lowZiplineClimberScore2 = mode(lowZiplineClimberScores2);
-        mergedScores.midZiplineClimberScore2 = mode(midZiplineClimberScores2);
-        mergedScores.highZiplineClimberScore2 = mode(highZiplineClimberScores2);
-        mergedScores.allClearScore2 = mode(allClearScores2);
-        mergedScores.endgameMountainScore2 = mode(endgameMountainScores2);
+        mergedScores.autonButtonsScore1 = mode(autonButtonsScores1);
+        mergedScores.autonParkingScore1 = mode(autonParkingScores1);
+        mergedScores.autonCenterVortexScore1 = mode(autonCenterVortexScores1);
+        mergedScores.autonCornerVortexScore1 = mode(autonCornerVortexScores1);
+        mergedScores.autonCapBallScore1 = mode(autonCapBallScores1);
+        mergedScores.centerVortexScore1 = mode(centerVortexScores1);
+        mergedScores.cornerVortexScore1 = mode(cornerVortexScores1);
+        mergedScores.capBallScore1 = mode(capBallScores1);
+        mergedScores.teleopButtonAllianceNearScore1 = mode(teleopButtonAllianceNearScores1);
+        mergedScores.teleopButtonAllianceFarScore1 = mode(teleopButtonAllianceFarScores1);
+        mergedScores.teleopButtonOpponentNearScore1 = mode(teleopButtonOpponentNearScores1);
+        mergedScores.teleopButtonOpponentFarScore1 = mode(teleopButtonOpponentFarScores1);
+
+        mergedScores.autonButtonsScore2 = mode(autonButtonsScores2);
+        mergedScores.autonParkingScore2 = mode(autonParkingScores2);
+        mergedScores.autonCenterVortexScore2 = mode(autonCenterVortexScores2);
+        mergedScores.autonCornerVortexScore2 = mode(autonCornerVortexScores2);
+        mergedScores.autonCapBallScore2 = mode(autonCapBallScores2);
+        mergedScores.centerVortexScore2 = mode(centerVortexScores2);
+        mergedScores.cornerVortexScore2 = mode(cornerVortexScores2);
+        mergedScores.capBallScore2 = mode(capBallScores2);
+        mergedScores.teleopButtonAllianceNearScore2 = mode(teleopButtonAllianceNearScores2);
+        mergedScores.teleopButtonAllianceFarScore2 = mode(teleopButtonAllianceFarScores2);
+        mergedScores.teleopButtonOpponentNearScore2 = mode(teleopButtonOpponentNearScores2);
+        mergedScores.teleopButtonOpponentFarScore2 = mode(teleopButtonOpponentFarScores2);
 
         return mergedScores;
     }
@@ -569,50 +565,47 @@ class DataCalculator {
         return winner;
     }
     getMergedPartialScores(partialMatches) {
-        var autonButtonScores = []
-        var autonClimbersScores = []
-        var autonMountainScores = []
-        var teleopClimbersScores = []
-        var highBucketScores = []
-        var midBucketScores = []
-        var lowBucketScores = []
-        var floorGoalScores = []
-        var lowZiplineClimberScores = []
-        var midZiplineClimberScores = []
-        var highZiplineClimberScores = []
-        var allClearScores = []
-        var endgameMountainScores = []
+        var autonButtonsScores = []
+        var autonParkingScores = []
+        var autonCenterVortexScores = []
+        var autonCornerVortexScores = []
+        var autonCapBallScores = []
+        var centerVortexScores = []
+        var cornerVortexScores = []
+        var capBallScores = []
+        var teleopButtonAllianceNearScores = []
+        var teleopButtonAllianceFarScores = []
+        var teleopButtonOpponentNearScores = []
+        var teleopButtonOpponentFarScores = []
 
         partialMatches.map(function (partialScore, i) {
-            autonButtonScores.push(partialScore.autonButtonScore);
-            autonClimbersScores.push(partialScore.autonClimbersScore);
-            autonMountainScores.push(partialScore.autonMountainScore);
-            teleopClimbersScores.push(partialScore.teleopClimbersScore);
-            highBucketScores.push(partialScore.highBucketScore);
-            midBucketScores.push(partialScore.midBucketScore);
-            lowBucketScores.push(partialScore.lowBucketScore);
-            floorGoalScores.push(partialScore.floorGoalScore);
-            lowZiplineClimberScores.push(partialScore.lowZiplineClimberScore);
-            midZiplineClimberScores.push(partialScore.midZiplineClimberScore);
-            highZiplineClimberScores.push(partialScore.highZiplineClimberScore);
-            allClearScores.push(partialScore.allClearScore);
-            endgameMountainScores.push(partialScore.endgameMountainScore);
+            autonButtonsScores.push(partialScore.autonButtonsScore);
+            autonParkingScores.push(partialScore.autonParkingScore);
+            autonCenterVortexScores.push(partialScore.autonCenterVortexScore);
+            autonCornerVortexScores.push(partialScore.autonCornerVortexScore);
+            autonCapBallScores.push(partialScore.autonCapBallScore);
+            centerVortexScores.push(partialScore.centerVortexScore);
+            cornerVortexScores.push(partialScore.cornerVortexScore);
+            capBallScores.push(partialScore.capBallScore);
+            teleopButtonAllianceNearScores.push(partialScore.teleopButtonAllianceNearScore);
+            teleopButtonAllianceFarScores.push(partialScore.teleopButtonAllianceFarScore);
+            teleopButtonOpponentNearScores.push(partialScore.teleopButtonOpponentNearScore);
+            teleopButtonOpponentFarScores.push(partialScore.teleopButtonOpponentFarScore);
         }, this);
 
         var mergedScores = {
-            autonButtonScore: 0,
-            autonClimbersScore: 0,
-            autonMountainScore: 0,
-            teleopClimbersScore: 0,
-            highBucketScore: 0,
-            midBucketScore: 0,
-            lowBucketScore: 0,
-            floorGoalScore: 0,
-            lowZiplineClimberScore: 0,
-            midZiplineClimberScore: 0,
-            highZiplineClimberScore: 0,
-            allClearScore: 0,
-            endgameMountainScore: 0,
+            autonButtonsScore: 0,
+            autonParkingScore: 0,
+            autonCenterVortexScore: 0,
+            autonCornerVortexScore: 0,
+            autonCapBallScore: 0,
+            centerVortexScore: 0,
+            cornerVortexScore: 0,
+            capBallScore: 0,
+            teleopButtonAllianceNearScore: 0,
+            teleopButtonAllianceFarScore: 0,
+            teleopButtonOpponentNearScore: 0,
+            teleopButtonOpponentFarScore: 0,
         };
 
         function mode(arr) {
@@ -622,19 +615,18 @@ class DataCalculator {
             ).pop();
         }
 
-        mergedScores.autonButtonScore = mode(autonButtonScores);
-        mergedScores.autonClimbersScore = mode(autonClimbersScores);
-        mergedScores.autonMountainScore = mode(autonMountainScores);
-        mergedScores.teleopClimbersScore = mode(teleopClimbersScores);
-        mergedScores.highBucketScore = mode(highBucketScores);
-        mergedScores.midBucketScore = mode(midBucketScores);
-        mergedScores.lowBucketScore = mode(lowBucketScores);
-        mergedScores.floorGoalScore = mode(floorGoalScores);
-        mergedScores.lowZiplineClimberScore = mode(lowZiplineClimberScores);
-        mergedScores.midZiplineClimberScore = mode(midZiplineClimberScores);
-        mergedScores.highZiplineClimberScore = mode(highZiplineClimberScores);
-        mergedScores.allClearScore = mode(allClearScores);
-        mergedScores.endgameMountainScore = mode(endgameMountainScores);
+        mergedScores.autonButtonsScore = mode(autonButtonsScores);
+        mergedScores.autonParkingScore = mode(autonParkingScores);
+        mergedScores.autonCenterVortexScore = mode(autonCenterVortexScores);
+        mergedScores.autonCornerVortexScore = mode(autonCornerVortexScores);
+        mergedScores.autonCapBallScore = mode(autonCapBallScores);
+        mergedScores.centerVortexScore = mode(centerVortexScores);
+        mergedScores.cornerVortexScore = mode(cornerVortexScores);
+        mergedScores.capBallScore = mode(capBallScores);
+        mergedScores.teleopButtonAllianceNearScore = mode(teleopButtonAllianceNearScores);
+        mergedScores.teleopButtonAllianceFarScore = mode(teleopButtonAllianceFarScores);
+        mergedScores.teleopButtonOpponentNearScore = mode(teleopButtonOpponentNearScores);
+        mergedScores.teleopButtonOpponentFarScore = mode(teleopButtonOpponentFarScores);
 
         return mergedScores;
     }
@@ -652,37 +644,35 @@ class DataCalculator {
         var scoreCalculator = new ScoreCalculator(mergedScores);
         if (team == "1") {
             const mergedPartialMatchScores = {
-                autonButtonScore: mergedScores.autonButtonScore1,
-                autonClimbersScore: mergedScores.autonClimbersScore1,
-                autonMountainScore: mergedScores.autonMountainScore1,
-                teleopClimbersScore: mergedScores.teleopClimbersScore1,
-                highBucketScore: mergedScores.highBucketScore1,
-                midBucketScore: mergedScores.midBucketScore1,
-                lowBucketScore: mergedScores.lowBucketScore1,
-                floorGoalScore: mergedScores.floorGoalScore1,
-                lowZiplineClimberScore: mergedScores.lowZiplineClimberScore1,
-                midZiplineClimberScore: mergedScores.midZiplineClimberScore1,
-                highZiplineClimberScore: mergedScores.highZiplineClimberScore1,
-                allClearScore: mergedScores.allClearScore1,
-                endgameMountainScore: mergedScores.endgameMountainScore1,
+                autonButtonsScore: mergedScores.autonButtonsScores1,
+                autonParkingScore: mergedScores.autonParkingScores1,
+                autonCenterVortexScore: mergedScores.autonCenterVortexScores1,
+                autonCornerVortexScore: mergedScores.autonCornerVortexScores1,
+                autonCapBallScore: mergedScores.autonCapBallScores1,
+                centerVortexScore: mergedScores.centerVortexScores1,
+                lowBuccornerVortexScoreketScore: mergedScores.cornerVortexScores1,
+                capBallScore: mergedScores.capBallScores1,
+                teleopButtonAllianceNearScore: mergedScores.teleopButtonAllianceNearScores1,
+                teleopButtonAllianceFarScore: mergedScores.teleopButtonAllianceFarScores1,
+                teleopButtonOpponentNearScore: mergedScores.teleopButtonOpponentNearScores1,
+                teleopButtonOpponentFarScore: mergedScores.teleopButtonOpponentFarScores1,
             }
             return mergedPartialMatchScores;
         }
         else {
             const mergedPartialMatchScores = {
-                autonButtonScore: mergedScores.autonButtonScore2,
-                autonClimbersScore: mergedScores.autonClimbersScore2,
-                autonMountainScore: mergedScores.autonMountainScore2,
-                teleopClimbersScore: mergedScores.teleopClimbersScore2,
-                highBucketScore: mergedScores.highBucketScore2,
-                midBucketScore: mergedScores.midBucketScore2,
-                lowBucketScore: mergedScores.lowBucketScore2,
-                floorGoalScore: mergedScores.floorGoalScore2,
-                lowZiplineClimberScore: mergedScores.lowZiplineClimberScore2,
-                midZiplineClimberScore: mergedScores.midZiplineClimberScore2,
-                highZiplineClimberScore: mergedScores.highZiplineClimberScore2,
-                allClearScore: mergedScores.allClearScore2,
-                endgameMountainScore: mergedScores.endgameMountainScore2,
+                autonButtonsScore: mergedScores.autonButtonsScores2,
+                autonParkingScore: mergedScores.autonParkingScores2,
+                autonCenterVortexScore: mergedScores.autonCenterVortexScores2,
+                autonCornerVortexScore: mergedScores.autonCornerVortexScores2,
+                autonCapBallScore: mergedScores.autonCapBallScores2,
+                centerVortexScore: mergedScores.centerVortexScores2,
+                cornerVortexScore: mergedScores.cornerVortexScores2,
+                capBallScore: mergedScores.capBallScores2,
+                teleopButtonAllianceNearScore: mergedScores.teleopButtonAllianceNearScores2,
+                teleopButtonAllianceFarScore: mergedScores.teleopButtonAllianceFarScores2,
+                teleopButtonOpponentNearScore: mergedScores.teleopButtonOpponentNearScores2,
+                teleopButtonOpponentFarScore: mergedScores.teleopButtonOpponentFarScores2,
             }
             return mergedPartialMatchScores;
         }
@@ -724,40 +714,36 @@ class DataCalculator {
         return mergedScores;
     }
     combineSubScores(sub1, sub2) {
-        // const sub1 = this.getAverageSubPartialMatchForTeam(team1);
-        // const sub2 = this.getAverageSubPartialMatchForTeam(team2);
-
         if (sub1 == -1 || sub2 == -1) {
             return -1
         }
         else {
             const scores = {
-                autonButtonScore1: sub1.autonButtonScore,
-                autonClimbersScore1: sub1.autonClimbersScore,
-                autonMountainScore1: sub1.autonMountainScore,
-                teleopClimbersScore1: sub1.teleopClimbersScore,
-                highBucketScore1: sub1.highBucketScore,
-                midBucketScore1: sub1.midBucketScore,
-                lowBucketScore1: sub1.lowBucketScore,
-                floorGoalScore1: sub1.floorGoalScore,
-                lowZiplineClimberScore1: sub1.lowZiplineClimberScore,
-                midZiplineClimberScore1: sub1.midZiplineClimberScore,
-                highZiplineClimberScore1: sub1.highZiplineClimberScore,
-                allClearScore1: sub1.allClearScore,
-                endgameMountainScore1: sub1.endgameMountainScore,
-                autonButtonScore2: sub2.autonButtonScore,
-                autonClimbersScore2: sub2.autonClimbersScore,
-                autonMountainScore2: sub2.autonMountainScore,
-                teleopClimbersScore2: sub2.teleopClimbersScore,
-                highBucketScore2: sub2.highBucketScore,
-                midBucketScore2: sub2.midBucketScore,
-                lowBucketScore2: sub2.lowBucketScore,
-                floorGoalScore2: sub2.floorGoalScore,
-                lowZiplineClimberScore2: sub2.lowZiplineClimberScore,
-                midZiplineClimberScore2: sub2.midZiplineClimberScore,
-                highZiplineClimberScore2: sub2.highZiplineClimberScore,
-                allClearScore2: sub2.allClearScore,
-                endgameMountainScore2: sub2.endgameMountainScore
+                autonButtonsScore1: sub1.autonButtonsScore,
+                autonParkingScore1: sub1.autonParkingScore,
+                autonCenterVortexScore1: sub1.autonCenterVortexScore,
+                autonCornerVortexScore1: sub1.autonCornerVortexScore,
+                autonCapBallScore1: sub1.autonCapBallScore,
+                centerVortexScore1: sub1.centerVortexScore,
+                cornerVortexScore1: sub1.cornerVortexScore,
+                capBallScore1: sub1.capBallScore,
+                teleopButtonAllianceNearScore1: sub1.teleopButtonAllianceNearScore,
+                teleopButtonAllianceFarScore1: sub1.teleopButtonAllianceFarScore,
+                teleopButtonOpponentNearScore1: sub1.teleopButtonOpponentNearScore,
+                teleopButtonOpponentFarScore1: sub1.teleopButtonOpponentFarScore,
+
+                autonButtonsScore2: sub2.autonButtonsScore,
+                autonParkingScore2: sub2.autonParkingScore,
+                autonCenterVortexScore2: sub2.autonCenterVortexScore,
+                autonCornerVortexScore2: sub2.autonCornerVortexScore,
+                autonCapBallScore2: sub2.autonCapBallScore,
+                centerVortexScore2: sub2.centerVortexScore,
+                cornerVortexScore2: sub2.cornerVortexScore,
+                capBallScore2: sub2.capBallScore,
+                teleopButtonAllianceNearScores2: sub2.teleopButtonAllianceNearScore,
+                teleopButtonAllianceFarScores2: sub2.teleopButtonAllianceFarScore,
+                teleopButtonOpponentNearScores2: sub2.teleopButtonOpponentNearScore,
+                teleopButtonOpponentFarScores2: sub2.teleopButtonOpponentFarScore
             };
             return scores;
 

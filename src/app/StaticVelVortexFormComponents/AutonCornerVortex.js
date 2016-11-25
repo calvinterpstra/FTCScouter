@@ -11,22 +11,22 @@ const styles = {
   },
 };
 
-var CornerVortex = React.createClass({
+var AutonCornerVortex = React.createClass({
 
   handleNext1: function () {
-    this.props.handleScoreChange(this.props.scores.cornerVortexScore1 + 1, "cornerVortexScore1");
+    this.props.handleScoreChange(this.props.scores.autonCornerVortexScore1 + 5, "autonCornerVortexScore1");
   },
 
   handlePrev1: function () {
-    this.props.handleScoreChange(this.props.scores.cornerVortexScore1 - 1, "cornerVortexScore1");
+    this.props.handleScoreChange(this.props.scores.autonCornerVortexScore1 - 5, "autonCornerVortexScore1");
   },
 
   handleNext2: function () {
-    this.props.handleScoreChange(this.props.scores.cornerVortexScore2 + 1, "cornerVortexScore2");
+    this.props.handleScoreChange(this.props.scores.autonCornerVortexScore2 + 5, "autonCornerVortexScore2");
   },
 
   handlePrev2: function () {
-    this.props.handleScoreChange(this.props.scores.cornerVortexScore2 - 1, "cornerVortexScore2");
+    this.props.handleScoreChange(this.props.scores.autonCornerVortexScore2 - 5, "autonCornerVortexScore2");
   },
 
   render() {
@@ -37,19 +37,19 @@ var CornerVortex = React.createClass({
           <div style={{textAlign: 'center', marginLeft: ((screen.width*0.5)-150)}}>
             <MyHeader3> {this.props.team1}: </MyHeader3>
             <div style={{ height: 100, width: 130, margin: 0, textAlign: 'center', display: 'inline-block'}}>
-              <p style={{marginTop: 5, marginBottom: 5}}>{"Blocks Scored: " + this.props.scores.cornerVortexScore1}</p>
+              <p style={{marginTop: 5, marginBottom: 5}}>{"Blocks Scored: " + this.props.scores.autonCornerVortexScore1/5}</p>
               <div>
                 <RaisedButton
                   label="-"
                   secondary={true}
-                  disabled={this.props.scores.cornerVortexScore1 === 0}
+                            disabled = {true}
                   onTouchTap={this.handlePrev1}
                   style={{ marginRight: 5, height: 40, minWidth: 60}}
                   />
                 <RaisedButton
                   label={'+'}
                   primary={true}
-                  disabled={this.props.scores.cornerVortexScore1 === 20}
+                            disabled = {true}
                   onTouchTap={this.handleNext1}
                   style={{height: 40, minWidth: 60}}
                   />
@@ -59,19 +59,19 @@ var CornerVortex = React.createClass({
           <div style={{textAlign: 'center'}}>
             <MyHeader3> {this.props.team2}: </MyHeader3>
             <div style={{ height: 100, width: 130, margin: 0, textAlign: 'center', display: 'inline-block' }}>
-              <p style={{marginTop: 5, marginBottom: 5}}>{"Blocks Scored: " + this.props.scores.cornerVortexScore2}</p>
+              <p style={{marginTop: 5, marginBottom: 5}}>{"Blocks Scored: " + this.props.scores.autonCornerVortexScore2/5}</p>
               <div>
                 <RaisedButton
                   label="-"
                   secondary={true}
-                  disabled={this.props.scores.cornerVortexScore2 === 0}
+                            disabled = {true}
                   onTouchTap={this.handlePrev2}
                   style={{ marginRight: 5, height: 40, minWidth: 60}}
                   />
                 <RaisedButton
                   label="+"
                   primary={true}
-                  disabled={this.props.scores.cornerVortexScore2 === 20}
+                            disabled = {true}
                   onTouchTap={this.handleNext2}
                   style={{height: 40, minWidth: 60}}
                   />
@@ -84,4 +84,4 @@ var CornerVortex = React.createClass({
   }
 });
 
-export default CornerVortex;
+export default AutonCornerVortex;

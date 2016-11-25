@@ -7,6 +7,8 @@ import Divider from 'material-ui/Divider';
 import Subheader from 'material-ui/Subheader';
 import Dialog from 'material-ui/Dialog';
 import DataCalculator from './../DataCalculator';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 
 const headerStyle = {
     fontSize: 24,
@@ -186,6 +188,10 @@ var TeamsMatchList = React.createClass({
 
         return (
             <div>
+                <FloatingActionButton secondary={true} mini={true} style={{ margin: 0, top: 'auto', right: 20, bottom: 20, left: 'auto', position: 'fixed', zIndex: 1100 }}
+                    onTouchTap={this.props.handleToTeamView}>
+                    <ArrowBack />
+                </FloatingActionButton>
                 <h2 style={headerStyle}> {this.props.currentTeam.teamNumber} </h2><br/>
                 <Divider/>
                 <Subheader> Statistics at {this.props.selectedCompetition.name}: </Subheader>
@@ -210,7 +216,6 @@ var TeamsMatchList = React.createClass({
                 <h2 style={headerStyle2}> Matches From </h2>
                 <h2 style={headerStyle2}> {this.props.selectedCompetition.name}: </h2><br/>
                 <List>{matchList}</List>
-                <RaisedButton label="Back" secondary={true} disabled={false} onTouchTap={this.props.handleToTeamView}/>
 
                 <Dialog title="Unscouted Match" contentStyle={{ width: '100%', maxWidth: 'none', }}
                     actions={actionsUnscouted} modal={true} open={this.state.unscoutedDialogOpen}/>

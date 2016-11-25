@@ -121,7 +121,6 @@ class ScoreCalculator {
         return s;
     }
     getTotalCapBallScore() {
-        console.log(this.getCapBallScore1())
         switch (this.getCapBallScore1()) {
             case 0:
                 if (this.getCapBallScore2() > 0) {
@@ -147,9 +146,8 @@ class ScoreCalculator {
             case 40:
                 return 40;
             default:
-                break;
+                return 0;
         }
-        return s;
     }
     getTeleopButtonsScore1() {
         var s = this.scores.teleopButtonAllianceNearScore1 + this.scores.teleopButtonAllianceFarScore1 + this.scores.teleopButtonOpponentNearScore1

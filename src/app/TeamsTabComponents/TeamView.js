@@ -7,6 +7,8 @@ import Divider from 'material-ui/Divider';
 import Subheader from 'material-ui/Subheader';
 import Dialog from 'material-ui/Dialog';
 import DataCalculator from './../DataCalculator';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 
 const headerStyle = {
     fontSize: 24,
@@ -44,6 +46,10 @@ var TeamView = React.createClass({
         }
         return (
             <div>
+                <FloatingActionButton secondary={true} mini={true} style={{ margin: 0, top: 'auto', right: 20, bottom: 20, left: 'auto', position: 'fixed', zIndex: 1100 }}
+                    onTouchTap={this.props.handleToTeamsList}>
+                    <ArrowBack />
+                </FloatingActionButton>
                 <h2 style={headerStyle}> {this.props.currentTeam.teamNumber} </h2><br/>
                 <Divider/>
                 <Subheader> Overall Statistics: </Subheader>
@@ -68,7 +74,6 @@ var TeamView = React.createClass({
                 <Subheader> See Matches From: </Subheader>
                 <List> {competitionsList} </List>
                 <Divider/><br/>
-                <RaisedButton label="Back" secondary={true} disabled={false} onTouchTap={this.props.handleToTeamsList}/>
                 <br/><br/><br/><br/>
             </div>
         );

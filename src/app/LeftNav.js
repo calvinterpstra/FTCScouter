@@ -6,36 +6,47 @@ import MenuItem from 'material-ui/MenuItem';
 var LeftNav = React.createClass({
 
     handleTeams: function() {
+        this.scrollWindow();
         this.props.handlePageChange("teams");
         this.props.handleNavOpenChange(false);
     },
     handleCompetitions: function() {
+        this.scrollWindow();
         this.props.handlePageChange("competitions");
         this.props.handleNavOpenChange(false);
     },
     handleStats: function() {
+        this.scrollWindow();
         this.props.handlePageChange("stats");
         this.props.handleNavOpenChange(false);
     },
     handleScoutMatch: function() {
+        this.scrollWindow();
         this.props.handlePageChange("matches");
         this.props.handleNavOpenChange(false);
     },
     handlePracticeForm: function() {
+        this.scrollWindow();
         this.props.handlePageChange("practiceForm");
         this.props.handleNavOpenChange(false);
     },
     handleMatchPerdictor: function() {
+        this.scrollWindow();
         this.props.handlePageChange("matchPredictor");
         this.props.handleNavOpenChange(false);
     },
     handleLogin: function() {
+        this.scrollWindow();
         this.props.handlePageChange("account");
         this.props.handleNavOpenChange(false);
     },
     handleWelcome: function() {
+        this.scrollWindow();
         this.props.handlePageChange("welcome");
         this.props.handleNavOpenChange(false);
+    },
+    scrollWindow: function() {
+        window.scrollTo(0,0);
     },
     render() {
         let forceNavDown = {'top': '58px'}
