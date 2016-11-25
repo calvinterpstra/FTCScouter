@@ -638,41 +638,41 @@ class DataCalculator {
             }
         }, this);
         const mergedScores = this.getMergedScores(allianceMatches);
+
         if (mergedScores == -1) {
             return -1;
         }
         var scoreCalculator = new ScoreCalculator(mergedScores);
         if (team == "1") {
             const mergedPartialMatchScores = {
-                autonButtonsScore: mergedScores.autonButtonsScores1,
-                autonParkingScore: mergedScores.autonParkingScores1,
-                autonCenterVortexScore: mergedScores.autonCenterVortexScores1,
-                autonCornerVortexScore: mergedScores.autonCornerVortexScores1,
-                autonCapBallScore: mergedScores.autonCapBallScores1,
-                centerVortexScore: mergedScores.centerVortexScores1,
-                lowBuccornerVortexScoreketScore: mergedScores.cornerVortexScores1,
-                capBallScore: mergedScores.capBallScores1,
-                teleopButtonAllianceNearScore: mergedScores.teleopButtonAllianceNearScores1,
-                teleopButtonAllianceFarScore: mergedScores.teleopButtonAllianceFarScores1,
-                teleopButtonOpponentNearScore: mergedScores.teleopButtonOpponentNearScores1,
-                teleopButtonOpponentFarScore: mergedScores.teleopButtonOpponentFarScores1,
+                autonButtonsScore: mergedScores.autonButtonsScore1,
+                autonParkingScore: mergedScores.autonParkingScore1,
+                autonCenterVortexScore: mergedScores.autonCenterVortexScore1,
+                autonCornerVortexScore: mergedScores.autonCornerVortexScore1,
+                autonCapBallScore: mergedScores.autonCapBallScore1,
+                centerVortexScore: mergedScores.centerVortexScore1,
+                cornerVortexScore: mergedScores.cornerVortexScore1,
+                capBallScore: mergedScores.capBallScore1,
+                teleopButtonAllianceNearScore: mergedScores.teleopButtonAllianceNearScore1,
+                teleopButtonAllianceFarScore: mergedScores.teleopButtonAllianceFarScore1,
+                teleopButtonOpponentNearScore: mergedScores.teleopButtonOpponentNearScore1,
+                teleopButtonOpponentFarScore: mergedScores.teleopButtonOpponentFarScore1,
             }
-            return mergedPartialMatchScores;
         }
         else {
             const mergedPartialMatchScores = {
-                autonButtonsScore: mergedScores.autonButtonsScores2,
-                autonParkingScore: mergedScores.autonParkingScores2,
-                autonCenterVortexScore: mergedScores.autonCenterVortexScores2,
-                autonCornerVortexScore: mergedScores.autonCornerVortexScores2,
-                autonCapBallScore: mergedScores.autonCapBallScores2,
-                centerVortexScore: mergedScores.centerVortexScores2,
-                cornerVortexScore: mergedScores.cornerVortexScores2,
-                capBallScore: mergedScores.capBallScores2,
-                teleopButtonAllianceNearScore: mergedScores.teleopButtonAllianceNearScores2,
-                teleopButtonAllianceFarScore: mergedScores.teleopButtonAllianceFarScores2,
-                teleopButtonOpponentNearScore: mergedScores.teleopButtonOpponentNearScores2,
-                teleopButtonOpponentFarScore: mergedScores.teleopButtonOpponentFarScores2,
+                autonButtonsScore: mergedScores.autonButtonsScore2,
+                autonParkingScore: mergedScores.autonParkingScore2,
+                autonCenterVortexScore: mergedScores.autonCenterVortexScore2,
+                autonCornerVortexScore: mergedScores.autonCornerVortexScore2,
+                autonCapBallScore: mergedScores.autonCapBallScore2,
+                centerVortexScore: mergedScores.centerVortexScore2,
+                cornerVortexScore: mergedScores.cornerVortexScore2,
+                capBallScore: mergedScores.capBallScore2,
+                teleopButtonAllianceNearScore: mergedScores.teleopButtonAllianceNearScore2,
+                teleopButtonAllianceFarScore: mergedScores.teleopButtonAllianceFarScore2,
+                teleopButtonOpponentNearScore: mergedScores.teleopButtonOpponentNearScore2,
+                teleopButtonOpponentFarScore: mergedScores.teleopButtonOpponentFarScore2,
             }
             return mergedPartialMatchScores;
         }
@@ -711,6 +711,7 @@ class DataCalculator {
             return -1;
         }
         const mergedScores = this.getMergedPartialScores(scores);
+        console.log(mergedScores)
         return mergedScores;
     }
     combineSubScores(sub1, sub2) {
@@ -745,6 +746,7 @@ class DataCalculator {
                 teleopButtonOpponentNearScores2: sub2.teleopButtonOpponentNearScore,
                 teleopButtonOpponentFarScores2: sub2.teleopButtonOpponentFarScore
             };
+            console.log(scores)
             return scores;
 
         }

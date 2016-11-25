@@ -6,12 +6,14 @@ import {List, ListItem} from 'material-ui/List';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import * as Colors from 'material-ui/styles/colors';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 
 import CompetitionInputField from './CompetitionInputField';
 import TeamNumberInputField from './TeamNumberInputField';
 import DataCalculator from './../DataCalculator';
 import ScoreCalculator from './../ScoreCalculator';
-import StaticResQForm from './../StaticResQForm';
+import StaticVelVortexForm from './../StaticVelVortexForm';
 
 const headerStyle = {
     fontSize: 18,
@@ -201,8 +203,11 @@ var MatchForm = React.createClass({
             };
             return (
                 <div>
-                    <StaticResQForm matchSelected={matchSelected}/><br/>
-                    <RaisedButton label="Back" secondary={true} onTouchTap={this.handleFromMatchDetailView}/><br/><br/><br/>
+                    <StaticVelVortexForm matchSelected={matchSelected}/><br/>
+                    <FloatingActionButton secondary={true} mini={true} style={{ margin: 0, top: 'auto', right: 20, bottom: 20, left: 'auto', position: 'fixed', zIndex: 1100 }}
+                        onTouchTap={this.props.handleFromMatchDetailView}>
+                        <ArrowBack />
+                    </FloatingActionButton><br/><br/><br/>
                 </div>
             );
         }

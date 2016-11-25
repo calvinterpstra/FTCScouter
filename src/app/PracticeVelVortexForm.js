@@ -154,6 +154,7 @@ var PracticeVelVortexForm = React.createClass({
             <Endgame scores = {this.state.scores} handleScoreChange = {this.handleScoreChange} team1="Team 1" team2="Team 2"/>
             <Divider/><br/>
             <LocalScoreLabel scores = {this.state.scores}/>
+            <br/><br/><br/><br/>
         </div>
     );
   }
