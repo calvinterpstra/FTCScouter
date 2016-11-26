@@ -513,9 +513,9 @@ class DataCalculator {
 
         return wins;
     }
-    getMergedScoreForTeam(teamNumber) {
+    // getMergedScoreForTeam(teamNumber) {
 
-    }
+    // }
     getTotalLossesForTeam(teamNumber) {
         const matches = this.matches;
         var noData = true;
@@ -637,6 +637,7 @@ class DataCalculator {
                 allianceMatches.push(partialMatch);
             }
         }, this);
+
         const mergedScores = this.getMergedScores(allianceMatches);
 
         if (mergedScores == -1) {
@@ -658,6 +659,7 @@ class DataCalculator {
                 teleopButtonOpponentNearScore: mergedScores.teleopButtonOpponentNearScore1,
                 teleopButtonOpponentFarScore: mergedScores.teleopButtonOpponentFarScore1,
             }
+            return mergedPartialMatchScores;
         }
         else {
             const mergedPartialMatchScores = {
@@ -711,7 +713,6 @@ class DataCalculator {
             return -1;
         }
         const mergedScores = this.getMergedPartialScores(scores);
-        console.log(mergedScores)
         return mergedScores;
     }
     combineSubScores(sub1, sub2) {
@@ -741,12 +742,11 @@ class DataCalculator {
                 centerVortexScore2: sub2.centerVortexScore,
                 cornerVortexScore2: sub2.cornerVortexScore,
                 capBallScore2: sub2.capBallScore,
-                teleopButtonAllianceNearScores2: sub2.teleopButtonAllianceNearScore,
-                teleopButtonAllianceFarScores2: sub2.teleopButtonAllianceFarScore,
-                teleopButtonOpponentNearScores2: sub2.teleopButtonOpponentNearScore,
-                teleopButtonOpponentFarScores2: sub2.teleopButtonOpponentFarScore
+                teleopButtonAllianceNearScore2: sub2.teleopButtonAllianceNearScore,
+                teleopButtonAllianceFarScore2: sub2.teleopButtonAllianceFarScore,
+                teleopButtonOpponentNearScore2: sub2.teleopButtonOpponentNearScore,
+                teleopButtonOpponentFarScore2: sub2.teleopButtonOpponentFarScore
             };
-            console.log(scores)
             return scores;
 
         }

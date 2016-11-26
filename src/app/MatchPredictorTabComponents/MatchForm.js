@@ -45,7 +45,11 @@ var MatchForm = React.createClass({
             viewingAlliance: "n/a",
         }
     },
+    scrollWindow: function() {
+        window.scrollTo(0,0);
+    },
     handleToMatchDetailViewRed: function () {
+        this.scrollWindow();
         var newState = this.state;
         newState.matchDetailView = true;
         newState.viewingScores = newState.redScore;
@@ -53,6 +57,7 @@ var MatchForm = React.createClass({
         this.setState(newState);
     },
     handleToMatchDetailViewBlue: function () {
+        this.scrollWindow();
         var newState = this.state;
         newState.matchDetailView = true;
         newState.viewingScores = newState.blueScore;
@@ -60,6 +65,7 @@ var MatchForm = React.createClass({
         this.setState(newState);
     },
     handleFromMatchDetailView: function () {
+        this.scrollWindow();
         var newState = this.state;
         newState.matchDetailView = false;
         this.setState(newState);
@@ -188,7 +194,7 @@ var MatchForm = React.createClass({
 
         var newState = this.state;
         newState.redScore = red1DataCalculator.combineSubScores(red1Score, red2Score);
-        newState.blueScore = red1DataCalculator.combineSubScores(blue1Score, blue2Score);;
+        newState.blueScore = red1DataCalculator.combineSubScores(blue1Score, blue2Score);
         this.setState(newState);
     },
     render() {
@@ -203,11 +209,11 @@ var MatchForm = React.createClass({
             };
             return (
                 <div>
-                    <StaticVelVortexForm matchSelected={matchSelected}/><br/>
                     <FloatingActionButton secondary={true} mini={true} style={{ margin: 0, top: 'auto', right: 20, bottom: 20, left: 'auto', position: 'fixed', zIndex: 1100 }}
-                        onTouchTap={this.props.handleFromMatchDetailView}>
+                        onTouchTap={this.handleFromMatchDetailView}>
                         <ArrowBack />
-                    </FloatingActionButton><br/><br/><br/>
+                    </FloatingActionButton>
+                    <StaticVelVortexForm matchSelected={matchSelected}/><br/><br/><br/><br/>
                 </div>
             );
         }
