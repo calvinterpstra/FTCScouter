@@ -40,11 +40,14 @@ var AutonCapBall = React.createClass({
         this.props.handleScoreChange(score, "autonCapBallScore2");
     },
     render() {
+        var width = window.innerWidth
+        || document.documentElement.clientWidth
+        || document.body.clientWidth;
         return (
             <div>
                 <MyHeader2> Cap Ball </MyHeader2>
                 <div style={styles.root}>
-                    <div style={{ textAlign: 'center', marginRight: 40, marginLeft: ((screen.width*0.5)-140)}}>
+                    <div style={{ textAlign: 'center', marginRight: 40, marginLeft: ((width*0.5)-140)}}>
                         <MyHeader3> {this.props.team1}: </MyHeader3> <br/>
                         <Checkbox
                             label="Dislodged"

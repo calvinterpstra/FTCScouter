@@ -30,11 +30,14 @@ var CenterVortex = React.createClass({
   },
 
   render() {
+        var width = window.innerWidth
+        || document.documentElement.clientWidth
+        || document.body.clientWidth;
     return (
       <div>
         <MyHeader2> Center Vortex </MyHeader2><br/>
         <div style={styles.root}>
-          <div style={{textAlign: 'center', marginLeft: ((screen.width*0.5)-150)}}>
+          <div style={{textAlign: 'center', marginLeft: ((width*0.5)-150)}}>
             <MyHeader3> {this.props.team1}: </MyHeader3>
             <div style={{ height: 100, width: 130, margin: 0, textAlign: 'center', display: 'inline-block'}}>
               <p style={{marginTop: 5, marginBottom: 5}}>{"Blocks Scored: " + this.props.scores.centerVortexScore1/5}</p>

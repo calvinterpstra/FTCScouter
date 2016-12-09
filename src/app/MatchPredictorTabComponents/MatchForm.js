@@ -198,6 +198,10 @@ var MatchForm = React.createClass({
         this.setState(newState);
     },
     render() {
+        var width = window.innerWidth
+        || document.documentElement.clientWidth
+        || document.body.clientWidth;
+
         if (this.state.matchDetailView) {
             const matchSelected = {
                 allianceColor: this.state.viewingAlliance,
@@ -272,28 +276,28 @@ var MatchForm = React.createClass({
 
             return (
                 <div>
-                    <div style={{ display: 'flex' }}>
+                    <div style={{ display: 'flex', marginLeft: ((width*0.5)-120) }}>
                         <TeamNumberInputField name="Red 1" handleError={this.handleRed1Error} handleReady={this.handleRed1Ready}
                             updateTeamNumber={this.updateRed1} text={red1}/>
                         <CompetitionInputField competition={this.state.red1Competition} 
                             competitions={this.props.getCompetitionswithTeamNumber(this.state.red1)} 
                             updateCompetition={this.updateRed1Competition}/>
                     </div>
-                    <div style={{ display: 'flex' }}>
+                    <div style={{ display: 'flex', marginLeft: ((width*0.5)-120) }}>
                         <TeamNumberInputField name="Red 2" handleError={this.handleRed2Error} handleReady={this.handleRed2Ready}
                             updateTeamNumber={this.updateRed2} text={red2}/>
                         <CompetitionInputField competition={this.state.red2Competition} 
                             competitions={this.props.getCompetitionswithTeamNumber(this.state.red2)} 
                             updateCompetition={this.updateRed2Competition}/>
                     </div>
-                    <div style={{ display: 'flex' }}>
+                    <div style={{ display: 'flex', marginLeft: ((width*0.5)-120) }}>
                         <TeamNumberInputField name="Blue 1" handleError={this.handleBlue1Error} handleReady={this.handleBlue1Ready}
                             updateTeamNumber={this.updateBlue1} text={blue1}/>
                         <CompetitionInputField competition={this.state.blue1Competition} 
                             competitions={this.props.getCompetitionswithTeamNumber(this.state.blue1)} 
                             updateCompetition={this.updateBlue1Competition}/>
                     </div>
-                    <div style={{ display: 'flex' }}>
+                    <div style={{ display: 'flex', marginLeft: ((width*0.5)-120) }}>
                         <TeamNumberInputField name="Blue 2" handleError={this.handleBlue2Error} handleReady={this.handleBlue2Ready}
                             updateTeamNumber={this.updateBlue2} text={blue2}/>
                         <CompetitionInputField competition={this.state.blue2Competition}

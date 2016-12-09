@@ -58,6 +58,7 @@ var LeftNav = React.createClass({
                 docked={false}
                 width={150}
                 open={this.props.navOpen}
+                onRequestChange={(open) => this.props.handleNavOpenChange(open)}
                 >
                 <MenuItem onTouchTap={this.handleWelcome}> Welcome </MenuItem>
                 <MenuItem onTouchTap={this.handleCompetitions}> Competitions </MenuItem>

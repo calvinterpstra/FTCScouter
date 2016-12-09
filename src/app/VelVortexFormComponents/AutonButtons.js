@@ -26,11 +26,14 @@ var AutonButtons = React.createClass({
         this.props.handleScoreChange(score, "autonButtonsScore2");
     },
     render() {
+        var width = window.innerWidth
+        || document.documentElement.clientWidth
+        || document.body.clientWidth;
         return (
             <div>
                 <MyHeader2> Beacons </MyHeader2>
                 <div style={styles.root}>
-                    <div style={{ textAlign: 'center', marginRight: 50, marginLeft: ((screen.width*0.5)-120)}}>
+                    <div style={{ textAlign: 'center', marginRight: 50, marginLeft: ((width*0.5)-120)}}>
                         <MyHeader3> {this.props.team1}: </MyHeader3><br/>
                         <RadioButton
                             label="None"

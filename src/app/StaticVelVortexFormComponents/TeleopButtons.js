@@ -107,11 +107,14 @@ var TeleopButtons = React.createClass({
         this.props.handleScoreChange(score, "teleopButtonOpponentFarScore2");
     },
     render() {
+        var width = window.innerWidth
+        || document.documentElement.clientWidth
+        || document.body.clientWidth;
         return (
             <div>
                 <MyHeader2> Beacons </MyHeader2>
                 <div style={styles.root}>
-                    <div style={{ textAlign: 'center', marginRight: 40, marginLeft: ((screen.width*0.5)-170)}}>
+                    <div style={{ textAlign: 'center', marginRight: 40, marginLeft: ((width*0.5)-170)}}>
                         <MyHeader3> {this.props.team1}: </MyHeader3> <br/>
                         <Checkbox
                             label="Alliance Near"

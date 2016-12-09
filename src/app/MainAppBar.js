@@ -10,9 +10,9 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 var MainAppBar = React.createClass({
 
     leftNavToggle: function () {
-        var newNevOpen = this.props.navOpen;
-        newNevOpen = !this.props.navOpen;
-        this.props.handleNavOpenChange(newNevOpen)
+        var newNavOpen = this.props.navOpen;
+        newNavOpen = !this.props.navOpen;
+        this.props.handleNavOpenChange(newNavOpen)
     },
 
     handleChangeCompetitionSelected: function () {
