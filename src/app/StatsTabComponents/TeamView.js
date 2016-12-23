@@ -34,7 +34,17 @@ var TeamView = React.createClass({
             return <ListItem primaryText={competition.name} key={i} onTouchTap={this.handleSelectCompetition.bind(null, competition) }/>;
         }, this);
 
-        const matches = this.props.getMatcheswithTeamNumber(this.props.currentTeam.teamNumber);
+        const teamMatches = this.props.getMatcheswithTeamNumber(this.props.currentTeam.teamNumber);
+        function getMatchesWithoutTest(array) {
+            var newMatches = [];
+            array.map(function (match, i) {
+                if (match.competition != "Test") {
+                    newMatches.push(match)
+                }
+            });
+            return newMatches;
+        }
+        const matches = getMatchesWithoutTest(teamMatches);
         var dataCalculator = new DataCalculator(matches);
         const averageMatchScore = dataCalculator.getAverageMatchScoreForTeam(this.props.currentTeam.teamNumber);
         const averagePartialScore = dataCalculator.getAverageMatchPartialScoreForTeam(this.props.currentTeam.teamNumber);

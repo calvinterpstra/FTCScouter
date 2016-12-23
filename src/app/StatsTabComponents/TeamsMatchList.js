@@ -53,7 +53,6 @@ var TeamsMatchList = React.createClass({
     },
 
     render() {
-
         const matches = this.props.getMatcheswithTeamNumber(this.props.currentTeam.teamNumber);
 
         function sortByKey(array, key) {

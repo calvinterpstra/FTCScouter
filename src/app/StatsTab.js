@@ -58,7 +58,18 @@ var StatsTab = React.createClass({
             );
         }
         else {
-            const matches = this.props.matches;
+
+            function getMatchesWithoutTest(array) {
+                var newMatches = [];
+                array.map(function (match, i) {
+                    if (match.competition != "Test"){
+                        newMatches.push(match)
+                    }
+                });
+                return newMatches;
+            }
+            const matches = getMatchesWithoutTest(this.props.matches);
+
             var dataCalculator = new DataCalculator(matches);
             const averageMatchScore = dataCalculator.getAverageMatchScore();
             const averagePartialScore = dataCalculator.getAverageMatchPartialScore();
