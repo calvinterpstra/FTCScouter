@@ -22,8 +22,6 @@ var MatchPredictorTab = React.createClass({
     render() {
         return (
             <div style={bodyStyle}>
-                <h2 style={headerStyle}> Match Predictor </h2><br/>
-                <Divider/>
                 <MatchForm competitions={this.props.competitions} getMatchesbyCompetition={this.props.getMatchesbyCompetition} matches={this.props.matches}
                     getCompetitionswithTeamNumber={this.props.getCompetitionswithTeamNumber}/>
             </div>

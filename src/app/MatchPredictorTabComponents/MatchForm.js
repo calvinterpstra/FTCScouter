@@ -276,6 +276,8 @@ var MatchForm = React.createClass({
 
             return (
                 <div>
+                    <h2 style={{fontSize: 24, fontWeight: 400, paddingTop: 90, margin: 0, }}> Match Predictor </h2><br/>
+                    <Divider/>
                     <div style={{ display: 'flex', marginLeft: ((width*0.5)-120) }}>
                         <TeamNumberInputField name="Red 1" handleError={this.handleRed1Error} handleReady={this.handleRed1Ready}
                             updateTeamNumber={this.updateRed1} text={red1}/>

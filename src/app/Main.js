@@ -18,9 +18,9 @@ import MatchPredictorTab from './MatchPredictorTab' ;
 
 const muiTheme = getMuiTheme({
   palette: {
-    primary1Color: Colors.amber600,
-    primary2Color: Colors.amber500,
-    primary3Color: Colors.amber400,
+    primary1Color: Colors.orange500,
+    primary2Color: Colors.orange500,
+    primary3Color: Colors.orange500,
     accent1Color: Colors.blue500,
     accent2Color: Colors.deepPurple100,
     accent3Color: Colors.deepPurple500,
@@ -280,6 +280,7 @@ var Main = React.createClass({
         {
           competition: "Test",
           matchNumber: 1,
+          matchUser: "calvinterpstra@gmail.com",
           red1: 6055,
           red2: 1111,
           blue1: 3333,
@@ -375,6 +376,7 @@ var Main = React.createClass({
         {
           competition: "Test",
           matchNumber: 2,
+          matchUser: "calvinterpstra@gmail.com",
           red1: 2222,
           red2: 4444,
           blue1: 7777,
@@ -470,6 +472,7 @@ var Main = React.createClass({
         {
           competition: "Test",
           matchNumber: 3,
+          matchUser: "calvinterpstra@gmail.com",
           red1: 5555,
           red2: 6666,
           blue1: 7777,
@@ -565,6 +568,7 @@ var Main = React.createClass({
         {
           competition: "Test",
           matchNumber: 4,
+          matchUser: "calvinterpstra@gmail.com",
           red1: 3333,
           red2: 5555,
           blue1: 6055,
@@ -659,6 +663,7 @@ var Main = React.createClass({
         {
           competition: "Test",
           matchNumber: 5,
+          matchUser: "calvinterpstra@gmail.com",
           red1: 6666,
           red2: 9999,
           blue1: 4444,
@@ -753,6 +758,7 @@ var Main = React.createClass({
         {
           competition: "Test",
           matchNumber: 6,
+          matchUser: "calvinterpstra@gmail.com",
           red1: 6666,
           red2: 6055,
           blue1: 2222,
@@ -847,6 +853,7 @@ var Main = React.createClass({
         {
           competition: "Test",
           matchNumber: 7,
+          matchUser: "calvinterpstra@gmail.com",
           red1: 3333,
           red2: 7777,
           blue1: 4444,
@@ -1476,6 +1483,7 @@ var Main = React.createClass({
     newState.scoutingUnscouted = false;
     newState.currentPartialMatch = {
       matchNumber: 0,
+      matchUser: "",
       red1: 0,
       red2: 0,
       blue1: 0,

@@ -52,7 +52,6 @@ var ScoutMatchTab = React.createClass({
             if (this.props.scoutingUnscouted) {
                 return (
                     <div style={bodyStyle}>
-                        <h2 style={headerStyle}> Scouting Form </h2><br/>
                         <VelVortexForm
                             currentPartialMatch={this.props.currentPartialMatch} handleCurrentPartialMatchUpdate={this.props.handleCurrentPartialMatchUpdate}/>
                         <UnscoutedSubmit handleToMatches={this.props.handleToMatches} handleSubmission={this.handleSubmission}
@@ -64,7 +63,6 @@ var ScoutMatchTab = React.createClass({
             else {
                 return (
                     <div style={bodyStyle}>
-                        <h2 style={headerStyle}> Scouting Form </h2><br/>
                         <VelVortexForm
                             currentPartialMatch={this.props.currentPartialMatch} handleCurrentPartialMatchUpdate={this.props.handleCurrentPartialMatchUpdate}/>
                         <ScoutedSubmit handleToMatches={this.props.handleToMatches} handleSubmission={this.handleSubmission}
@@ -77,7 +75,6 @@ var ScoutMatchTab = React.createClass({
         else if (this.props.viewPartialMatchMode) {
             return (
                 <div style={bodyStyle}>
-                    <h2 style={headerStyle}> Match Details </h2><br/>
                     <MatchDetails
                         currentPartialMatch={this.props.currentPartialMatch} handleCurrentPartialMatchUpdate={this.props.handleCurrentPartialMatchUpdate}
                         removePartialMatch={this.props.removePartialMatch}
@@ -103,11 +100,7 @@ var ScoutMatchTab = React.createClass({
             }
             else {
                 return (
-                    <div style={bodyStyle}>
-                        <h2 style={headerStyle}> {this.props.currentCompetition.name} </h2>
-                        <h2 style={headerStyle2}> Matches </h2><br/>
-                        <Divider/>
-                        <Subheader> Matches (by match number): </Subheader>
+                    <div style={{paddingLeft:0, paddingRight:0, margin: 0}}>
                         <MatchList
                             matches={this.props.matches} currentPartialMatch={this.props.currentPartialMatch}
                             handleCurrentPartialMatchUpdate={this.props.handleCurrentPartialMatchUpdate}

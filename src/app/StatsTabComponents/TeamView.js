@@ -39,7 +39,7 @@ var TeamView = React.createClass({
             var newMatches = [];
             array.map(function (match, i) {
                 if (match.competition != "Test") {
-                    newMatches.push(match)
+                    newMatches.push(match);
                 }
             });
             return newMatches;
@@ -48,8 +48,8 @@ var TeamView = React.createClass({
         var dataCalculator = new DataCalculator(matches);
         const averageMatchScore = dataCalculator.getAverageMatchScoreForTeam(this.props.currentTeam.teamNumber);
         const averagePartialScore = dataCalculator.getAverageMatchPartialScoreForTeam(this.props.currentTeam.teamNumber);
-        const wins = dataCalculator.getTotalWinsForTeam(this.props.currentTeam.teamNumber)
-        const losses = dataCalculator.getTotalLossesForTeam(this.props.currentTeam.teamNumber)
+        const wins = dataCalculator.getTotalWinsForTeam(this.props.currentTeam.teamNumber);
+        const losses = dataCalculator.getTotalLossesForTeam(this.props.currentTeam.teamNumber);
         var kd = wins / losses;
         if (wins == "No data" || losses == "No data") {
             kd = "n/a";

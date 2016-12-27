@@ -4,10 +4,15 @@ import LocalScoreLabel from './VelVortexFormComponents/LocalScoreLabel';
 import Autonomous from './VelVortexFormComponents/Autonomous';
 import Teleop from './VelVortexFormComponents/Teleop';
 import Endgame from './VelVortexFormComponents/Endgame';
+import {Tabs, Tab} from 'material-ui/Tabs';
+// From https://github.com/oliviertassinari/react-swipeable-views
+import SwipeableViews from 'react-swipeable-views';
+import ScoreCalculator from './ScoreCalculator';
 
 var PracticeVelVortexForm = React.createClass({
-  getInitialState: function () {
+    getInitialState: function () {
         return {
+            slideIndex: 0,
             scores: {
                 autonButtonsScore1: 0,
                 autonParkingScore1: 0,
@@ -37,7 +42,9 @@ var PracticeVelVortexForm = React.createClass({
             },
         };
     },
-
+    handleChangeIndex: function (value) {
+        this.setState({ slideIndex: value, });
+    },
     handleScoreChange: function (score, scoreType) {
         const s = this.state.scores;
         switch (scoreType) {
@@ -89,7 +96,7 @@ var PracticeVelVortexForm = React.createClass({
                 s.autonCapBallScore1 = parseInt(score);
                 this.setState({ scores: s });
                 break;
-                
+
             case "autonButtonsScore2":
                 s.autonButtonsScore2 = parseInt(score);
                 this.setState({ scores: s });
@@ -140,24 +147,53 @@ var PracticeVelVortexForm = React.createClass({
                 break;
             default:
                 break;
-                    }
+        }
     },
 
-  render() {
-    return (
-        <div>
-            <Divider/><br/>
-            <Autonomous scores = {this.state.scores} handleScoreChange = {this.handleScoreChange} team1="Team 1" team2="Team 2"/>
-            <Divider/><br/>
-            <Teleop scores = {this.state.scores} handleScoreChange = {this.handleScoreChange} team1="Team 1" team2="Team 2"/>
-            <Divider/><br/>
-            <Endgame scores = {this.state.scores} handleScoreChange = {this.handleScoreChange} team1="Team 1" team2="Team 2"/>
-            <Divider/><br/>
-            <LocalScoreLabel scores = {this.state.scores}/>
-            <br/><br/><br/><br/>
-        </div>
-    );
-  }
+    render() {
+        var width = window.innerWidth
+        || document.documentElement.clientWidth
+        || document.body.clientWidth;
+        var scoreCalculator = new ScoreCalculator(this.state.scores);
+        const totalScore = scoreCalculator.getTotalScore();
+        return (
+            <div>
+                <div>
+                    <Tabs onChange={this.handleChangeIndex} value={this.state.slideIndex} 
+                        style={{ marginRight: -20, marginLeft: -20, padding: 0, paddingTop: 58, position: 'fixed', width: width, zIndex: 1100}}>
+                        <Tab label="Autonomous" value={0} />
+                        <Tab label="Teleop" value={1} />
+                        <Tab label={"Score: " + totalScore} value={2} />
+                    </Tabs>
+                    <SwipeableViews
+                        index={this.state.slideIndex}
+                        onChangeIndex={this.handleChangeIndex}
+                        >
+                        <div style={{ padding: 0, margin: 0 }}>
+                            <h2 style={{ fontSize: 24, fontWeight: 400, paddingTop: 130, margin: 0 }}> Practice Form </h2> <br/>
+                            <Divider/><br/>
+                            <Autonomous scores = {this.state.scores} handleScoreChange = {this.handleScoreChange} team1="Team 1" team2="Team 2"/>
+                            <br/><br/><br/><br/>
+                        </div>
+                        <div style={{ padding: 0, margin: 0 }}>
+                            <h2 style={{ fontSize: 24, fontWeight: 400, paddingTop: 130, margin: 0 }}> Practice Form </h2> <br/>
+                            <Divider/><br/>
+                            <Teleop scores = {this.state.scores} handleScoreChange = {this.handleScoreChange} team1="Team 1" team2="Team 2"/>
+                            <Divider/><br/>
+                            <Endgame scores = {this.state.scores} handleScoreChange = {this.handleScoreChange} team1="Team 1" team2="Team 2"/>
+                            <br/><br/><br/><br/>
+                        </div>
+                        <div style={{ padding: 0, margin: 0 }}>
+                            <h2 style={{ fontSize: 24, fontWeight: 400, paddingTop: 130, margin: 0 }}> Practice Form </h2> <br/>
+                            <Divider/><br/>
+                            <LocalScoreLabel scores = {this.state.scores}/>
+                            <br/><br/><br/><br/>
+                        </div>
+                    </SwipeableViews>
+                </div>
+            </div>
+        );
+    }
 });
 
 export default PracticeVelVortexForm;

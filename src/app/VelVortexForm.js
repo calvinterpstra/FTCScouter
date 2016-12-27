@@ -7,6 +7,9 @@ import Teleop from './VelVortexFormComponents/Teleop';
 import Endgame from './VelVortexFormComponents/Endgame';
 import ScoreCalculator from './ScoreCalculator'
 import * as Colors from 'material-ui/styles/colors';
+import {Tabs, Tab} from 'material-ui/Tabs';
+// From https://github.com/oliviertassinari/react-swipeable-views
+import SwipeableViews from 'react-swipeable-views';
 
 const headerStyle = {
     fontSize: 24,
@@ -15,12 +18,20 @@ const headerStyle = {
 };
 
 var VelVortexForm = React.createClass({
+    getInitialState: function () {
+        return {
+            slideIndex: 0,
+        }
+    },
+    handleChangeIndex: function (value) {
+        this.setState({ slideIndex: value, });
+    },
     handleScoreChange: function (score, scoreType) {
         switch (scoreType) {
             case "autonButtonsScore1":
                 var s = this.props.currentPartialMatch.scores;
                 s.autonButtonsScore1 = parseInt(score);
-                
+
                 this.updateCurrentScore(s);
                 break;
             case "autonParkingScore1":
@@ -157,7 +168,7 @@ var VelVortexForm = React.createClass({
         var team2;
         var allianceText;
         var color;
-        if(this.props.currentPartialMatch.allianceColor == "Red"){
+        if (this.props.currentPartialMatch.allianceColor == "Red") {
             team1 = this.props.currentPartialMatch.red1;
             team2 = this.props.currentPartialMatch.red2;
             allianceText = "Red Alliance"
@@ -169,22 +180,39 @@ var VelVortexForm = React.createClass({
             allianceText = "Blue Alliance"
             color = Colors.blue500;
         }
+        var width = window.innerWidth
+        || document.documentElement.clientWidth
+        || document.body.clientWidth;
         return (
             <div>
-                <Paper style={{ height:10, width:200, margin: 0, textAlign: 'center', display: 'inline-block', 
-                        backgroundColor: color,}} zDepth={2}/><br/><br/>
-                <h2 style={headerStyle}> {allianceText} </h2><br/>
-                <Autonomous scores = {this.props.currentPartialMatch.scores} handleScoreChange = {this.handleScoreChange} 
-                    team1={team1} team2={team2}/>
-                <Divider/><br/>
-                <Teleop scores = {this.props.currentPartialMatch.scores} handleScoreChange = {this.handleScoreChange}
-                    team1={team1} team2={team2}/>
-                <Divider/><br/>
-                <Endgame scores = {this.props.currentPartialMatch.scores} handleScoreChange = {this.handleScoreChange}
-                    team1={team1} team2={team2}/>
-                <Divider/><br/>
-                <ScoreLabel totalScore = {this.props.currentPartialMatch.totalScore} partialScore1={this.props.currentPartialMatch.partialScore1} 
-                    partialScore2={this.props.currentPartialMatch.partialScore2} team1={team1} team2={team2}/>
+                <div>
+                    <Tabs onChange={this.handleChangeIndex} value={this.state.slideIndex} 
+                        style={{ marginRight: -20, marginLeft: -20, padding: 0, paddingTop: 58, position: 'fixed', width: width, zIndex: 1100}}>
+                        <Tab style={{backgroundColor: color }} label="Autonomous" value={0} />
+                        <Tab style={{backgroundColor: color }} label="Teleop" value={1} />
+                        <Tab style={{backgroundColor: color }} label={"Score: " + this.props.currentPartialMatch.totalScore} value={2} />
+                    </Tabs>
+                    <SwipeableViews
+                        index={this.state.slideIndex}
+                        onChangeIndex={this.handleChangeIndex}
+                        >
+                        <div style={{ padding: 0, margin: 0, paddingTop: 130}}>
+                            <Autonomous scores = {this.props.currentPartialMatch.scores} handleScoreChange = {this.handleScoreChange}
+                                team1={team1} team2={team2}/>
+                        </div>
+                        <div style={{ padding: 0, margin: 0, paddingTop: 130 }}>
+                            <Teleop scores = {this.props.currentPartialMatch.scores} handleScoreChange = {this.handleScoreChange}
+                                team1={team1} team2={team2}/>
+                            <Divider/><br/>
+                            <Endgame scores = {this.props.currentPartialMatch.scores} handleScoreChange = {this.handleScoreChange}
+                                team1={team1} team2={team2}/>
+                        </div>
+                        <div style={{ padding: 0, margin: 0, paddingTop: 130 }}>
+                            <ScoreLabel totalScore = {this.props.currentPartialMatch.totalScore} partialScore1={this.props.currentPartialMatch.partialScore1}
+                                partialScore2={this.props.currentPartialMatch.partialScore2} team1={team1} team2={team2}/>
+                        </div>
+                    </SwipeableViews>
+                </div>
             </div>
         );
     }

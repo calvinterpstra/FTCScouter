@@ -35,12 +35,12 @@ var CenterVortex = React.createClass({
         || document.body.clientWidth;
     return (
       <div>
-        <MyHeader2> Center Vortex </MyHeader2><br/>
+        <h2 style={{ fontSize: 18, fontWeight: 400, paddingTop: 10, paddingBottom: 10, margin: 0 }}> Center Vortex </h2>
         <div style={styles.root}>
           <div style={{textAlign: 'center', marginLeft: ((width*0.5)-150)}}>
             <MyHeader3> {this.props.team1}: </MyHeader3>
-            <div style={{ height: 100, width: 130, margin: 0, textAlign: 'center', display: 'inline-block'}}>
-              <p style={{marginTop: 5, marginBottom: 5}}>{"Blocks Scored: " + this.props.scores.centerVortexScore1/5}</p>
+            <div style={{ height: 90, width: 130, margin: 0, textAlign: 'center', display: 'inline-block'}}>
+              <p style={{marginTop: 5, marginBottom: 5}}>{"Particles Scored: " + this.props.scores.centerVortexScore1/5}</p>
               <div>
                 <RaisedButton
                   label="-"
@@ -61,8 +61,8 @@ var CenterVortex = React.createClass({
           </div>
           <div style={{textAlign: 'center'}}>
             <MyHeader3> {this.props.team2}: </MyHeader3>
-            <div style={{ height: 100, width: 130, margin: 0, textAlign: 'center', display: 'inline-block' }}>
-              <p style={{marginTop: 5, marginBottom: 5}}>{"Blocks Scored: " + this.props.scores.centerVortexScore2/5}</p>
+            <div style={{ height: 90, width: 130, margin: 0, textAlign: 'center', display: 'inline-block' }}>
+              <p style={{marginTop: 5, marginBottom: 5}}>{"Particles Scored: " + this.props.scores.centerVortexScore2/5}</p>
               <div>
                 <RaisedButton
                   label="-"

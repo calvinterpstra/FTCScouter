@@ -112,10 +112,11 @@ var TeleopButtons = React.createClass({
         || document.body.clientWidth;
         return (
             <div>
-                <MyHeader2> Beacons </MyHeader2>
+                <h2 style={{ fontSize: 18, fontWeight: 400, paddingTop: 10, paddingBottom: 10, margin: 0 }}> Beacons </h2>
+                <h2 style={{ fontSize: 12, fontWeight: 300, paddingTop: 0, paddingBottom: 10, margin: 0 }}> (beacons still claimed by the end of the match) </h2>
                 <div style={styles.root}>
                     <div style={{ textAlign: 'center', marginRight: 40, marginLeft: ((width*0.5)-170)}}>
-                        <MyHeader3> {this.props.team1}: </MyHeader3> <br/>
+                        <h2 style={{ fontSize: 16, fontWeight: 300, paddingTop: 0, paddingBottom: 10, margin: 0 }}> {this.props.team1}: </h2>
                         <Checkbox
                             label="Alliance Near"
                             disabled = {true}
@@ -158,7 +159,7 @@ var TeleopButtons = React.createClass({
                             />
                     </div>
                     <div style={{ textAlign: 'center' }}>
-                        <MyHeader3> {this.props.team2}: </MyHeader3> <br/>
+                        <h2 style={{ fontSize: 16, fontWeight: 300, paddingTop: 0, paddingBottom: 10, margin: 0 }}> {this.props.team2}: </h2>
                         <Checkbox
                             label="Alliance Near"
                             disabled = {true}

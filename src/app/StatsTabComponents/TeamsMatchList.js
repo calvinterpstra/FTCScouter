@@ -89,7 +89,8 @@ var TeamsMatchList = React.createClass({
                                 <span style={{ color: Colors.green700 }}> {partialMatch.user} </span><br/>
                                 <span style={{ color: Colors.grey600 }}> {this.props.displayTime(partialMatch.time) } </span>
                             </p>}
-                            key={i} onTouchTap={this.scoutedListItemSelected.bind(null, partialMatch, match) }/>;
+                            key={i} onTouchTap={this.scoutedListItemSelected.bind(null, partialMatch, match) }
+                            style={{ paddingTop: 0, paddingBottom: 0, margin: 0, marginBottom: -20 }}/>;
                     }
                 }
                 else {
@@ -114,7 +115,8 @@ var TeamsMatchList = React.createClass({
                                 <span style={{ color: Colors.green700 }}> {partialMatch.user} </span><br/>
                                 <span style={{ color: Colors.grey600 }}> {this.props.displayTime(partialMatch.time) } </span>
                             </p>}
-                            key={i} onTouchTap={this.scoutedListItemSelected.bind(null, partialMatch, match) }/>;
+                            key={i} onTouchTap={this.scoutedListItemSelected.bind(null, partialMatch, match) }
+                            style={{ paddingTop: 0, paddingBottom: 0, margin: 0, marginBottom: -20 }}/>;
                     }
                 }
             }, this);
@@ -133,6 +135,8 @@ var TeamsMatchList = React.createClass({
                 else {
                     var dataCalculator = new DataCalculator(matches);
                     const getWinningAlliance = dataCalculator.getWinningAlliance(match)
+                    const redMatchScore = dataCalculator.getRealMatchScoreForAlliance(match, "Red");
+                    const blueMatchScore = dataCalculator.getRealMatchScoreForAlliance(match, "Blue");
                     if (getWinningAlliance == "Red") {
                         return <ListItem primaryText={
                             <p style={{ paddingTop: 5, paddingBottom: 5, margin: 0 }}>
@@ -142,7 +146,15 @@ var TeamsMatchList = React.createClass({
                                 <span style={{ color: Colors.blue700, fontWeight: 300, }}> {match.blue1} </span>,
                                 <span style={{ color: Colors.blue700, fontWeight: 300, }}> {match.blue2} </span>
                             </p>}
-                            initiallyOpen={false} primaryTogglesNestedList={true} nestedItems={nestedPartialMatches} key={i}/>;
+                            secondaryTextLines={1}
+                            secondaryText={<p>
+                                <span style={{ color: Colors.grey600, fontWeight: 300, }}> Red: </span>
+                                <span style={{ color: Colors.red700, fontWeight: 400, }}> {redMatchScore} </span>|
+                                <span style={{ color: Colors.grey600, fontWeight: 300, }}> Blue: </span>
+                                <span style={{ color: Colors.blue700, fontWeight: 300, }}> {blueMatchScore}  </span>
+                            </p>}
+                            initiallyOpen={false} primaryTogglesNestedList={true} nestedItems={nestedPartialMatches} key={i}
+                            style={{ paddingTop: 0, paddingBottom: 0, margin: 0, marginBottom: -20 }}/>;
                     }
                     else if (getWinningAlliance == "Blue") {
                         return <ListItem primaryText={
@@ -153,7 +165,15 @@ var TeamsMatchList = React.createClass({
                                 <span style={{ color: Colors.blue700, fontWeight: 400, }}> {match.blue1} </span>,
                                 <span style={{ color: Colors.blue700, fontWeight: 400, }}> {match.blue2} </span>
                             </p>}
-                            initiallyOpen={false} primaryTogglesNestedList={true} nestedItems={nestedPartialMatches} key={i}/>;
+                            secondaryTextLines={1}
+                            secondaryText={<p>
+                                <span style={{ color: Colors.grey600, fontWeight: 300, }}> Red: </span>
+                                <span style={{ color: Colors.red700, fontWeight: 300, }}> {redMatchScore} </span>|
+                                <span style={{ color: Colors.grey600, fontWeight: 300, }}> Blue: </span>
+                                <span style={{ color: Colors.blue700, fontWeight: 400, }}> {blueMatchScore}  </span>
+                            </p>}
+                            initiallyOpen={false} primaryTogglesNestedList={true} nestedItems={nestedPartialMatches} key={i}
+                            style={{ paddingTop: 0, paddingBottom: 0, margin: 0, marginBottom: -20 }}/>;
                     }
                     else {
                         return <ListItem primaryText={
@@ -164,7 +184,15 @@ var TeamsMatchList = React.createClass({
                                 <span style={{ color: Colors.blue700, fontWeight: 400, }}> {match.blue1} </span>,
                                 <span style={{ color: Colors.blue700, fontWeight: 400, }}> {match.blue2} </span>
                             </p>}
-                            initiallyOpen={false} primaryTogglesNestedList={true} nestedItems={nestedPartialMatches} key={i}/>;
+                            secondaryTextLines={1}
+                            secondaryText={<p>
+                                <span style={{ color: Colors.grey600, fontWeight: 300, }}> Red: </span>
+                                <span style={{ color: Colors.red700, fontWeight: 300, }}> {redMatchScore} </span>|
+                                <span style={{ color: Colors.grey600, fontWeight: 300, }}> Blue: </span>
+                                <span style={{ color: Colors.blue700, fontWeight: 300, }}> {blueMatchScore}  </span>
+                            </p>}
+                            initiallyOpen={false} primaryTogglesNestedList={true} nestedItems={nestedPartialMatches} key={i}
+                            style={{ paddingTop: 0, paddingBottom: 0, margin: 0, marginBottom: -20 }}/>;
                     }
                 }
             }

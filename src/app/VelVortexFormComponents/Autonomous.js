@@ -41,16 +41,16 @@ var Autonomous = React.createClass({
                         zDepth={2}/><br/><br/>
                     <MyHeader1> Autonomous </MyHeader1>
 
-                    <AutonButtons scores = {this.props.scores} handleScoreChange = {this.props.handleScoreChange}
-                        team1={this.props.team1} team2={this.props.team2}/>
-
-                    <AutonParking scores = {this.props.scores} handleScoreChange = {this.props.handleScoreChange}
-                        team1={this.props.team1} team2={this.props.team2}/>
-
                     <AutonCenterVortex scores = {this.props.scores} handleScoreChange = {this.props.handleScoreChange}
                         team1={this.props.team1} team2={this.props.team2}/>
                     
                     <AutonCornerVortex scores = {this.props.scores} handleScoreChange = {this.props.handleScoreChange}
+                        team1={this.props.team1} team2={this.props.team2}/>
+                        
+                    <AutonButtons scores = {this.props.scores} handleScoreChange = {this.props.handleScoreChange}
+                        team1={this.props.team1} team2={this.props.team2}/>
+
+                    <AutonParking scores = {this.props.scores} handleScoreChange = {this.props.handleScoreChange}
                         team1={this.props.team1} team2={this.props.team2}/>
 
                     <AutonCapBall scores = {this.props.scores} handleScoreChange = {this.props.handleScoreChange}

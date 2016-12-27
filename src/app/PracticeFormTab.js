@@ -19,7 +19,6 @@ var PracticeFormTab = React.createClass({
     render() {
         return (
             <div style={bodyStyle}>
-                <h2 style={headerStyle}> Practice Form </h2> <br/>
                 <PracticeVelVortexForm/>
             </div>
         );

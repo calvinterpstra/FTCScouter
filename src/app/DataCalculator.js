@@ -557,7 +557,7 @@ class DataCalculator {
             if (redMatchScore > blueMatchScore) {
                 winner = "Red";
             }
-            else if (redMatchScore > blueMatchScore) {
+            else if (redMatchScore < blueMatchScore) {
                 winner = "Blue";
             }
         }

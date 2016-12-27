@@ -57,7 +57,6 @@ var TeamsTab = React.createClass({
         else if (this.props.viewTeamsPartialMatchMode) {
             return (
                 <div style={bodyStyle}>
-                    <h2 style={headerStyle}> Match Details </h2><br/>
                     <TeamsMatchDetails
                         matchSelected={this.props.matchSelected} handleToTeamsMatches={this.props.handleToTeamsMatches}
                         />

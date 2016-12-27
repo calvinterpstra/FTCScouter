@@ -12,10 +12,14 @@ import * as Colors from 'material-ui/styles/colors';
 import Divider from 'material-ui/Divider';
 import Subheader from 'material-ui/Subheader';
 import DataCalculator from './../DataCalculator';
+import {Tabs, Tab} from 'material-ui/Tabs';
+// From https://github.com/oliviertassinari/react-swipeable-views
+import SwipeableViews from 'react-swipeable-views';
 
 var MatchList = React.createClass({
     getInitialState: function () {
         return {
+            slideIndex: 0,
             unscoutedDialogOpen: false,
             setupDialogOpen: false,
             matchNumberError: true,
@@ -25,6 +29,11 @@ var MatchList = React.createClass({
             blue2Error: true,
         }
     },
+
+    handleChangeIndex: function (value) {
+        this.setState({ slideIndex: value, });
+    },
+
     handleMatchNumberReady: function () {
         this.setState({ matchNumberError: false });
     },
@@ -58,6 +67,7 @@ var MatchList = React.createClass({
     unscoutedListItemSelected: function (partialMatch, match) {
         this.setState({ unscoutedDialogOpen: true });
         var newState = this.props.currentPartialMatch;
+        newState.matchUser = match.matchUser;
         newState.red1 = match.red1;
         newState.red2 = match.red2;
         newState.blue1 = match.blue1;
@@ -72,6 +82,7 @@ var MatchList = React.createClass({
     scoutedListItemSelected: function (partialMatch, match) {
         this.props.handleToViewPartialMatch();
         var newMatchSelected = this.props.matchSelected;
+        newMatchSelected.matchUser = match.matchUser;
         newMatchSelected.red1 = match.red1;
         newMatchSelected.red2 = match.red2;
         newMatchSelected.blue1 = match.blue1;
@@ -139,17 +150,17 @@ var MatchList = React.createClass({
             var nestedPartialMatches = match.partialMatches.map(function (partialMatch, i) {
                 if (partialMatch.allianceColor == "Red") {
                     if (partialMatch.totalScore == -1) {
-                        return <ListItem primaryText={
-                            <p style={{ paddingTop: 5, paddingBottom: 5, margin: 0 }}>
-                                <span style={{ color: Colors.red700, fontWeight: 300, }}> {match.red1} </span>,
-                                <span style={{ color: Colors.red700, fontWeight: 300, }}> {match.red2} </span>
-                                <span style={{ color: Colors.grey700, fontSize: 14, fontWeight: 200, }}> --unscouted </span>
-                            </p>}
-                            key={i} onTouchTap={this.unscoutedListItemSelected.bind(null, partialMatch, match) }/>;
+                        // return <ListItem primaryText={
+                        //     <p style={{ paddingTop: 0, paddingBottom: 0, margin: 0 }}>
+                        //         <span style={{ color: Colors.red700, fontWeight: 300, }}> {match.red1} </span>,
+                        //         <span style={{ color: Colors.red700, fontWeight: 300, }}> {match.red2} </span>
+                        //         <span style={{ color: Colors.grey700, fontSize: 14, fontWeight: 200, }}> --unscouted </span>
+                        //     </p>}
+                        //     key={i} onTouchTap={this.unscoutedListItemSelected.bind(null, partialMatch, match) }/>;
                     }
                     else {
                         return <ListItem primaryText={
-                            <p style={{ paddingTop: 5, paddingBottom: 5, margin: 0 }}>
+                            <p style={{ paddingTop: 0, paddingBottom: 0, margin: 0 }}>
                                 <span style={{ color: Colors.red700, fontWeight: 300, }}> {match.red1} </span>,
                                 <span style={{ color: Colors.red700, fontWeight: 300, }}> {match.red2} </span>:
                                 <span style={{ color: Colors.darkBlack }}> {partialMatch.totalScore} </span>
@@ -159,22 +170,23 @@ var MatchList = React.createClass({
                                 <span style={{ color: Colors.green700 }}> {partialMatch.user} </span><br/>
                                 <span style={{ color: Colors.grey600 }}> {this.props.displayTime(partialMatch.time) } </span>
                             </p>}
-                            key={i} onTouchTap={this.scoutedListItemSelected.bind(null, partialMatch, match) }/>;
+                            key={i} onTouchTap={this.scoutedListItemSelected.bind(null, partialMatch, match) }
+                            style={{ paddingTop: 0, paddingBottom: 0, margin: 0, marginBottom: -20 }}/>;
                     }
                 }
                 else {
                     if (partialMatch.totalScore == -1) {
-                        return <ListItem primaryText={ 
-                            <p style={{ paddingTop: 5, paddingBottom: 5, margin: 0 }}>
-                                <span style={{ color: Colors.blue700, fontWeight: 300, }}> {match.blue1} </span>,
-                                <span style={{ color: Colors.blue700, fontWeight: 300, }}> {match.blue2} </span>
-                                <span style={{ color: Colors.grey700, fontSize: 14, fontWeight: 200, }}> --unscouted </span>
-                            </p>}
-                            key={i} onTouchTap={this.unscoutedListItemSelected.bind(null, partialMatch, match) }/>;
+                        // return <ListItem primaryText={
+                        //     <p style={{ paddingTop: 0, paddingBottom: 0, margin: 0 }}>
+                        //         <span style={{ color: Colors.blue700, fontWeight: 300, }}> {match.blue1} </span>,
+                        //         <span style={{ color: Colors.blue700, fontWeight: 300, }}> {match.blue2} </span>
+                        //         <span style={{ color: Colors.grey700, fontSize: 14, fontWeight: 200, }}> --unscouted </span>
+                        //     </p>}
+                        //     key={i} onTouchTap={this.unscoutedListItemSelected.bind(null, partialMatch, match) }/>;
                     }
                     else {
                         return <ListItem primaryText={
-                            <p style={{ paddingTop: 5, paddingBottom: 5, margin: 0 }}>
+                            <p style={{ paddingTop: 0, paddingBottom: 0, margin: 0 }}>
                                 <span style={{ color: Colors.blue700, fontWeight: 300, }}> {match.blue1} </span>,
                                 <span style={{ color: Colors.blue700, fontWeight: 300, }}> {match.blue2} </span>:
                                 <span style={{ color: Colors.darkBlack }}> {partialMatch.totalScore} </span>
@@ -184,58 +196,155 @@ var MatchList = React.createClass({
                                 <span style={{ color: Colors.green700 }}> {partialMatch.user} </span><br/>
                                 <span style={{ color: Colors.grey600 }}> {this.props.displayTime(partialMatch.time) } </span>
                             </p>}
-                            key={i} onTouchTap={this.scoutedListItemSelected.bind(null, partialMatch, match) }/>;
+                            key={i} onTouchTap={this.scoutedListItemSelected.bind(null, partialMatch, match) }
+                            style={{ paddingTop: 0, paddingBottom: 0, margin: 0, marginBottom: -20 }}/>;
                     }
                 }
             }, this);
             if (this.props.currentCompetition.name == match.competition) {
                 if (this.props.containsUnscouted(match)) {
-                    return <ListItem primaryText={
-                        <p style={{ paddingTop: 5, paddingBottom: 5, margin: 0 }}>
-                            <span style={{ color: Colors.grey600, fontSize: 20, fontWeight: 200, }}> {match.matchNumber} </span>:
-                                <span style={{ color: Colors.red700, fontWeight: 300, }}> {match.red1} </span>,
-                                <span style={{ color: Colors.red700, fontWeight: 300, }}> {match.red2} </span>|
-                                <span style={{ color: Colors.blue700, fontWeight: 300, }}> {match.blue1} </span>,
-                                <span style={{ color: Colors.blue700, fontWeight: 300, }}> {match.blue2} </span>
-                        </p>}
-                        initiallyOpen={false} primaryTogglesNestedList={true} nestedItems={nestedPartialMatches} key={i}/>;
+                    // return <ListItem primaryText={
+                    //     <p style={{ paddingTop: 0, paddingBottom: 0, margin: 0 }}>
+                    //         <span style={{ color: Colors.grey600, fontSize: 20, fontWeight: 200, }}> {match.matchNumber} </span>:
+                    //         <span style={{ color: Colors.red700, fontWeight: 300, }}> {match.red1} </span>,
+                    //         <span style={{ color: Colors.red700, fontWeight: 300, }}> {match.red2} </span>|
+                    //         <span style={{ color: Colors.blue700, fontWeight: 300, }}> {match.blue1} </span>,
+                    //         <span style={{ color: Colors.blue700, fontWeight: 300, }}> {match.blue2} </span>
+                    //     </p>}
+                    //     initiallyOpen={false} primaryTogglesNestedList={true} nestedItems={nestedPartialMatches} key={i}/>;
                 }
                 else {
                     var dataCalculator = new DataCalculator(matches);
-                    const getWinningAlliance = dataCalculator.getWinningAlliance(match)
+                    const getWinningAlliance = dataCalculator.getWinningAlliance(match);
+                    const redMatchScore = dataCalculator.getRealMatchScoreForAlliance(match, "Red");
+                    const blueMatchScore = dataCalculator.getRealMatchScoreForAlliance(match, "Blue");
                     if (getWinningAlliance == "Red") {
                         return <ListItem primaryText={
-                            <p style={{ paddingTop: 5, paddingBottom: 5, margin: 0 }}>
+                            <p style={{ paddingTop: 0, paddingBottom: 0, margin: 0 }}>
                                 <span style={{ color: Colors.grey900, fontSize: 20, fontWeight: 400, }}> {match.matchNumber} </span>:
                                 <span style={{ color: Colors.red700, fontWeight: 400, }}> {match.red1} </span>,
                                 <span style={{ color: Colors.red700, fontWeight: 400, }}> {match.red2} </span>|
                                 <span style={{ color: Colors.blue700, fontWeight: 300, }}> {match.blue1} </span>,
                                 <span style={{ color: Colors.blue700, fontWeight: 300, }}> {match.blue2} </span>
                             </p>}
-                            initiallyOpen={false} primaryTogglesNestedList={true} nestedItems={nestedPartialMatches} key={i}/>;
+                            secondaryTextLines={1}
+                            secondaryText={<p>
+                                <span style={{ color: Colors.grey600, fontWeight: 300, }}> Red: </span>
+                                <span style={{ color: Colors.red700, fontWeight: 400, }}> {redMatchScore} </span>|
+                                <span style={{ color: Colors.grey600, fontWeight: 300, }}> Blue: </span>
+                                <span style={{ color: Colors.blue700, fontWeight: 300, }}> {blueMatchScore}  </span>
+                            </p>}
+                            initiallyOpen={false} primaryTogglesNestedList={true} nestedItems={nestedPartialMatches} key={i}
+                            style={{ paddingTop: 0, paddingBottom: 0, margin: 0, marginBottom: -20 }}/>;
                     }
                     else if (getWinningAlliance == "Blue") {
                         return <ListItem primaryText={
-                            <p style={{ paddingTop: 5, paddingBottom: 5, margin: 0 }}>
+                            <p style={{ paddingTop: 0, paddingBottom: 0, margin: 0 }}>
                                 <span style={{ color: Colors.grey900, fontSize: 20, fontWeight: 400, }}> {match.matchNumber} </span>:
                                 <span style={{ color: Colors.red700, fontWeight: 300, }}> {match.red1} </span>,
                                 <span style={{ color: Colors.red700, fontWeight: 300, }}> {match.red2} </span>|
                                 <span style={{ color: Colors.blue700, fontWeight: 400, }}> {match.blue1} </span>,
                                 <span style={{ color: Colors.blue700, fontWeight: 400, }}> {match.blue2} </span>
                             </p>}
-                            initiallyOpen={false} primaryTogglesNestedList={true} nestedItems={nestedPartialMatches} key={i}/>;
+                            secondaryTextLines={1}
+                            secondaryText={<p>
+                                <span style={{ color: Colors.grey600, fontWeight: 300, }}> Red: </span>
+                                <span style={{ color: Colors.red700, fontWeight: 300, }}> {redMatchScore} </span>|
+                                <span style={{ color: Colors.grey600, fontWeight: 300, }}> Blue: </span>
+                                <span style={{ color: Colors.blue700, fontWeight: 400, }}> {blueMatchScore}  </span>
+                            </p>}
+                            initiallyOpen={false} primaryTogglesNestedList={true} nestedItems={nestedPartialMatches} key={i}
+                            style={{ paddingTop: 0, paddingBottom: 0, margin: 0, marginBottom: -20 }}/>;
                     }
                     else {
                         return <ListItem primaryText={
-                            <p style={{ paddingTop: 5, paddingBottom: 5, margin: 0 }}>
+                            <p style={{ paddingTop: 0, paddingBottom: 0, margin: 0 }}>
                                 <span style={{ color: Colors.grey900, fontSize: 20, fontWeight: 400, }}> {match.matchNumber} </span>:
                                 <span style={{ color: Colors.red700, fontWeight: 300, }}> {match.red1} </span>,
                                 <span style={{ color: Colors.red700, fontWeight: 300, }}> {match.red2} </span>|
-                                <span style={{ color: Colors.blue700, fontWeight: 400, }}> {match.blue1} </span>,
-                                <span style={{ color: Colors.blue700, fontWeight: 400, }}> {match.blue2} </span>
+                                <span style={{ color: Colors.blue700, fontWeight: 300, }}> {match.blue1} </span>,
+                                <span style={{ color: Colors.blue700, fontWeight: 300, }}> {match.blue2} </span>
                             </p>}
-                            initiallyOpen={false} primaryTogglesNestedList={true} nestedItems={nestedPartialMatches} key={i}/>;
+                            secondaryTextLines={1}
+                            secondaryText={<p>
+                                <span style={{ color: Colors.grey600, fontWeight: 300, }}> Red: </span>
+                                <span style={{ color: Colors.red700, fontWeight: 300, }}> {redMatchScore} </span>|
+                                <span style={{ color: Colors.grey600, fontWeight: 300, }}> Blue: </span>
+                                <span style={{ color: Colors.blue700, fontWeight: 300, }}> {blueMatchScore}  </span>
+                            </p>}
+                            initiallyOpen={false} primaryTogglesNestedList={true} nestedItems={nestedPartialMatches} key={i}
+                            style={{ paddingTop: 0, paddingBottom: 0, margin: 0, marginBottom: -20 }}/>;
                     }
+                }
+            }
+        }, this);
+
+        var unscoutedMatchList = matches.map(function (match, i) {
+            if (this.props.currentCompetition.name == match.competition) {
+                if (this.props.containsUnscouted(match)) {
+                    var nestedPartialMatches = match.partialMatches.map(function (partialMatch, i) {
+                        if (partialMatch.allianceColor == "Red") {
+                            if (partialMatch.totalScore == -1) {
+                                return <ListItem primaryText={
+                                    <p style={{ paddingTop: 0, paddingBottom: 0, margin: 0 }}>
+                                        <span style={{ color: Colors.red700, fontWeight: 300, }}> {match.red1} </span>,
+                                        <span style={{ color: Colors.red700, fontWeight: 300, }}> {match.red2} </span>
+                                        <span style={{ color: Colors.grey700, fontSize: 14, fontWeight: 200, }}> --unscouted </span>
+                                    </p>}
+                                    key={i} onTouchTap={this.unscoutedListItemSelected.bind(null, partialMatch, match) }/>;
+                            }
+                            else {
+                                return <ListItem primaryText={
+                                    <p style={{ paddingTop: 0, paddingBottom: 0, margin: 0 }}>
+                                        <span style={{ color: Colors.red700, fontWeight: 300, }}> {match.red1} </span>,
+                                        <span style={{ color: Colors.red700, fontWeight: 300, }}> {match.red2} </span>:
+                                        <span style={{ color: Colors.darkBlack }}> {partialMatch.totalScore} </span>
+                                    </p>}
+                                    secondaryTextLines={2}
+                                    secondaryText={<p>
+                                        <span style={{ color: Colors.green700 }}> {partialMatch.user} </span><br/>
+                                        <span style={{ color: Colors.grey600 }}> {this.props.displayTime(partialMatch.time) } </span>
+                                    </p>}
+                                    key={i} onTouchTap={this.scoutedListItemSelected.bind(null, partialMatch, match) }
+                                    style={{ paddingTop: 0, paddingBottom: 0, margin: 0, marginBottom: -20 }}/>;
+                            }
+                        }
+                        else {
+                            if (partialMatch.totalScore == -1) {
+                                return <ListItem primaryText={
+                                    <p style={{ paddingTop: 0, paddingBottom: 0, margin: 0 }}>
+                                        <span style={{ color: Colors.blue700, fontWeight: 300, }}> {match.blue1} </span>,
+                                        <span style={{ color: Colors.blue700, fontWeight: 300, }}> {match.blue2} </span>
+                                        <span style={{ color: Colors.grey700, fontSize: 14, fontWeight: 200, }}> --unscouted </span>
+                                    </p>}
+                                    key={i} onTouchTap={this.unscoutedListItemSelected.bind(null, partialMatch, match) }/>;
+                            }
+                            else {
+                                return <ListItem primaryText={
+                                    <p style={{ paddingTop: 0, paddingBottom: 0, margin: 0 }}>
+                                        <span style={{ color: Colors.blue700, fontWeight: 300, }}> {match.blue1} </span>,
+                                        <span style={{ color: Colors.blue700, fontWeight: 300, }}> {match.blue2} </span>:
+                                        <span style={{ color: Colors.darkBlack }}> {partialMatch.totalScore} </span>
+                                    </p>}
+                                    secondaryTextLines={2}
+                                    secondaryText={<p>
+                                        <span style={{ color: Colors.green700 }}> {partialMatch.user} </span><br/>
+                                        <span style={{ color: Colors.grey600 }}> {this.props.displayTime(partialMatch.time) } </span>
+                                    </p>}
+                                    key={i} onTouchTap={this.scoutedListItemSelected.bind(null, partialMatch, match) }
+                                    style={{ paddingTop: 0, paddingBottom: 0, margin: 0, marginBottom: -20 }}/>;
+                            }
+                        }
+                    }, this);
+                    return <ListItem primaryText={
+                        <p style={{ paddingTop: 0, paddingBottom: 0, margin: 0 }}>
+                            <span style={{ color: Colors.grey600, fontSize: 20, fontWeight: 200, }}> {match.matchNumber} </span>:
+                            <span style={{ color: Colors.red700, fontWeight: 300, }}> {match.red1} </span>,
+                            <span style={{ color: Colors.red700, fontWeight: 300, }}> {match.red2} </span>|
+                            <span style={{ color: Colors.blue700, fontWeight: 300, }}> {match.blue1} </span>,
+                            <span style={{ color: Colors.blue700, fontWeight: 300, }}> {match.blue2} </span>
+                        </p>}
+                        initiallyOpen={false} primaryTogglesNestedList={true} nestedItems={nestedPartialMatches} key={i}/>;
                 }
             }
         }, this);
@@ -250,16 +359,41 @@ var MatchList = React.createClass({
                 onTouchTap={this.handleSubmitMatch}/>,
             <FlatButton label="Cancel" primary={true} onTouchTap={this.handleClose}/>,
         ];
+        
+        var width = window.innerWidth
+        || document.documentElement.clientWidth
+        || document.body.clientWidth;
 
         return (
             <div>
-                <FloatingActionButton secondary={true} style={{ margin: 0, top: 'auto', right: 20, bottom: 20, left: 'auto', position: 'fixed', zIndex: 1100 }}
-                    onTouchTap={this.handleSetup}>
-                    <ContentAdd />
-                </FloatingActionButton>
-
-                <List>{matchList}</List>
-                <br/><br/><br/><br/>
+                <div>
+                    <Tabs onChange={this.handleChangeIndex} value={this.state.slideIndex}
+                        style={{ margin: 0, padding: 0, paddingTop: 58, position: 'fixed', width: width, zIndex: 1100 }}>
+                        <Tab label="Scouted" value={0} />
+                        <Tab label="Unscouted" value={1} />
+                    </Tabs>
+                    <SwipeableViews
+                        index={this.state.slideIndex}
+                        onChangeIndex={this.handleChangeIndex}
+                        >
+                        <div>
+                            <h2 style={{fontSize: 24, fontWeight: 400, paddingTop: 130, margin: 0,}}> {this.props.currentCompetition.name} </h2>
+                            <h2 style={{fontSize: 24, fontWeight: 400, paddingTop: 10, margin: 0,}}> Matches </h2><br/>
+                            <Divider/>
+                            <Subheader> Matches (by match number): </Subheader>
+                            <List>{matchList}</List>
+                            <br/><br/><br/><br/>
+                        </div>
+                        <div style={{ padding: 0, margin: 0 }}>
+                            <h2 style={{fontSize: 24, fontWeight: 400, paddingTop: 130, margin: 0,}}> {this.props.currentCompetition.name} </h2>
+                            <h2 style={{fontSize: 24, fontWeight: 400, paddingTop: 10, margin: 0,}}> Matches </h2><br/>
+                            <Divider/>
+                            <Subheader> Unscouted Matches (by match number): </Subheader>
+                            <List>{unscoutedMatchList}</List>
+                            <br/><br/><br/><br/>
+                        </div>
+                    </SwipeableViews>
+                </div>
 
                 <Dialog title="Unscouted Match" contentStyle={{ width: '100%', maxWidth: 'none', }}
                     actions={actionsUnscouted} modal={true} open={this.state.unscoutedDialogOpen}/>
@@ -279,3 +413,8 @@ var MatchList = React.createClass({
     }
 });
 export default MatchList;
+
+// <FloatingActionButton secondary={true} style={{ margin: 0, top: 'auto', right: 20, bottom: 20, left: 'auto', position: 'fixed', zIndex: 1100 }}
+//                     onTouchTap={this.handleSetup}>
+//                     <ContentAdd />
+//                 </FloatingActionButton>

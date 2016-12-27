@@ -18,33 +18,33 @@ var MatchDetails = React.createClass({
             newCurrentPartialMatch.partialScore1 = 0;
             newCurrentPartialMatch.partialScore2 = 0;
             newCurrentPartialMatch.scores = {
-              autonButtonsScore1: 0,
-              autonParkingScore1: 0,
-              autonCenterVortexScore1: 0,
-              autonCornerVortexScore1: 0,
-              autonCapBallScore1: 0,
-              centerVortexScore1: 0,
-              cornerVortexScore1: 0,
-              capBallScore1: 0,
-              teleopButtonAllianceNearScore1: 0,
-              teleopButtonAllianceFarScore1: 0,
-              teleopButtonOpponentNearScore1: 0,
-              teleopButtonOpponentFarScore1: 0,
-            
-              autonButtonsScore2: 0,
-              autonParkingScore2: 0,
-              autonCenterVortexScore2: 0,
-              autonCornerVortexScore2: 0,
-              autonCapBallScore2: 0,
-              centerVortexScore2: 0,
-              cornerVortexScore2: 0,
-              capBallScore2: 0,
-              teleopButtonAllianceNearScore2: 0,
-              teleopButtonAllianceFarScore2: 0,
-              teleopButtonOpponentNearScore2: 0,
-              teleopButtonOpponentFarScore2: 0,
+                autonButtonsScore1: 0,
+                autonParkingScore1: 0,
+                autonCenterVortexScore1: 0,
+                autonCornerVortexScore1: 0,
+                autonCapBallScore1: 0,
+                centerVortexScore1: 0,
+                cornerVortexScore1: 0,
+                capBallScore1: 0,
+                teleopButtonAllianceNearScore1: 0,
+                teleopButtonAllianceFarScore1: 0,
+                teleopButtonOpponentNearScore1: 0,
+                teleopButtonOpponentFarScore1: 0,
+
+                autonButtonsScore2: 0,
+                autonParkingScore2: 0,
+                autonCenterVortexScore2: 0,
+                autonCornerVortexScore2: 0,
+                autonCapBallScore2: 0,
+                centerVortexScore2: 0,
+                cornerVortexScore2: 0,
+                capBallScore2: 0,
+                teleopButtonAllianceNearScore2: 0,
+                teleopButtonAllianceFarScore2: 0,
+                teleopButtonOpponentNearScore2: 0,
+                teleopButtonOpponentFarScore2: 0,
             },
-            this.props.handleCurrentPartialMatchUpdate(newCurrentPartialMatch);
+                this.props.handleCurrentPartialMatchUpdate(newCurrentPartialMatch);
             this.props.handleToScout();
         }
     },
@@ -91,18 +91,14 @@ var MatchDetails = React.createClass({
             if (this.props.matchSelected.allianceColor == "Red") {
                 return (
                     <div>
-                    <FloatingActionButton secondary={true} mini={true} style={{ margin: 0, top: 'auto', right: 20, bottom: 20, left: 'auto', position: 'fixed', zIndex: 1100 }}
-                        onTouchTap={this.props.handleToMatches}>
-                        <ArrowBack />
-                    </FloatingActionButton>
-                        <p style={{ paddingTop: 5, paddingBottom: 5, margin: 0, fontSize: 20, }}>
-                            <span style={{ color: Colors.red700 }}> Red 1: {this.props.matchSelected.red1}</span>,
-                            <span style={{ color: Colors.red700 }}> Red 2: {this.props.matchSelected.red2}</span>
-                        </p><br/>
+                        <FloatingActionButton secondary={true} mini={true} style={{ margin: 0, top: 'auto', right: 20, bottom: 20, left: 'auto', position: 'fixed', zIndex: 1100 }}
+                            onTouchTap={this.props.handleToMatches}>
+                            <ArrowBack />
+                        </FloatingActionButton>
                         <StaticVelVortexForm matchSelected={this.props.matchSelected}/><br/>
                         <div style={{ display: 'flex' }}>
                             <RaisedButton label="Modify your entry" secondary={true} disabled={false} onTouchTap={this.handleModifyOwnScoutingEntry}
-                            style={{marginLeft: ((screen.width*0.5)-100)}}/>
+                                style={{ marginLeft: ((screen.width * 0.5) - 100) }}/>
                         </div>
                         <br/><br/><br/><br/>
                     </div>
@@ -111,18 +107,14 @@ var MatchDetails = React.createClass({
             else {
                 return (
                     <div>
-                    <FloatingActionButton secondary={true} mini={true} style={{ margin: 0, top: 'auto', right: 20, bottom: 20, left: 'auto', position: 'fixed', zIndex: 1100 }}
-                        onTouchTap={this.props.handleToMatches}>
-                        <ArrowBack />
-                    </FloatingActionButton>
-                        <p style={{ paddingTop: 5, paddingBottom: 5, margin: 0, fontSize: 20, }}>
-                            <span style={{ color: Colors.blue700 }}> Blue 1: {this.props.matchSelected.blue1}</span>,
-                            <span style={{ color: Colors.blue700 }}> Blue 2: {this.props.matchSelected.blue2} </span>
-                        </p><br/>
+                        <FloatingActionButton secondary={true} mini={true} style={{ margin: 0, top: 'auto', right: 20, bottom: 20, left: 'auto', position: 'fixed', zIndex: 1100 }}
+                            onTouchTap={this.props.handleToMatches}>
+                            <ArrowBack />
+                        </FloatingActionButton>
                         <StaticVelVortexForm matchSelected={this.props.matchSelected}/><br/>
                         <div style={{ display: 'flex' }}>
                             <RaisedButton label="Modify your entry" secondary={true} disabled={false} onTouchTap={this.handleModifyOwnScoutingEntry}
-                            style={{marginLeft: ((screen.width*0.5)-100)}}/>
+                                style={{ marginLeft: ((screen.width * 0.5) - 100) }}/>
                         </div>
                         <br/><br/><br/><br/>
                     </div>
@@ -133,20 +125,16 @@ var MatchDetails = React.createClass({
             if (this.props.matchSelected.allianceColor == "Red") {
                 return (
                     <div>
-                    <FloatingActionButton secondary={true} mini={true} style={{ margin: 0, top: 'auto', right: 20, bottom: 20, left: 'auto', position: 'fixed', zIndex: 1100 }}
-                        onTouchTap={this.props.handleToMatches}>
-                        <ArrowBack />
-                    </FloatingActionButton>
-                        <p style={{ paddingTop: 5, paddingBottom: 5, margin: 0, fontSize: 20, }}>
-                            <span style={{ color: Colors.red700 }}> Red 1: {this.props.matchSelected.red1}</span>,
-                            <span style={{ color: Colors.red700 }}> Red 2: {this.props.matchSelected.red2}</span>
-                        </p><br/>
+                        <FloatingActionButton secondary={true} mini={true} style={{ margin: 0, top: 'auto', right: 20, bottom: 20, left: 'auto', position: 'fixed', zIndex: 1100 }}
+                            onTouchTap={this.props.handleToMatches}>
+                            <ArrowBack />
+                        </FloatingActionButton>
                         <StaticVelVortexForm matchSelected={this.props.matchSelected}/><br/>
                         <div style={{ display: 'flex' }}>
-                            <RaisedButton label="Add an Entry" primary={true} disabled={false} onTouchTap={this.handleAddScoutingEntry} 
-                                style={{ marginRight: 15, marginLeft: ((screen.width*0.5)-155)}}/>
+                            <RaisedButton label="Add an Entry" primary={true} disabled={false} onTouchTap={this.handleAddScoutingEntry}
+                                style={{ marginRight: 15, marginLeft: ((screen.width * 0.5) - 155) }}/>
                             <RaisedButton label="Modify Entry" secondary={true} disabled={false} onTouchTap={this.handleModifyScoutingEntry}/>
-                        </div> 
+                        </div>
                         <br/><br/><br/><br/>
                     </div>
                 );
@@ -154,18 +142,14 @@ var MatchDetails = React.createClass({
             else {
                 return (
                     <div>
-                    <FloatingActionButton secondary={true} mini={true} style={{ margin: 0, top: 'auto', right: 20, bottom: 20, left: 'auto', position: 'fixed', zIndex: 1100 }}
-                        onTouchTap={this.props.handleToMatches}>
-                        <ArrowBack />
-                    </FloatingActionButton>
-                        <p style={{ paddingTop: 5, paddingBottom: 5, margin: 0, fontSize: 20, }}>
-                            <span style={{ color: Colors.blue700 }}> Blue 1: {this.props.matchSelected.blue1}</span>,
-                            <span style={{ color: Colors.blue700 }}> Blue 2: {this.props.matchSelected.blue2} </span>
-                        </p><br/>
+                        <FloatingActionButton secondary={true} mini={true} style={{ margin: 0, top: 'auto', right: 20, bottom: 20, left: 'auto', position: 'fixed', zIndex: 1100 }}
+                            onTouchTap={this.props.handleToMatches}>
+                            <ArrowBack />
+                        </FloatingActionButton>
                         <StaticVelVortexForm matchSelected={this.props.matchSelected}/><br/>
                         <div style={{ display: 'flex' }}>
-                            <RaisedButton label="Add an Entry" primary={true} disabled={false} onTouchTap={this.handleAddScoutingEntry} 
-                                style={{ marginRight: 15, marginLeft: ((screen.width*0.5)-155)}}/>
+                            <RaisedButton label="Add an Entry" primary={true} disabled={false} onTouchTap={this.handleAddScoutingEntry}
+                                style={{ marginRight: 15, marginLeft: ((screen.width * 0.5) - 155) }}/>
                             <RaisedButton label="Modify Entry" secondary={true} disabled={false} onTouchTap={this.handleModifyScoutingEntry}/>
                         </div>
                         <br/><br/><br/><br/>
@@ -177,3 +161,25 @@ var MatchDetails = React.createClass({
     }
 });
 export default MatchDetails;
+
+
+                        // <p style={{ paddingTop: 5, paddingBottom: 5, margin: 0, fontSize: 20, }}>
+                        //     <span style={{ color: Colors.red700 }}> Red 1: {this.props.matchSelected.red1}</span>,
+                        //     <span style={{ color: Colors.red700 }}> Red 2: {this.props.matchSelected.red2}</span>
+                        // </p><br/>
+
+                        // <p style={{ paddingTop: 5, paddingBottom: 5, margin: 0, fontSize: 20, }}>
+                        //     <span style={{ color: Colors.blue700 }}> Blue 1: {this.props.matchSelected.blue1}</span>,
+                        //     <span style={{ color: Colors.blue700 }}> Blue 2: {this.props.matchSelected.blue2} </span>
+                        // </p><br/>
+
+
+                        // <p style={{ paddingTop: 5, paddingBottom: 5, margin: 0, fontSize: 20, }}>
+                        //     <span style={{ color: Colors.red700 }}> Red 1: {this.props.matchSelected.red1}</span>,
+                        //     <span style={{ color: Colors.red700 }}> Red 2: {this.props.matchSelected.red2}</span>
+                        // </p><br/>
+                        
+                        // <p style={{ paddingTop: 5, paddingBottom: 5, margin: 0, fontSize: 20, }}>
+                        //     <span style={{ color: Colors.blue700 }}> Blue 1: {this.props.matchSelected.blue1}</span>,
+                        //     <span style={{ color: Colors.blue700 }}> Blue 2: {this.props.matchSelected.blue2} </span>
+                        // </p><br/>
