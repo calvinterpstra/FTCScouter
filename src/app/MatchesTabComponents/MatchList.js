@@ -31,6 +31,7 @@ var MatchList = React.createClass({
     },
 
     handleChangeIndex: function (value) {
+        this.scrollWindow();
         this.setState({ slideIndex: value, });
     },
 
@@ -131,6 +132,9 @@ var MatchList = React.createClass({
             this.setState({ setupDialogOpen: false });
             this.props.handleNewMatchSubmission();
         }
+    },
+    scrollWindow: function () {
+        window.scrollTo(0, 0);
     },
 
     render() {
@@ -359,57 +363,79 @@ var MatchList = React.createClass({
                 onTouchTap={this.handleSubmitMatch}/>,
             <FlatButton label="Cancel" primary={true} onTouchTap={this.handleClose}/>,
         ];
-        
-        var width = window.innerWidth
-        || document.documentElement.clientWidth
-        || document.body.clientWidth;
 
-        return (
-            <div>
+        var width = window.innerWidth
+            || document.documentElement.clientWidth
+            || document.body.clientWidth;
+
+        if (this.state.slideIndex == 0) {
+            return (
                 <div>
-                    <Tabs onChange={this.handleChangeIndex} value={this.state.slideIndex}
-                        style={{ margin: 0, padding: 0, paddingTop: 58, position: 'fixed', width: width, zIndex: 1100 }}>
-                        <Tab label="Scouted" value={0} />
-                        <Tab label="Unscouted" value={1} />
-                    </Tabs>
-                    <SwipeableViews
-                        index={this.state.slideIndex}
-                        onChangeIndex={this.handleChangeIndex}
-                        >
-                        <div>
-                            <h2 style={{fontSize: 24, fontWeight: 400, paddingTop: 130, margin: 0,}}> {this.props.currentCompetition.name} </h2>
-                            <h2 style={{fontSize: 24, fontWeight: 400, paddingTop: 10, margin: 0,}}> Matches </h2><br/>
-                            <Divider/>
-                            <Subheader> Matches (by match number): </Subheader>
-                            <List>{matchList}</List>
-                            <br/><br/><br/><br/>
-                        </div>
+                    <div>
+                        <Tabs onChange={this.handleChangeIndex} value={this.state.slideIndex}
+                            style={{ margin: 0, padding: 0, paddingTop: 58, position: 'fixed', width: width, zIndex: 1100 }}>
+                            <Tab label="Scouted" value={0} />
+                            <Tab label="Unscouted" value={1} />
+                        </Tabs>
                         <div style={{ padding: 0, margin: 0 }}>
-                            <h2 style={{fontSize: 24, fontWeight: 400, paddingTop: 130, margin: 0,}}> {this.props.currentCompetition.name} </h2>
-                            <h2 style={{fontSize: 24, fontWeight: 400, paddingTop: 10, margin: 0,}}> Matches </h2><br/>
+                        <h2 style={{ fontSize: 24, fontWeight: 400, paddingTop: 130, margin: 0, }}> {this.props.currentCompetition.name} </h2>
+                        <h2 style={{ fontSize: 24, fontWeight: 400, paddingTop: 10, margin: 0, }}> Matches </h2><br/>
+                        <Divider/>
+                        <Subheader> Matches (by match number): </Subheader>
+                        <List>{matchList}</List>
+                        <br/><br/><br/><br/>
+                        </div>
+                    </div>
+
+                    <Dialog title="Unscouted Match" contentStyle={{ width: '100%', maxWidth: 'none', }}
+                        actions={actionsUnscouted} modal={true} open={this.state.unscoutedDialogOpen}/>
+
+                    <Dialog title="Setup" contentStyle={{ height: '100%', width: '100%', maxWidth: 'none', maxHeight: 'none', paddingTop: 0 }}
+                        actions={actionsSetup} modal={true} open={this.state.setupDialogOpen} autoScrollBodyContent={true}>
+                        <Setup handleRed1Ready={this.handleRed1Ready} handleRed1Error={this.handleRed1Error}
+                            handleRed2Ready={this.handleRed2Ready} handleRed2Error={this.handleRed2Error}
+                            handleBlue1Ready={this.handleBlue1Ready} handleBlue1Error={this.handleBlue1Error}
+                            handleBlue2Ready={this.handleBlue2Ready} handleBlue2Error={this.handleBlue2Error}
+                            handleMatchNumberReady={this.handleMatchNumberReady} handleMatchNumberError={this.handleMatchNumberError}
+                            handleCurrentMatchSetupUpdate={this.props.handleCurrentMatchSetupUpdate} currentMatchSetup={this.props.currentMatchSetup} />
+                    </Dialog>
+                </div>
+            );
+        }
+        else {
+            return (
+                <div>
+                    <div>
+                        <Tabs onChange={this.handleChangeIndex} value={this.state.slideIndex}
+                            style={{ margin: 0, padding: 0, paddingTop: 58, position: 'fixed', width: width, zIndex: 1100 }}>
+                            <Tab label="Scouted" value={0} />
+                            <Tab label="Unscouted" value={1} />
+                        </Tabs>
+                        <div style={{ padding: 0, margin: 0 }}>
+                            <h2 style={{ fontSize: 24, fontWeight: 400, paddingTop: 130, margin: 0, }}> {this.props.currentCompetition.name} </h2>
+                            <h2 style={{ fontSize: 24, fontWeight: 400, paddingTop: 10, margin: 0, }}> Matches </h2><br/>
                             <Divider/>
                             <Subheader> Unscouted Matches (by match number): </Subheader>
                             <List>{unscoutedMatchList}</List>
                             <br/><br/><br/><br/>
                         </div>
-                    </SwipeableViews>
+                    </div>
+
+                    <Dialog title="Unscouted Match" contentStyle={{ width: '100%', maxWidth: 'none', }}
+                        actions={actionsUnscouted} modal={true} open={this.state.unscoutedDialogOpen}/>
+
+                    <Dialog title="Setup" contentStyle={{ height: '100%', width: '100%', maxWidth: 'none', maxHeight: 'none', paddingTop: 0 }}
+                        actions={actionsSetup} modal={true} open={this.state.setupDialogOpen} autoScrollBodyContent={true}>
+                        <Setup handleRed1Ready={this.handleRed1Ready} handleRed1Error={this.handleRed1Error}
+                            handleRed2Ready={this.handleRed2Ready} handleRed2Error={this.handleRed2Error}
+                            handleBlue1Ready={this.handleBlue1Ready} handleBlue1Error={this.handleBlue1Error}
+                            handleBlue2Ready={this.handleBlue2Ready} handleBlue2Error={this.handleBlue2Error}
+                            handleMatchNumberReady={this.handleMatchNumberReady} handleMatchNumberError={this.handleMatchNumberError}
+                            handleCurrentMatchSetupUpdate={this.props.handleCurrentMatchSetupUpdate} currentMatchSetup={this.props.currentMatchSetup} />
+                    </Dialog>
                 </div>
-
-                <Dialog title="Unscouted Match" contentStyle={{ width: '100%', maxWidth: 'none', }}
-                    actions={actionsUnscouted} modal={true} open={this.state.unscoutedDialogOpen}/>
-
-                <Dialog title="Setup" contentStyle={{ height: '100%', width: '100%', maxWidth: 'none', maxHeight: 'none', paddingTop: 0 }}
-                    actions={actionsSetup} modal={true} open={this.state.setupDialogOpen} autoScrollBodyContent={true}>
-                    <Setup handleRed1Ready={this.handleRed1Ready} handleRed1Error={this.handleRed1Error}
-                        handleRed2Ready={this.handleRed2Ready} handleRed2Error={this.handleRed2Error}
-                        handleBlue1Ready={this.handleBlue1Ready} handleBlue1Error={this.handleBlue1Error}
-                        handleBlue2Ready={this.handleBlue2Ready} handleBlue2Error={this.handleBlue2Error}
-                        handleMatchNumberReady={this.handleMatchNumberReady} handleMatchNumberError={this.handleMatchNumberError}
-                        handleCurrentMatchSetupUpdate={this.props.handleCurrentMatchSetupUpdate} currentMatchSetup={this.props.currentMatchSetup} />
-                </Dialog>
-
-            </div>
-        );
+            );
+        }
     }
 });
 export default MatchList;

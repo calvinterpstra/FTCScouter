@@ -49,9 +49,9 @@ var StaticResQForm = React.createClass({
                 <div>
                     <Tabs onChange={this.handleChangeIndex} value={this.state.slideIndex}
                         style={{ marginRight: -20, marginLeft: -20, padding: 0, paddingTop: 58, position: 'fixed', width: width, zIndex: 1100 }}>
-                        <Tab label="Autonomous" value={0}/>
-                        <Tab label="Teleop" value={1}/>
-                        <Tab label={"Score: " + totalScore} value={2}/>
+                        <Tab style={{ backgroundColor: color }} label="Autonomous" value={0}/>
+                        <Tab style={{ backgroundColor: color }} label="Teleop" value={1}/>
+                        <Tab style={{ backgroundColor: color }} label={"Score: " + totalScore} value={2}/>
                     </Tabs>
                     <div style={{ padding: 0, margin: 0, paddingTop: 130  }}>
                         <Autonomous scores = {this.props.matchSelected.scores} team1={team1} team2={team2}/>
@@ -64,9 +64,9 @@ var StaticResQForm = React.createClass({
                 <div>
                     <Tabs onChange={this.handleChangeIndex} value={this.state.slideIndex}
                         style={{ marginRight: -20, marginLeft: -20, padding: 0, paddingTop: 58, position: 'fixed', width: width, zIndex: 1100 }}>
-                        <Tab label="Autonomous" value={0}/>
-                        <Tab label="Teleop" value={1}/>
-                        <Tab label={"Score: " + totalScore} value={2}/>
+                        <Tab style={{ backgroundColor: color }} label="Autonomous" value={0}/>
+                        <Tab style={{ backgroundColor: color }} label="Teleop" value={1}/>
+                        <Tab style={{ backgroundColor: color }} label={"Score: " + totalScore} value={2}/>
                     </Tabs>
                     <div style={{ padding: 0, margin: 0, paddingTop: 130  }}>
                         <Teleop scores = {this.props.matchSelected.scores} team1={team1} team2={team2}/>
@@ -81,9 +81,9 @@ var StaticResQForm = React.createClass({
                 <div>
                     <Tabs onChange={this.handleChangeIndex} value={this.state.slideIndex}
                         style={{ marginRight: -20, marginLeft: -20, padding: 0, paddingTop: 58, position: 'fixed', width: width, zIndex: 1100 }}>
-                        <Tab label="Autonomous" value={0}/>
-                        <Tab label="Teleop" value={1}/>
-                        <Tab label={"Score: " + totalScore} value={2}/>
+                        <Tab style={{ backgroundColor: color }} label="Autonomous" value={0}/>
+                        <Tab style={{ backgroundColor: color }} label="Teleop" value={1}/>
+                        <Tab style={{ backgroundColor: color }} label={"Score: " + totalScore} value={2}/>
                     </Tabs>
                     <div style={{ padding: 0, margin: 0, paddingTop: 130  }}>
                         <LocalScoreLabel scores = {this.props.matchSelected.scores} team1={team1} team2={team2}/>

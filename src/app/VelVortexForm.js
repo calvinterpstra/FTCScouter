@@ -196,9 +196,9 @@ var VelVortexForm = React.createClass({
                 <div>
                     <Tabs onChange={this.handleChangeIndex} value={this.state.slideIndex}
                         style={{ marginRight: -20, marginLeft: -20, padding: 0, paddingTop: 58, position: 'fixed', width: width, zIndex: 1100 }}>
-                        <Tab label="Autonomous" value={0}/>
-                        <Tab label="Teleop" value={1}/>
-                        <Tab label={"Score: " + totalScore} value={2}/>
+                        <Tab style={{ backgroundColor: color }} label="Autonomous" value={0}/>
+                        <Tab style={{ backgroundColor: color }} label="Teleop" value={1}/>
+                        <Tab style={{ backgroundColor: color }} label={"Score: " + totalScore} value={2}/>
                     </Tabs>
                     <div style={{ padding: 0, margin: 0, paddingTop: 130 }}>
                         <Autonomous scores = {this.props.currentPartialMatch.scores} handleScoreChange = {this.handleScoreChange}
@@ -212,9 +212,9 @@ var VelVortexForm = React.createClass({
                 <div>
                     <Tabs onChange={this.handleChangeIndex} value={this.state.slideIndex}
                         style={{ marginRight: -20, marginLeft: -20, padding: 0, paddingTop: 58, position: 'fixed', width: width, zIndex: 1100 }}>
-                        <Tab label="Autonomous" value={0}/>
-                        <Tab label="Teleop" value={1}/>
-                        <Tab label={"Score: " + totalScore} value={2}/>
+                        <Tab style={{ backgroundColor: color }} label="Autonomous" value={0}/>
+                        <Tab style={{ backgroundColor: color }} label="Teleop" value={1}/>
+                        <Tab style={{ backgroundColor: color }} label={"Score: " + totalScore} value={2}/>
                     </Tabs>
                     <div style={{ padding: 0, margin: 0, paddingTop: 130 }}>
                         <Teleop scores = {this.props.currentPartialMatch.scores} handleScoreChange = {this.handleScoreChange}
@@ -231,9 +231,9 @@ var VelVortexForm = React.createClass({
                 <div>
                     <Tabs onChange={this.handleChangeIndex} value={this.state.slideIndex}
                         style={{ marginRight: -20, marginLeft: -20, padding: 0, paddingTop: 58, position: 'fixed', width: width, zIndex: 1100 }}>
-                        <Tab label="Autonomous" value={0}/>
-                        <Tab label="Teleop" value={1}/>
-                        <Tab label={"Score: " + totalScore} value={2}/>
+                        <Tab style={{ backgroundColor: color }} label="Autonomous" value={0}/>
+                        <Tab style={{ backgroundColor: color }} label="Teleop" value={1}/>
+                        <Tab style={{ backgroundColor: color }} label={"Score: " + totalScore} value={2}/>
                     </Tabs>
                     <div style={{ padding: 0, margin: 0, paddingTop: 130 }}>
                         <ScoreLabel totalScore = {this.props.currentPartialMatch.totalScore} partialScore1={this.props.currentPartialMatch.partialScore1}
@@ -242,39 +242,6 @@ var VelVortexForm = React.createClass({
                 </div>
             );
         }
-
-        return (
-            <div>
-                <div>
-                    <Tabs onChange={this.handleChangeIndex} value={this.state.slideIndex}
-                        style={{ marginRight: -20, marginLeft: -20, padding: 0, paddingTop: 58, position: 'fixed', width: width, zIndex: 1100 }}>
-                        <Tab style={{ backgroundColor: color }} label="Autonomous" value={0} />
-                        <Tab style={{ backgroundColor: color }} label="Teleop" value={1} />
-                        <Tab style={{ backgroundColor: color }} label={"Score: " + this.props.currentPartialMatch.totalScore} value={2} />
-                    </Tabs>
-                    <SwipeableViews
-                        index={this.state.slideIndex}
-                        onChangeIndex={this.handleChangeIndex}
-                        >
-                        <div style={{ padding: 0, margin: 0, paddingTop: 130 }}>
-                            <Autonomous scores = {this.props.currentPartialMatch.scores} handleScoreChange = {this.handleScoreChange}
-                                team1={team1} team2={team2}/>
-                        </div>
-                        <div style={{ padding: 0, margin: 0, paddingTop: 130 }}>
-                            <Teleop scores = {this.props.currentPartialMatch.scores} handleScoreChange = {this.handleScoreChange}
-                                team1={team1} team2={team2}/>
-                            <Divider/><br/>
-                            <Endgame scores = {this.props.currentPartialMatch.scores} handleScoreChange = {this.handleScoreChange}
-                                team1={team1} team2={team2}/>
-                        </div>
-                        <div style={{ padding: 0, margin: 0, paddingTop: 130 }}>
-                            <ScoreLabel totalScore = {this.props.currentPartialMatch.totalScore} partialScore1={this.props.currentPartialMatch.partialScore1}
-                                partialScore2={this.props.currentPartialMatch.partialScore2} team1={team1} team2={team2}/>
-                        </div>
-                    </SwipeableViews>
-                </div>
-            </div>
-        );
     }
 });
 
