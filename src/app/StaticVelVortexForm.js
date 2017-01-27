@@ -17,7 +17,11 @@ var StaticResQForm = React.createClass({
         }
     },
     handleChangeIndex: function (value) {
+        this.scrollWindow();
         this.setState({ slideIndex: value, });
+    },
+    scrollWindow: function () {
+        window.scrollTo(0, 0);
     },
     render() {
         var team1;
@@ -34,39 +38,59 @@ var StaticResQForm = React.createClass({
             color = Colors.blue500;
         }
         var width = window.innerWidth
-        || document.documentElement.clientWidth
-        || document.body.clientWidth;
-        
+            || document.documentElement.clientWidth
+            || document.body.clientWidth;
+
         var scoreCalculator = new ScoreCalculator(this.props.matchSelected.scores);
         const totalScore = scoreCalculator.getTotalScore();
-        return (
-            <div>
+
+        if (this.state.slideIndex == 0) {
+            return (
                 <div>
                     <Tabs onChange={this.handleChangeIndex} value={this.state.slideIndex}
                         style={{ marginRight: -20, marginLeft: -20, padding: 0, paddingTop: 58, position: 'fixed', width: width, zIndex: 1100 }}>
-                        <Tab style={{ backgroundColor: color }} label="Autonomous" value={0} />
-                        <Tab style={{ backgroundColor: color }} label="Teleop" value={1} />
-                        <Tab style={{ backgroundColor: color }} label={"Score: " + totalScore} value={2} />
+                        <Tab label="Autonomous" value={0}/>
+                        <Tab label="Teleop" value={1}/>
+                        <Tab label={"Score: " + totalScore} value={2}/>
                     </Tabs>
-                    <SwipeableViews
-                        index={this.state.slideIndex}
-                        onChangeIndex={this.handleChangeIndex}
-                        >
-                        <div style={{ padding: 0, margin: 0, paddingTop: 130 }}>
-                            <Autonomous scores = {this.props.matchSelected.scores} team1={team1} team2={team2}/>
-                        </div>
-                        <div style={{ padding: 0, margin: 0, paddingTop: 130 }}>
-                            <Teleop scores = {this.props.matchSelected.scores} team1={team1} team2={team2}/>
-                            <Divider/><br/>
-                            <Endgame scores = {this.props.matchSelected.scores} team1={team1} team2={team2}/>
-                        </div>
-                        <div style={{ padding: 0, margin: 0, paddingTop: 130 }}>
-                            <LocalScoreLabel scores = {this.props.matchSelected.scores} team1={team1} team2={team2}/>
-                        </div>
-                    </SwipeableViews>
+                    <div style={{ padding: 0, margin: 0, paddingTop: 130  }}>
+                        <Autonomous scores = {this.props.matchSelected.scores} team1={team1} team2={team2}/>
+                    </div>
                 </div>
-            </div>
-        );
+            );
+        }
+        else if (this.state.slideIndex == 1) {
+            return (
+                <div>
+                    <Tabs onChange={this.handleChangeIndex} value={this.state.slideIndex}
+                        style={{ marginRight: -20, marginLeft: -20, padding: 0, paddingTop: 58, position: 'fixed', width: width, zIndex: 1100 }}>
+                        <Tab label="Autonomous" value={0}/>
+                        <Tab label="Teleop" value={1}/>
+                        <Tab label={"Score: " + totalScore} value={2}/>
+                    </Tabs>
+                    <div style={{ padding: 0, margin: 0, paddingTop: 130  }}>
+                        <Teleop scores = {this.props.matchSelected.scores} team1={team1} team2={team2}/>
+                        <Divider/><br/>
+                        <Endgame scores = {this.props.matchSelected.scores} team1={team1} team2={team2}/>
+                    </div>
+                </div>
+            );
+        }
+        else {
+            return (
+                <div>
+                    <Tabs onChange={this.handleChangeIndex} value={this.state.slideIndex}
+                        style={{ marginRight: -20, marginLeft: -20, padding: 0, paddingTop: 58, position: 'fixed', width: width, zIndex: 1100 }}>
+                        <Tab label="Autonomous" value={0}/>
+                        <Tab label="Teleop" value={1}/>
+                        <Tab label={"Score: " + totalScore} value={2}/>
+                    </Tabs>
+                    <div style={{ padding: 0, margin: 0, paddingTop: 130  }}>
+                        <LocalScoreLabel scores = {this.props.matchSelected.scores} team1={team1} team2={team2}/>
+                    </div>
+                </div>
+            );
+        }
     }
 });
 

@@ -24,6 +24,7 @@ var VelVortexForm = React.createClass({
         }
     },
     handleChangeIndex: function (value) {
+        this.scrollWindow();
         this.setState({ slideIndex: value, });
     },
     handleScoreChange: function (score, scoreType) {
@@ -163,6 +164,9 @@ var VelVortexForm = React.createClass({
         newState.partialScore2 = scoreCalculator.getPartialScore2();
         this.props.handleCurrentPartialMatchUpdate(newState)
     },
+    scrollWindow: function () {
+        window.scrollTo(0, 0);
+    },
     render() {
         var team1;
         var team2;
@@ -181,22 +185,78 @@ var VelVortexForm = React.createClass({
             color = Colors.blue500;
         }
         var width = window.innerWidth
-        || document.documentElement.clientWidth
-        || document.body.clientWidth;
+            || document.documentElement.clientWidth
+            || document.body.clientWidth;
+
+        var scoreCalculator = new ScoreCalculator(this.props.currentPartialMatch.scores);
+        const totalScore = scoreCalculator.getTotalScore();
+
+        if (this.state.slideIndex == 0) {
+            return (
+                <div>
+                    <Tabs onChange={this.handleChangeIndex} value={this.state.slideIndex}
+                        style={{ marginRight: -20, marginLeft: -20, padding: 0, paddingTop: 58, position: 'fixed', width: width, zIndex: 1100 }}>
+                        <Tab label="Autonomous" value={0}/>
+                        <Tab label="Teleop" value={1}/>
+                        <Tab label={"Score: " + totalScore} value={2}/>
+                    </Tabs>
+                    <div style={{ padding: 0, margin: 0, paddingTop: 130 }}>
+                        <Autonomous scores = {this.props.currentPartialMatch.scores} handleScoreChange = {this.handleScoreChange}
+                            team1={team1} team2={team2}/>
+                    </div>
+                </div>
+            );
+        }
+        else if (this.state.slideIndex == 1) {
+            return (
+                <div>
+                    <Tabs onChange={this.handleChangeIndex} value={this.state.slideIndex}
+                        style={{ marginRight: -20, marginLeft: -20, padding: 0, paddingTop: 58, position: 'fixed', width: width, zIndex: 1100 }}>
+                        <Tab label="Autonomous" value={0}/>
+                        <Tab label="Teleop" value={1}/>
+                        <Tab label={"Score: " + totalScore} value={2}/>
+                    </Tabs>
+                    <div style={{ padding: 0, margin: 0, paddingTop: 130 }}>
+                        <Teleop scores = {this.props.currentPartialMatch.scores} handleScoreChange = {this.handleScoreChange}
+                            team1={team1} team2={team2}/>
+                        <Divider/><br/>
+                        <Endgame scores = {this.props.currentPartialMatch.scores} handleScoreChange = {this.handleScoreChange}
+                            team1={team1} team2={team2}/>
+                    </div>
+                </div>
+            );
+        }
+        else {
+            return (
+                <div>
+                    <Tabs onChange={this.handleChangeIndex} value={this.state.slideIndex}
+                        style={{ marginRight: -20, marginLeft: -20, padding: 0, paddingTop: 58, position: 'fixed', width: width, zIndex: 1100 }}>
+                        <Tab label="Autonomous" value={0}/>
+                        <Tab label="Teleop" value={1}/>
+                        <Tab label={"Score: " + totalScore} value={2}/>
+                    </Tabs>
+                    <div style={{ padding: 0, margin: 0, paddingTop: 130 }}>
+                        <ScoreLabel totalScore = {this.props.currentPartialMatch.totalScore} partialScore1={this.props.currentPartialMatch.partialScore1}
+                            partialScore2={this.props.currentPartialMatch.partialScore2} team1={team1} team2={team2}/>
+                    </div>
+                </div>
+            );
+        }
+
         return (
             <div>
                 <div>
-                    <Tabs onChange={this.handleChangeIndex} value={this.state.slideIndex} 
-                        style={{ marginRight: -20, marginLeft: -20, padding: 0, paddingTop: 58, position: 'fixed', width: width, zIndex: 1100}}>
-                        <Tab style={{backgroundColor: color }} label="Autonomous" value={0} />
-                        <Tab style={{backgroundColor: color }} label="Teleop" value={1} />
-                        <Tab style={{backgroundColor: color }} label={"Score: " + this.props.currentPartialMatch.totalScore} value={2} />
+                    <Tabs onChange={this.handleChangeIndex} value={this.state.slideIndex}
+                        style={{ marginRight: -20, marginLeft: -20, padding: 0, paddingTop: 58, position: 'fixed', width: width, zIndex: 1100 }}>
+                        <Tab style={{ backgroundColor: color }} label="Autonomous" value={0} />
+                        <Tab style={{ backgroundColor: color }} label="Teleop" value={1} />
+                        <Tab style={{ backgroundColor: color }} label={"Score: " + this.props.currentPartialMatch.totalScore} value={2} />
                     </Tabs>
                     <SwipeableViews
                         index={this.state.slideIndex}
                         onChangeIndex={this.handleChangeIndex}
                         >
-                        <div style={{ padding: 0, margin: 0, paddingTop: 130}}>
+                        <div style={{ padding: 0, margin: 0, paddingTop: 130 }}>
                             <Autonomous scores = {this.props.currentPartialMatch.scores} handleScoreChange = {this.handleScoreChange}
                                 team1={team1} team2={team2}/>
                         </div>

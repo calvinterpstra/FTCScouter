@@ -5,7 +5,6 @@ import Autonomous from './VelVortexFormComponents/Autonomous';
 import Teleop from './VelVortexFormComponents/Teleop';
 import Endgame from './VelVortexFormComponents/Endgame';
 import {Tabs, Tab} from 'material-ui/Tabs';
-// From https://github.com/oliviertassinari/react-swipeable-views
 import SwipeableViews from 'react-swipeable-views';
 import ScoreCalculator from './ScoreCalculator';
 
@@ -43,6 +42,7 @@ var PracticeVelVortexForm = React.createClass({
         };
     },
     handleChangeIndex: function (value) {
+        this.scrollWindow();
         this.setState({ slideIndex: value, });
     },
     handleScoreChange: function (score, scoreType) {
@@ -149,50 +149,73 @@ var PracticeVelVortexForm = React.createClass({
                 break;
         }
     },
+    scrollWindow: function () {
+        window.scrollTo(0, 0);
+    },
 
     render() {
         var width = window.innerWidth
-        || document.documentElement.clientWidth
-        || document.body.clientWidth;
+            || document.documentElement.clientWidth
+            || document.body.clientWidth;
         var scoreCalculator = new ScoreCalculator(this.state.scores);
         const totalScore = scoreCalculator.getTotalScore();
-        return (
-            <div>
+
+        if (this.state.slideIndex == 0) {
+            return (
                 <div>
-                    <Tabs onChange={this.handleChangeIndex} value={this.state.slideIndex} 
-                        style={{ marginRight: -20, marginLeft: -20, padding: 0, paddingTop: 58, position: 'fixed', width: width, zIndex: 1100}}>
-                        <Tab label="Autonomous" value={0} />
-                        <Tab label="Teleop" value={1} />
-                        <Tab label={"Score: " + totalScore} value={2} />
+                    <Tabs onChange={this.handleChangeIndex} value={this.state.slideIndex}
+                        style={{ marginRight: -20, marginLeft: -20, padding: 0, paddingTop: 58, position: 'fixed', width: width, zIndex: 1100 }}>
+                        <Tab label="Autonomous" value={0}/>
+                        <Tab label="Teleop" value={1}/>
+                        <Tab label={"Score: " + totalScore} value={2}/>
                     </Tabs>
-                    <SwipeableViews
-                        index={this.state.slideIndex}
-                        onChangeIndex={this.handleChangeIndex}
-                        >
-                        <div style={{ padding: 0, margin: 0 }}>
-                            <h2 style={{ fontSize: 24, fontWeight: 400, paddingTop: 130, margin: 0 }}> Practice Form </h2> <br/>
-                            <Divider/><br/>
-                            <Autonomous scores = {this.state.scores} handleScoreChange = {this.handleScoreChange} team1="Team 1" team2="Team 2"/>
-                            <br/><br/><br/><br/>
-                        </div>
-                        <div style={{ padding: 0, margin: 0 }}>
-                            <h2 style={{ fontSize: 24, fontWeight: 400, paddingTop: 130, margin: 0 }}> Practice Form </h2> <br/>
-                            <Divider/><br/>
-                            <Teleop scores = {this.state.scores} handleScoreChange = {this.handleScoreChange} team1="Team 1" team2="Team 2"/>
-                            <Divider/><br/>
-                            <Endgame scores = {this.state.scores} handleScoreChange = {this.handleScoreChange} team1="Team 1" team2="Team 2"/>
-                            <br/><br/><br/><br/>
-                        </div>
-                        <div style={{ padding: 0, margin: 0 }}>
-                            <h2 style={{ fontSize: 24, fontWeight: 400, paddingTop: 130, margin: 0 }}> Practice Form </h2> <br/>
-                            <Divider/><br/>
-                            <LocalScoreLabel scores = {this.state.scores}/>
-                            <br/><br/><br/><br/>
-                        </div>
-                    </SwipeableViews>
+                    <div style={{ padding: 0, margin: 0 }}>
+                        <h2 style={{ fontSize: 24, fontWeight: 400, paddingTop: 130, margin: 0 }}> Practice Form </h2> <br/>
+                        <Divider/><br/>
+                        <Autonomous scores = {this.state.scores} handleScoreChange = {this.handleScoreChange} team1="Team 1" team2="Team 2"/>
+                        <br/><br/><br/><br/>
+                    </div>
                 </div>
-            </div>
-        );
+            );
+        }
+        else if (this.state.slideIndex == 1) {
+            return (
+                <div>
+                    <Tabs onChange={this.handleChangeIndex} value={this.state.slideIndex}
+                        style={{ marginRight: -20, marginLeft: -20, padding: 0, paddingTop: 58, position: 'fixed', width: width, zIndex: 1100 }}>
+                        <Tab label="Autonomous" value={0}/>
+                        <Tab label="Teleop" value={1}/>
+                        <Tab label={"Score: " + totalScore} value={2}/>
+                    </Tabs>
+                    <div style={{ padding: 0, margin: 0 }}>
+                        <h2 style={{ fontSize: 24, fontWeight: 400, paddingTop: 130, margin: 0 }}> Practice Form </h2> <br/>
+                        <Divider/><br/>
+                        <Teleop scores = {this.state.scores} handleScoreChange = {this.handleScoreChange} team1="Team 1" team2="Team 2"/>
+                        <Divider/><br/>
+                        <Endgame scores = {this.state.scores} handleScoreChange = {this.handleScoreChange} team1="Team 1" team2="Team 2"/>
+                        <br/><br/><br/><br/>
+                    </div>
+                </div>
+            );
+        }
+        else {
+            return (
+                <div>
+                    <Tabs onChange={this.handleChangeIndex} value={this.state.slideIndex}
+                        style={{ marginRight: -20, marginLeft: -20, padding: 0, paddingTop: 58, position: 'fixed', width: width, zIndex: 1100 }}>
+                        <Tab label="Autonomous" value={0}/>
+                        <Tab label="Teleop" value={1}/>
+                        <Tab label={"Score: " + totalScore} value={2}/>
+                    </Tabs>
+                    <div style={{ padding: 0, margin: 0 }}>
+                        <h2 style={{ fontSize: 24, fontWeight: 400, paddingTop: 130, margin: 0 }}> Practice Form </h2> <br/>
+                        <Divider/><br/>
+                        <LocalScoreLabel scores = {this.state.scores}/>
+                        <br/><br/><br/><br/>
+                    </div>
+                </div>
+            );
+        }
     }
 });
 
