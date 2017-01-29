@@ -13,8 +13,6 @@ import Divider from 'material-ui/Divider';
 import Subheader from 'material-ui/Subheader';
 import DataCalculator from './../DataCalculator';
 import {Tabs, Tab} from 'material-ui/Tabs';
-// From https://github.com/oliviertassinari/react-swipeable-views
-import SwipeableViews from 'react-swipeable-views';
 
 var MatchList = React.createClass({
     getInitialState: function () {
@@ -151,61 +149,61 @@ var MatchList = React.createClass({
         matches.reverse();
 
         var matchList = matches.map(function (match, i) {
-            var nestedPartialMatches = match.partialMatches.map(function (partialMatch, i) {
-                if (partialMatch.allianceColor == "Red") {
-                    if (partialMatch.totalScore == -1) {
-                        // return <ListItem primaryText={
-                        //     <p style={{ paddingTop: 0, paddingBottom: 0, margin: 0 }}>
-                        //         <span style={{ color: Colors.red700, fontWeight: 300, }}> {match.red1} </span>,
-                        //         <span style={{ color: Colors.red700, fontWeight: 300, }}> {match.red2} </span>
-                        //         <span style={{ color: Colors.grey700, fontSize: 14, fontWeight: 200, }}> --unscouted </span>
-                        //     </p>}
-                        //     key={i} onTouchTap={this.unscoutedListItemSelected.bind(null, partialMatch, match) }/>;
-                    }
-                    else {
-                        return <ListItem primaryText={
-                            <p style={{ paddingTop: 0, paddingBottom: 0, margin: 0 }}>
-                                <span style={{ color: Colors.red700, fontWeight: 300, }}> {match.red1} </span>,
-                                <span style={{ color: Colors.red700, fontWeight: 300, }}> {match.red2} </span>:
-                                <span style={{ color: Colors.darkBlack }}> {partialMatch.totalScore} </span>
-                            </p>}
-                            secondaryTextLines={2}
-                            secondaryText={<p>
-                                <span style={{ color: Colors.green700 }}> {partialMatch.user} </span><br/>
-                                <span style={{ color: Colors.grey600 }}> {this.props.displayTime(partialMatch.time) } </span>
-                            </p>}
-                            key={i} onTouchTap={this.scoutedListItemSelected.bind(null, partialMatch, match) }
-                            style={{ paddingTop: 0, paddingBottom: 0, margin: 0, marginBottom: -20 }}/>;
-                    }
-                }
-                else {
-                    if (partialMatch.totalScore == -1) {
-                        // return <ListItem primaryText={
-                        //     <p style={{ paddingTop: 0, paddingBottom: 0, margin: 0 }}>
-                        //         <span style={{ color: Colors.blue700, fontWeight: 300, }}> {match.blue1} </span>,
-                        //         <span style={{ color: Colors.blue700, fontWeight: 300, }}> {match.blue2} </span>
-                        //         <span style={{ color: Colors.grey700, fontSize: 14, fontWeight: 200, }}> --unscouted </span>
-                        //     </p>}
-                        //     key={i} onTouchTap={this.unscoutedListItemSelected.bind(null, partialMatch, match) }/>;
-                    }
-                    else {
-                        return <ListItem primaryText={
-                            <p style={{ paddingTop: 0, paddingBottom: 0, margin: 0 }}>
-                                <span style={{ color: Colors.blue700, fontWeight: 300, }}> {match.blue1} </span>,
-                                <span style={{ color: Colors.blue700, fontWeight: 300, }}> {match.blue2} </span>:
-                                <span style={{ color: Colors.darkBlack }}> {partialMatch.totalScore} </span>
-                            </p>}
-                            secondaryTextLines={2}
-                            secondaryText={<p>
-                                <span style={{ color: Colors.green700 }}> {partialMatch.user} </span><br/>
-                                <span style={{ color: Colors.grey600 }}> {this.props.displayTime(partialMatch.time) } </span>
-                            </p>}
-                            key={i} onTouchTap={this.scoutedListItemSelected.bind(null, partialMatch, match) }
-                            style={{ paddingTop: 0, paddingBottom: 0, margin: 0, marginBottom: -20 }}/>;
-                    }
-                }
-            }, this);
             if (this.props.currentCompetition.name == match.competition) {
+                var nestedPartialMatches = match.partialMatches.map(function (partialMatch, i) {
+                    if (partialMatch.allianceColor == "Red") {
+                        if (partialMatch.totalScore == -1) {
+                            // return <ListItem primaryText={
+                            //     <p style={{ paddingTop: 0, paddingBottom: 0, margin: 0 }}>
+                            //         <span style={{ color: Colors.red700, fontWeight: 300, }}> {match.red1} </span>,
+                            //         <span style={{ color: Colors.red700, fontWeight: 300, }}> {match.red2} </span>
+                            //         <span style={{ color: Colors.grey700, fontSize: 14, fontWeight: 200, }}> --unscouted </span>
+                            //     </p>}
+                            //     key={i} onTouchTap={this.unscoutedListItemSelected.bind(null, partialMatch, match) }/>;
+                        }
+                        else {
+                            return <ListItem primaryText={
+                                <p style={{ paddingTop: 0, paddingBottom: 0, margin: 0 }}>
+                                    <span style={{ color: Colors.red700, fontWeight: 300, }}> {match.red1} </span>,
+                                    <span style={{ color: Colors.red700, fontWeight: 300, }}> {match.red2} </span>:
+                                    <span style={{ color: Colors.darkBlack }}> {partialMatch.totalScore} </span>
+                                </p>}
+                                secondaryTextLines={2}
+                                secondaryText={<p>
+                                    <span style={{ color: Colors.green700 }}> {partialMatch.user} </span><br/>
+                                    <span style={{ color: Colors.grey600 }}> {this.props.displayTime(partialMatch.time) } </span>
+                                </p>}
+                                key={i} onTouchTap={this.scoutedListItemSelected.bind(null, partialMatch, match) }
+                                style={{ paddingTop: 0, paddingBottom: 0, margin: 0, marginBottom: -20 }}/>;
+                        }
+                    }
+                    else {
+                        if (partialMatch.totalScore == -1) {
+                            // return <ListItem primaryText={
+                            //     <p style={{ paddingTop: 0, paddingBottom: 0, margin: 0 }}>
+                            //         <span style={{ color: Colors.blue700, fontWeight: 300, }}> {match.blue1} </span>,
+                            //         <span style={{ color: Colors.blue700, fontWeight: 300, }}> {match.blue2} </span>
+                            //         <span style={{ color: Colors.grey700, fontSize: 14, fontWeight: 200, }}> --unscouted </span>
+                            //     </p>}
+                            //     key={i} onTouchTap={this.unscoutedListItemSelected.bind(null, partialMatch, match) }/>;
+                        }
+                        else {
+                            return <ListItem primaryText={
+                                <p style={{ paddingTop: 0, paddingBottom: 0, margin: 0 }}>
+                                    <span style={{ color: Colors.blue700, fontWeight: 300, }}> {match.blue1} </span>,
+                                    <span style={{ color: Colors.blue700, fontWeight: 300, }}> {match.blue2} </span>:
+                                    <span style={{ color: Colors.darkBlack }}> {partialMatch.totalScore} </span>
+                                </p>}
+                                secondaryTextLines={2}
+                                secondaryText={<p>
+                                    <span style={{ color: Colors.green700 }}> {partialMatch.user} </span><br/>
+                                    <span style={{ color: Colors.grey600 }}> {this.props.displayTime(partialMatch.time) } </span>
+                                </p>}
+                                key={i} onTouchTap={this.scoutedListItemSelected.bind(null, partialMatch, match) }
+                                style={{ paddingTop: 0, paddingBottom: 0, margin: 0, marginBottom: -20 }}/>;
+                        }
+                    }
+                }, this);
                 if (this.props.containsUnscouted(match)) {
                     // return <ListItem primaryText={
                     //     <p style={{ paddingTop: 0, paddingBottom: 0, margin: 0 }}>
@@ -378,12 +376,12 @@ var MatchList = React.createClass({
                             <Tab label="Unscouted" value={1} />
                         </Tabs>
                         <div style={{ padding: 0, margin: 0 }}>
-                        <h2 style={{ fontSize: 24, fontWeight: 400, paddingTop: 130, margin: 0, }}> {this.props.currentCompetition.name} </h2>
-                        <h2 style={{ fontSize: 24, fontWeight: 400, paddingTop: 10, margin: 0, }}> Matches </h2><br/>
-                        <Divider/>
-                        <Subheader> Matches (by match number): </Subheader>
-                        <List>{matchList}</List>
-                        <br/><br/><br/><br/>
+                            <h2 style={{ fontSize: 24, fontWeight: 400, paddingTop: 130, margin: 0, }}> {this.props.currentCompetition.name} </h2>
+                            <h2 style={{ fontSize: 24, fontWeight: 400, paddingTop: 10, margin: 0, }}> Matches </h2><br/>
+                            <Divider/>
+                            <Subheader> Matches (by match number): </Subheader>
+                            <List>{matchList}</List>
+                            <br/><br/><br/><br/>
                         </div>
                     </div>
 
