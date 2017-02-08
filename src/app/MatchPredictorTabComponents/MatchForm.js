@@ -187,10 +187,10 @@ var MatchForm = React.createClass({
         var blue1DataCalculator = new DataCalculator(blue1Matches);
         var blue2DataCalculator = new DataCalculator(blue2Matches);
 
-        const red1Score = red1DataCalculator.getAverageSubPartialMatchForTeam(this.state.red1);
-        const red2Score = red1DataCalculator.getAverageSubPartialMatchForTeam(this.state.red2);
-        const blue1Score = blue1DataCalculator.getAverageSubPartialMatchForTeam(this.state.blue1);
-        const blue2Score = blue1DataCalculator.getAverageSubPartialMatchForTeam(this.state.blue2);
+        const red1Score = red1DataCalculator.getAveragePartialMatchForTeam(this.state.red1);
+        const red2Score = red1DataCalculator.getAveragePartialMatchForTeam(this.state.red2);
+        const blue1Score = blue1DataCalculator.getAveragePartialMatchForTeam(this.state.blue1);
+        const blue2Score = blue1DataCalculator.getAveragePartialMatchForTeam(this.state.blue2);
 
         var newState = this.state;
         newState.redScore = red1DataCalculator.combineSubScores(red1Score, red2Score);

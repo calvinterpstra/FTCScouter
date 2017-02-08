@@ -4,22 +4,6 @@ class DataCalculator {
     constructor(matches) {
         this.matches = matches;
     }
-    getRealMatchScoreForAllianceOld(match, allianceColor) {
-        var scores = [];
-        match.partialMatches.map(function (partialMatch, i) {
-            if (partialMatch.allianceColor == allianceColor) {
-                scores.push(partialMatch.totalScore);
-            }
-        }, this);
-
-        var sum = 0;
-        scores.map(function (score, i) {
-            sum += score
-        }, this);
-        const average = sum / scores.length;
-
-        return average;
-    }
     getRealMatchScoreForAlliance(match, allianceColor) {
         var allianceMatches = [];
         match.partialMatches.map(function (partialMatch, i) {
@@ -278,30 +262,30 @@ class DataCalculator {
         }
         return team1 + ", " + team2 + " at " + comp;
     }
-    getMatchPartialScoreForTeam(match, allianceColor, team) {
-        var scores = [];
-        match.partialMatches.map(function (partialMatch, i) {
-            if (partialMatch.allianceColor == allianceColor) {
-                if (partialMatch.totalScore == -1) {
-                    scores.push(-1);
-                }
-                else if (team == "1") {
-                    scores.push(partialMatch.partialScore1);
-                }
-                else {
-                    scores.push(partialMatch.partialScore2);
-                }
-            }
-        }, this);
+    // getMatchPartialScoreForTeam(match, allianceColor, team) {
+    //     var scores = [];
+    //     match.partialMatches.map(function (partialMatch, i) {
+    //         if (partialMatch.allianceColor == allianceColor) {
+    //             if (partialMatch.totalScore == -1) {
+    //                 //scores.push(-1);
+    //             }
+    //             else if (team == "1") {
+    //                 scores.push(partialMatch.partialScore1);
+    //             }
+    //             else {
+    //                 scores.push(partialMatch.partialScore2);
+    //             }
+    //         }
+    //     }, this);
 
-        var sum = 0;
-        scores.map(function (score, i) {
-            sum += score
-        }, this);
-        const average = sum / scores.length;
+    //     var sum = 0;
+    //     scores.map(function (score, i) {
+    //         sum += score
+    //     }, this);
+    //     const average = sum / scores.length;
 
-        return average;
-    }
+    //     return average;
+    // }
     getRealPartialMatchScoreForTeam(match, allianceColor, team) {
         var allianceMatches = [];
         match.partialMatches.map(function (partialMatch, i) {
@@ -368,19 +352,19 @@ class DataCalculator {
         const matches = this.matches;
         var scores = [];
         matches.map(function (match, i) {
-            const matchScoreR1 = this.getMatchPartialScoreForTeam(match, "Red", "1");
+            const matchScoreR1 = this.getRealPartialMatchScoreForTeam(match, "Red", "1");
             if (matchScoreR1 != -1 && matchScoreR1 != null) {
                 scores.push(matchScoreR1);
             }
-            const matchScoreR2 = this.getMatchPartialScoreForTeam(match, "Red", "2");
+            const matchScoreR2 = this.getRealPartialMatchScoreForTeam(match, "Red", "2");
             if (matchScoreR2 != -1 && matchScoreR2 != null) {
                 scores.push(matchScoreR2);
             }
-            const matchScoreB1 = this.getMatchPartialScoreForTeam(match, "Blue", "1");
+            const matchScoreB1 = this.getRealPartialMatchScoreForTeam(match, "Blue", "1");
             if (matchScoreB1 != -1 && matchScoreB1 != null) {
                 scores.push(matchScoreB1);
             }
-            const matchScoreB2 = this.getMatchPartialScoreForTeam(match, "Blue", "2");
+            const matchScoreB2 = this.getRealPartialMatchScoreForTeam(match, "Blue", "2");
             if (matchScoreB2 != -1 && matchScoreB2 != null) {
                 scores.push(matchScoreB2);
             }
@@ -404,7 +388,7 @@ class DataCalculator {
         var team = "none";
         var comp = "none";
         matches.map(function (match, i) {
-            const matchScoreR1 = this.getMatchPartialScoreForTeam(match, "Red", "1");
+            const matchScoreR1 = this.getRealPartialMatchScoreForTeam(match, "Red", "1");
             if (matchScoreR1 != -1 && matchScoreR1 != null) {
                 if (matchScoreR1 > score) {
                     score = matchScoreR1;
@@ -412,7 +396,7 @@ class DataCalculator {
                     comp = match.competition;
                 }
             }
-            const matchScoreR2 = this.getMatchPartialScoreForTeam(match, "Red", "2");
+            const matchScoreR2 = this.getRealPartialMatchScoreForTeam(match, "Red", "2");
             if (matchScoreR2 != -1 && matchScoreR2 != null) {
                 if (matchScoreR2 > score) {
                     score = matchScoreR2;
@@ -420,7 +404,7 @@ class DataCalculator {
                     comp = match.competition;
                 }
             }
-            const matchScoreB1 = this.getMatchPartialScoreForTeam(match, "Blue", "1");
+            const matchScoreB1 = this.getRealPartialMatchScoreForTeam(match, "Blue", "1");
             if (matchScoreB1 != -1 && matchScoreB1 != null) {
                 if (matchScoreB1 > score) {
                     score = matchScoreB1;
@@ -428,7 +412,7 @@ class DataCalculator {
                     comp = match.competition;
                 }
             }
-            const matchScoreB2 = this.getMatchPartialScoreForTeam(match, "Blue", "2");
+            const matchScoreB2 = this.getRealPartialMatchScoreForTeam(match, "Blue", "2");
             if (matchScoreB2 != -1 && matchScoreB2 != null) {
                 if (matchScoreB2 > score) {
                     score = matchScoreB2;
@@ -448,25 +432,25 @@ class DataCalculator {
         const matches = this.matches;
         var score = -1;
         matches.map(function (match, i) {
-            const matchScoreR1 = this.getMatchPartialScoreForTeam(match, "Red", "1");
+            const matchScoreR1 = this.getRealPartialMatchScoreForTeam(match, "Red", "1");
             if (matchScoreR1 != -1 && matchScoreR1 != null) {
                 if (matchScoreR1 > score) {
                     score = matchScoreR1;
                 }
             }
-            const matchScoreR2 = this.getMatchPartialScoreForTeam(match, "Red", "2");
+            const matchScoreR2 = this.getRealPartialMatchScoreForTeam(match, "Red", "2");
             if (matchScoreR2 != -1 && matchScoreR2 != null) {
                 if (matchScoreR2 > score) {
                     score = matchScoreR2;
                 }
             }
-            const matchScoreB1 = this.getMatchPartialScoreForTeam(match, "Blue", "1");
+            const matchScoreB1 = this.getRealPartialMatchScoreForTeam(match, "Blue", "1");
             if (matchScoreB1 != -1 && matchScoreB1 != null) {
                 if (matchScoreB1 > score) {
                     score = matchScoreB1;
                 }
             }
-            const matchScoreB2 = this.getMatchPartialScoreForTeam(match, "Blue", "2");
+            const matchScoreB2 = this.getRealPartialMatchScoreForTeam(match, "Blue", "2");
             if (matchScoreB2 != -1 && matchScoreB2 != null) {
                 if (matchScoreB2 > score) {
                     score = matchScoreB2;
@@ -513,9 +497,6 @@ class DataCalculator {
 
         return wins;
     }
-    // getMergedScoreForTeam(teamNumber) {
-
-    // }
     getTotalLossesForTeam(teamNumber) {
         const matches = this.matches;
         var noData = true;
@@ -615,13 +596,15 @@ class DataCalculator {
             ).pop();
         }
 
-        mergedScores.autonButtonsScore = mode(autonButtonsScores);
+        const avg = arr => arr.reduce( ( p, c ) => p + c, 0 ) / arr.length;
+
+        mergedScores.autonButtonsScore = Math.round(avg(autonButtonsScores)/30)*30;
         mergedScores.autonParkingScore = mode(autonParkingScores);
-        mergedScores.autonCenterVortexScore = mode(autonCenterVortexScores);
-        mergedScores.autonCornerVortexScore = mode(autonCornerVortexScores);
+        mergedScores.autonCenterVortexScore = Math.round(avg(autonCenterVortexScores)/15)*15 //mode(autonCenterVortexScores);
+        mergedScores.autonCornerVortexScore = Math.round(avg(autonCornerVortexScores)/5)*5 //mode(autonCornerVortexScores);
         mergedScores.autonCapBallScore = mode(autonCapBallScores);
-        mergedScores.centerVortexScore = mode(centerVortexScores);
-        mergedScores.cornerVortexScore = mode(cornerVortexScores);
+        mergedScores.centerVortexScore = Math.round(avg(centerVortexScores)/5)*5 //mode(centerVortexScores);
+        mergedScores.cornerVortexScore = Math.round(avg(cornerVortexScores)/1)*1 //mode(cornerVortexScores);
         mergedScores.capBallScore = mode(capBallScores);
         mergedScores.teleopButtonAllianceNearScore = mode(teleopButtonAllianceNearScores);
         mergedScores.teleopButtonAllianceFarScore = mode(teleopButtonAllianceFarScores);
@@ -630,7 +613,7 @@ class DataCalculator {
 
         return mergedScores;
     }
-    getRealSubPartialMatchForTeam(match, allianceColor, team) {
+    getRealPartialMatchForTeam(match, allianceColor, team) {
         var allianceMatches = [];
         match.partialMatches.map(function (partialMatch, i) {
             if (partialMatch.allianceColor == allianceColor) {
@@ -679,30 +662,30 @@ class DataCalculator {
             return mergedPartialMatchScores;
         }
     }
-    getAverageSubPartialMatchForTeam(teamNumber) {
+    getAveragePartialMatchForTeam(teamNumber) {
         const matches = this.matches;
         var scores = [];
         matches.map(function (match, i) {
             if (match.red1 == teamNumber) {
-                const matchScores = this.getRealSubPartialMatchForTeam(match, "Red", "1");
+                const matchScores = this.getRealPartialMatchForTeam(match, "Red", "1");
                 if (matchScores != -1 && matchScores != null) {
                     scores.push(matchScores);
                 }
             }
             else if (match.red2 == teamNumber) {
-                const matchScores = this.getRealSubPartialMatchForTeam(match, "Red", "2");
+                const matchScores = this.getRealPartialMatchForTeam(match, "Red", "2");
                 if (matchScores != -1 && matchScores != null) {
                     scores.push(matchScores);
                 }
             }
             else if (match.blue1 == teamNumber) {
-                const matchScores = this.getRealSubPartialMatchForTeam(match, "Blue", "1");
+                const matchScores = this.getRealPartialMatchForTeam(match, "Blue", "1");
                 if (matchScores != -1 && matchScores != null) {
                     scores.push(matchScores);
                 }
             }
             else if (match.blue2 == teamNumber) {
-                const matchScores = this.getRealSubPartialMatchForTeam(match, "Blue", "2");
+                const matchScores = this.getRealPartialMatchForTeam(match, "Blue", "2");
                 if (matchScores != -1 && matchScores != null) {
                     scores.push(matchScores);
                 }
@@ -751,6 +734,7 @@ class DataCalculator {
 
         }
     }
+    
 }
 
 export default DataCalculator;
