@@ -1769,7 +1769,9 @@ var Main = React.createClass({
   },
   handleCompetitionChangeByName: function (competitionName) {
     var newState = this.state;
-    newState.currentCompetition.name = competitionName;
+    newState.currentCompetition = {
+      name: competitionName
+    };
     this.setState(newState);
   },
   setCompetitions: function (competitions) {
@@ -2046,7 +2048,14 @@ var Main = React.createClass({
               <CompetitionTab selectCompetitionOpen={this.state.selectCompetitionOpen} handleCloseSelectCompetition={this.handleCloseSelectCompetition}
                 handleCompetitionChange={this.handleCompetitionChange} competitions={this.state.competitions} currentTab={this.state.currentTab}
                 handleCompetitionChangeByName={this.handleCompetitionChangeByName} addCompetitionByName={this.addCompetitionByName}
-                handleOpenSelectCompetition={this.handleOpenSelectCompetition} currentCompetition={this.state.currentCompetition}/>
+                handleOpenSelectCompetition={this.handleOpenSelectCompetition} currentCompetition={this.state.currentCompetition} 
+                
+                matches={this.state.matches} containsUnscouted={this.containsUnscouted} getTime={this.getTime} displayTime={this.displayTime}
+                
+                signedIn={this.state.signedIn} sendMessage={this.sendMessage} user={this.state.user}
+                
+                currentMatchSetup={this.state.currentMatchSetup} handleCurrentMatchSetupUpdate={this.handleCurrentMatchSetupUpdate} addMatch={this.addMatch}
+                handleToMatches={this.handleToMatches}/>
 
             </div>
           </MuiThemeProvider>

@@ -4,7 +4,7 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import MatchDetails from './MatchDetails';
-import Setup from './Setup';
+//import Setup from './Setup';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import ActionAutorenew from 'material-ui/svg-icons/action/autorenew';
@@ -19,7 +19,7 @@ var MatchList = React.createClass({
         return {
             slideIndex: 0,
             unscoutedDialogOpen: false,
-            setupDialogOpen: false,
+            // setupDialogOpen: false,
             matchNumberError: true,
             red1Error: true,
             red2Error: true,
@@ -96,17 +96,17 @@ var MatchList = React.createClass({
         newMatchSelected.competition = partialMatch.competition;
         this.props.handleMatchSelectedChange(newMatchSelected);
     },
-    handleSetup: function () {
-        if (!this.props.signedIn) {
-            this.props.sendMessage("Can not scout without signing in")
-            this.setState({ setupDialogOpen: false });
-        }
-        else {
-            this.setState({ setupDialogOpen: true });
-        }
-    },
+    // handleSetup: function () {
+    //     if (!this.props.signedIn) {
+    //         this.props.sendMessage("Can not add matches without signing in")
+    //         this.setState({ setupDialogOpen: false });
+    //     }
+    //     else {
+    //         this.setState({ setupDialogOpen: true });
+    //     }
+    // },
     handleClose: function () {
-        this.setState({ setupDialogOpen: false });
+        // this.setState({ setupDialogOpen: false });
         this.setState({ unscoutedDialogOpen: false });
         this.props.handleCancelUnscouted();
     },
@@ -121,16 +121,16 @@ var MatchList = React.createClass({
             this.props.handleToScoutUnscouted();
         }
     },
-    handleSubmitMatch: function () {
-        if (!this.props.signedIn) {
-            this.props.sendMessage("Can not scout without signing in");
-            this.setState({ setupDialogOpen: false });
-        }
-        else {
-            this.setState({ setupDialogOpen: false });
-            this.props.handleNewMatchSubmission();
-        }
-    },
+    // handleSubmitMatch: function () {
+    //     if (!this.props.signedIn) {
+    //         this.props.sendMessage("Can not scout without signing in");
+    //         this.setState({ setupDialogOpen: false });
+    //     }
+    //     else {
+    //         this.setState({ setupDialogOpen: false });
+    //         this.props.handleNewMatchSubmission();
+    //     }
+    // },
     scrollWindow: function () {
         window.scrollTo(0, 0);
     },
@@ -355,12 +355,12 @@ var MatchList = React.createClass({
             <RaisedButton label="Scout This Match" primary={true} disabled={false} onTouchTap={this.handleScoutUnscouted}/>,
             <FlatButton label="Cancel" primary={true} onTouchTap={this.handleClose}/>,
         ];
-        const actionsSetup = [
-            <RaisedButton label="Add Match" primary={true} disabled={this.state.target1Error || this.state.target2Error
-                || this.state.opponent1Error || this.state.opponent2Error || this.state.matchNumberError}
-                onTouchTap={this.handleSubmitMatch}/>,
-            <FlatButton label="Cancel" primary={true} onTouchTap={this.handleClose}/>,
-        ];
+        // const actionsSetup = [
+        //     <RaisedButton label="Add Match" primary={true} disabled={this.state.target1Error || this.state.target2Error
+        //         || this.state.opponent1Error || this.state.opponent2Error || this.state.matchNumberError}
+        //         onTouchTap={this.handleSubmitMatch}/>,
+        //     <FlatButton label="Cancel" primary={true} onTouchTap={this.handleClose}/>,
+        // ];
 
         var width = window.innerWidth
             || document.documentElement.clientWidth
@@ -388,17 +388,17 @@ var MatchList = React.createClass({
                     <Dialog title="Unscouted Match" contentStyle={{ width: '100%', maxWidth: 'none', }}
                         actions={actionsUnscouted} modal={true} open={this.state.unscoutedDialogOpen}/>
 
-                    <Dialog title="Setup" contentStyle={{ height: '100%', width: '100%', maxWidth: 'none', maxHeight: 'none', paddingTop: 0 }}
-                        actions={actionsSetup} modal={true} open={this.state.setupDialogOpen} autoScrollBodyContent={true}>
-                        <Setup handleRed1Ready={this.handleRed1Ready} handleRed1Error={this.handleRed1Error}
-                            handleRed2Ready={this.handleRed2Ready} handleRed2Error={this.handleRed2Error}
-                            handleBlue1Ready={this.handleBlue1Ready} handleBlue1Error={this.handleBlue1Error}
-                            handleBlue2Ready={this.handleBlue2Ready} handleBlue2Error={this.handleBlue2Error}
-                            handleMatchNumberReady={this.handleMatchNumberReady} handleMatchNumberError={this.handleMatchNumberError}
-                            handleCurrentMatchSetupUpdate={this.props.handleCurrentMatchSetupUpdate} currentMatchSetup={this.props.currentMatchSetup} />
-                    </Dialog>
+                    
                 </div>
-            );
+            );// <Dialog title="Setup" contentStyle={{ height: '100%', width: '100%', maxWidth: 'none', maxHeight: 'none', paddingTop: 0 }}
+                    //     actions={actionsSetup} modal={true} open={this.state.setupDialogOpen} autoScrollBodyContent={true}>
+                    //     <Setup handleRed1Ready={this.handleRed1Ready} handleRed1Error={this.handleRed1Error}
+                    //         handleRed2Ready={this.handleRed2Ready} handleRed2Error={this.handleRed2Error}
+                    //         handleBlue1Ready={this.handleBlue1Ready} handleBlue1Error={this.handleBlue1Error}
+                    //         handleBlue2Ready={this.handleBlue2Ready} handleBlue2Error={this.handleBlue2Error}
+                    //         handleMatchNumberReady={this.handleMatchNumberReady} handleMatchNumberError={this.handleMatchNumberError}
+                    //         handleCurrentMatchSetupUpdate={this.props.handleCurrentMatchSetupUpdate} currentMatchSetup={this.props.currentMatchSetup} />
+                    // </Dialog>
         }
         else {
             return (
@@ -421,18 +421,17 @@ var MatchList = React.createClass({
 
                     <Dialog title="Unscouted Match" contentStyle={{ width: '100%', maxWidth: 'none', }}
                         actions={actionsUnscouted} modal={true} open={this.state.unscoutedDialogOpen}/>
-
-                    <Dialog title="Setup" contentStyle={{ height: '100%', width: '100%', maxWidth: 'none', maxHeight: 'none', paddingTop: 0 }}
-                        actions={actionsSetup} modal={true} open={this.state.setupDialogOpen} autoScrollBodyContent={true}>
-                        <Setup handleRed1Ready={this.handleRed1Ready} handleRed1Error={this.handleRed1Error}
-                            handleRed2Ready={this.handleRed2Ready} handleRed2Error={this.handleRed2Error}
-                            handleBlue1Ready={this.handleBlue1Ready} handleBlue1Error={this.handleBlue1Error}
-                            handleBlue2Ready={this.handleBlue2Ready} handleBlue2Error={this.handleBlue2Error}
-                            handleMatchNumberReady={this.handleMatchNumberReady} handleMatchNumberError={this.handleMatchNumberError}
-                            handleCurrentMatchSetupUpdate={this.props.handleCurrentMatchSetupUpdate} currentMatchSetup={this.props.currentMatchSetup} />
-                    </Dialog>
                 </div>
             );
+                    // <Dialog title="Setup" contentStyle={{ height: '100%', width: '100%', maxWidth: 'none', maxHeight: 'none', paddingTop: 0 }}
+                    //     actions={actionsSetup} modal={true} open={this.state.setupDialogOpen} autoScrollBodyContent={true}>
+                    //     <Setup handleRed1Ready={this.handleRed1Ready} handleRed1Error={this.handleRed1Error}
+                    //         handleRed2Ready={this.handleRed2Ready} handleRed2Error={this.handleRed2Error}
+                    //         handleBlue1Ready={this.handleBlue1Ready} handleBlue1Error={this.handleBlue1Error}
+                    //         handleBlue2Ready={this.handleBlue2Ready} handleBlue2Error={this.handleBlue2Error}
+                    //         handleMatchNumberReady={this.handleMatchNumberReady} handleMatchNumberError={this.handleMatchNumberError}
+                    //         handleCurrentMatchSetupUpdate={this.props.handleCurrentMatchSetupUpdate} currentMatchSetup={this.props.currentMatchSetup} />
+                    // </Dialog>
         }
     }
 });

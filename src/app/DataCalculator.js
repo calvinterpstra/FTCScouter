@@ -115,35 +115,38 @@ class DataCalculator {
             ).pop();
         }
 
+        const avg = arr => arr.reduce( ( p, c ) => p + c, 0 ) / arr.length;
+
         if (!arePartialMatches) {
             return -1
         }
 
-        mergedScores.autonButtonsScore1 = mode(autonButtonsScores1);
+        mergedScores.autonButtonsScore1 = Math.round(avg(autonButtonsScores1)/30)*30; //mode(autonButtonsScores1);
         mergedScores.autonParkingScore1 = mode(autonParkingScores1);
-        mergedScores.autonCenterVortexScore1 = mode(autonCenterVortexScores1);
-        mergedScores.autonCornerVortexScore1 = mode(autonCornerVortexScores1);
+        mergedScores.autonCenterVortexScore1 = Math.round(avg(autonCenterVortexScores1)/15)*15; //mode(autonCenterVortexScores1);
+        mergedScores.autonCornerVortexScore1 = Math.round(avg(autonCornerVortexScores1)/5)*5; //mode(autonCornerVortexScores1);
         mergedScores.autonCapBallScore1 = mode(autonCapBallScores1);
-        mergedScores.centerVortexScore1 = mode(centerVortexScores1);
-        mergedScores.cornerVortexScore1 = mode(cornerVortexScores1);
+        mergedScores.centerVortexScore1 = Math.round(avg(centerVortexScores1)/5)*5; //mode(centerVortexScores1);
+        mergedScores.cornerVortexScore1 = Math.round(avg(cornerVortexScores1)/1)*1; //mode(cornerVortexScores1);
         mergedScores.capBallScore1 = mode(capBallScores1);
         mergedScores.teleopButtonAllianceNearScore1 = mode(teleopButtonAllianceNearScores1);
         mergedScores.teleopButtonAllianceFarScore1 = mode(teleopButtonAllianceFarScores1);
         mergedScores.teleopButtonOpponentNearScore1 = mode(teleopButtonOpponentNearScores1);
         mergedScores.teleopButtonOpponentFarScore1 = mode(teleopButtonOpponentFarScores1);
 
-        mergedScores.autonButtonsScore2 = mode(autonButtonsScores2);
+        mergedScores.autonButtonsScore2 = Math.round(avg(autonButtonsScores2)/30)*30; //mode(autonButtonsScores2);
         mergedScores.autonParkingScore2 = mode(autonParkingScores2);
-        mergedScores.autonCenterVortexScore2 = mode(autonCenterVortexScores2);
-        mergedScores.autonCornerVortexScore2 = mode(autonCornerVortexScores2);
+        mergedScores.autonCenterVortexScore2 = Math.round(avg(autonCenterVortexScores2)/15)*15; //mode(autonCenterVortexScores2);
+        mergedScores.autonCornerVortexScore2 = Math.round(avg(autonCornerVortexScores2)/5)*5; //mode(autonCornerVortexScores2);
         mergedScores.autonCapBallScore2 = mode(autonCapBallScores2);
-        mergedScores.centerVortexScore2 = mode(centerVortexScores2);
-        mergedScores.cornerVortexScore2 = mode(cornerVortexScores2);
+        mergedScores.centerVortexScore2 = Math.round(avg(centerVortexScores2)/5)*5; //mode(centerVortexScores2);
+        mergedScores.cornerVortexScore2 = Math.round(avg(cornerVortexScores2)/1)*1; //mode(cornerVortexScores2);
         mergedScores.capBallScore2 = mode(capBallScores2);
         mergedScores.teleopButtonAllianceNearScore2 = mode(teleopButtonAllianceNearScores2);
         mergedScores.teleopButtonAllianceFarScore2 = mode(teleopButtonAllianceFarScores2);
         mergedScores.teleopButtonOpponentNearScore2 = mode(teleopButtonOpponentNearScores2);
         mergedScores.teleopButtonOpponentFarScore2 = mode(teleopButtonOpponentFarScores2);
+
 
         return mergedScores;
     }
