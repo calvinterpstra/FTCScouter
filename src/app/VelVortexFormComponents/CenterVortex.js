@@ -52,7 +52,7 @@ var CenterVortex = React.createClass({
                 <RaisedButton
                   label={'+'}
                   primary={true}
-                  disabled={this.props.scores.centerVortexScore1/5 === 20}
+                  disabled={this.props.scores.centerVortexScore1/5 === 30}
                   onTouchTap={this.handleNext1}
                   style={{height: 40, minWidth: 60}}
                   />
@@ -74,7 +74,7 @@ var CenterVortex = React.createClass({
                 <RaisedButton
                   label="+"
                   primary={true}
-                  disabled={this.props.scores.centerVortexScore2/5 === 20}
+                  disabled={this.props.scores.centerVortexScore2/5 === 30}
                   onTouchTap={this.handleNext2}
                   style={{height: 40, minWidth: 60}}
                   />

@@ -4,9 +4,9 @@ import LocalScoreLabel from './VelVortexFormComponents/LocalScoreLabel';
 import Autonomous from './VelVortexFormComponents/Autonomous';
 import Teleop from './VelVortexFormComponents/Teleop';
 import Endgame from './VelVortexFormComponents/Endgame';
-import {Tabs, Tab} from 'material-ui/Tabs';
-import SwipeableViews from 'react-swipeable-views';
+import { Tabs, Tab } from 'material-ui/Tabs';
 import ScoreCalculator from './ScoreCalculator';
+import RaisedButton from 'material-ui/RaisedButton';
 
 var PracticeVelVortexForm = React.createClass({
     getInitialState: function () {
@@ -152,6 +152,37 @@ var PracticeVelVortexForm = React.createClass({
     scrollWindow: function () {
         window.scrollTo(0, 0);
     },
+    resetScores: function () {
+        const newState = this.state;
+        newState.scores = {
+            autonButtonsScore1: 0,
+            autonParkingScore1: 0,
+            autonCenterVortexScore1: 0,
+            autonCornerVortexScore1: 0,
+            autonCapBallScore1: 0,
+            centerVortexScore1: 0,
+            cornerVortexScore1: 0,
+            capBallScore1: 0,
+            teleopButtonAllianceNearScore1: 0,
+            teleopButtonAllianceFarScore1: 0,
+            teleopButtonOpponentNearScore1: 0,
+            teleopButtonOpponentFarScore1: 0,
+
+            autonButtonsScore2: 0,
+            autonParkingScore2: 0,
+            autonCenterVortexScore2: 0,
+            autonCornerVortexScore2: 0,
+            autonCapBallScore2: 0,
+            centerVortexScore2: 0,
+            cornerVortexScore2: 0,
+            capBallScore2: 0,
+            teleopButtonAllianceNearScore2: 0,
+            teleopButtonAllianceFarScore2: 0,
+            teleopButtonOpponentNearScore2: 0,
+            teleopButtonOpponentFarScore2: 0,
+        }
+        this.setState({ newState });
+    },
 
     render() {
         var width = window.innerWidth
@@ -165,15 +196,15 @@ var PracticeVelVortexForm = React.createClass({
                 <div>
                     <Tabs onChange={this.handleChangeIndex} value={this.state.slideIndex}
                         style={{ marginRight: -20, marginLeft: -20, padding: 0, paddingTop: 58, position: 'fixed', width: width, zIndex: 1100 }}>
-                        <Tab label="Autonomous" value={0}/>
-                        <Tab label="Teleop" value={1}/>
-                        <Tab label={"Score: " + totalScore} value={2}/>
+                        <Tab label="Autonomous" value={0} />
+                        <Tab label="Teleop" value={1} />
+                        <Tab label={"Score: " + totalScore} value={2} />
                     </Tabs>
                     <div style={{ padding: 0, margin: 0 }}>
-                        <h2 style={{ fontSize: 24, fontWeight: 400, paddingTop: 130, margin: 0 }}> Practice Form </h2> <br/>
-                        <Divider/><br/>
-                        <Autonomous scores = {this.state.scores} handleScoreChange = {this.handleScoreChange} team1="Team 1" team2="Team 2"/>
-                        <br/><br/><br/><br/>
+                        <h2 style={{ fontSize: 24, fontWeight: 400, paddingTop: 130, margin: 0 }}> Practice Form </h2> <br />
+                        <Divider /><br />
+                        <Autonomous scores={this.state.scores} handleScoreChange={this.handleScoreChange} team1="Team 1" team2="Team 2" />
+                        <br /><br /><br /><br />
                     </div>
                 </div>
             );
@@ -183,17 +214,17 @@ var PracticeVelVortexForm = React.createClass({
                 <div>
                     <Tabs onChange={this.handleChangeIndex} value={this.state.slideIndex}
                         style={{ marginRight: -20, marginLeft: -20, padding: 0, paddingTop: 58, position: 'fixed', width: width, zIndex: 1100 }}>
-                        <Tab label="Autonomous" value={0}/>
-                        <Tab label="Teleop" value={1}/>
-                        <Tab label={"Score: " + totalScore} value={2}/>
+                        <Tab label="Autonomous" value={0} />
+                        <Tab label="Teleop" value={1} />
+                        <Tab label={"Score: " + totalScore} value={2} />
                     </Tabs>
                     <div style={{ padding: 0, margin: 0 }}>
-                        <h2 style={{ fontSize: 24, fontWeight: 400, paddingTop: 130, margin: 0 }}> Practice Form </h2> <br/>
-                        <Divider/><br/>
-                        <Teleop scores = {this.state.scores} handleScoreChange = {this.handleScoreChange} team1="Team 1" team2="Team 2"/>
-                        <Divider/><br/>
-                        <Endgame scores = {this.state.scores} handleScoreChange = {this.handleScoreChange} team1="Team 1" team2="Team 2"/>
-                        <br/><br/><br/><br/>
+                        <h2 style={{ fontSize: 24, fontWeight: 400, paddingTop: 130, margin: 0 }}> Practice Form </h2> <br />
+                        <Divider /><br />
+                        <Teleop scores={this.state.scores} handleScoreChange={this.handleScoreChange} team1="Team 1" team2="Team 2" />
+                        <Divider /><br />
+                        <Endgame scores={this.state.scores} handleScoreChange={this.handleScoreChange} team1="Team 1" team2="Team 2" />
+                        <br /><br /><br /><br />
                     </div>
                 </div>
             );
@@ -203,15 +234,16 @@ var PracticeVelVortexForm = React.createClass({
                 <div>
                     <Tabs onChange={this.handleChangeIndex} value={this.state.slideIndex}
                         style={{ marginRight: -20, marginLeft: -20, padding: 0, paddingTop: 58, position: 'fixed', width: width, zIndex: 1100 }}>
-                        <Tab label="Autonomous" value={0}/>
-                        <Tab label="Teleop" value={1}/>
-                        <Tab label={"Score: " + totalScore} value={2}/>
+                        <Tab label="Autonomous" value={0} />
+                        <Tab label="Teleop" value={1} />
+                        <Tab label={"Score: " + totalScore} value={2} />
                     </Tabs>
                     <div style={{ padding: 0, margin: 0 }}>
-                        <h2 style={{ fontSize: 24, fontWeight: 400, paddingTop: 130, margin: 0 }}> Practice Form </h2> <br/>
-                        <Divider/><br/>
-                        <LocalScoreLabel scores = {this.state.scores}/>
-                        <br/><br/><br/><br/>
+                        <h2 style={{ fontSize: 24, fontWeight: 400, paddingTop: 130, margin: 0 }}> Practice Form </h2> <br />
+                        <Divider /><br />
+                        <LocalScoreLabel scores={this.state.scores} /><br />
+                        <RaisedButton label="Reset" secondary={true} onTouchTap={this.resetScores} />
+                        <br /><br /><br /><br />
                     </div>
                 </div>
             );
