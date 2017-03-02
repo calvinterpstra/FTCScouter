@@ -2,7 +2,7 @@
 
 https://ftcvelocityvortexscouter.firebaseapp.com
 *************************************************************************************
-Uses React, Webpack, Material-Ui, and Firebase to create descriptive and predictive analytics from crowdsourced data to create a detailed scouting protfolio of all teams.
+Uses React, Webpack, Material-Ui, and Firebase to create descriptive and predictive analytics from crowdsourced data in real time to create a detailed scouting protfolio of all teams.
 
 * Collaborate with the FTC community to collect detailed scouting data. 
 * View and Scout matches under the Matches tab. 
